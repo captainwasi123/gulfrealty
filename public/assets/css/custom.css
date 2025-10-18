@@ -1,0 +1,84 @@
+.navbar{
+    background-color: #03334f !important;
+}
+.navbar-brand img {
+    height: 70px;
+}
+.navbar .nav-link{
+   color: #fff !important;
+}
+.header-search input {
+    border-radius: 30px;
+    padding-right: 50px;
+}
+.header-search {
+    position: relative;
+}
+.header-search i {
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+.footer {
+    background-color: #03334f !important;
+}
+.brand-footer-logo img{
+   height: 70px;
+}
+
+.staff-card{
+    box-shadow: 1px 0px 9px 0 rgb(0 0 0 / 20%);
+}
+.staff-card .staff-desc{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+#lcl_thumbs_nav{
+    display: none !important;
+}
+.gallery-img {
+    width: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+.video-card {
+    overflow: hidden;
+    border-radius: 20px;
+}
+.video-card .card-body {
+    padding: 0;
+}
+.video-card .card-body iframe {
+    margin-bottom: -10px;
+}
+
+.gallery-image-block img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.image-para-desc {
+    font-size: 12px;
+    margin-bottom: 0;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.image-pop-para {
+    font-size: 14px;
+    margin-top: -18px;
+    text-align: center;
+}
+.pop-title-container {
+    background-color: #e6e6e6;
+    border-radius: 12px;
+}

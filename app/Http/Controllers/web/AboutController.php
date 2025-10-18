@@ -4,10 +4,10 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\galleryVideos;
-use App\Models\galleryReels;
-use App\Models\galleryImages;
-use App\Models\galleryImagesDetails;
+use App\Models\GalleryVideos;
+use App\Models\GalleryReels;
+use App\Models\GalleryImages;
+use App\Models\GalleryImagesDetails;
 
 class AboutController extends Controller
 {

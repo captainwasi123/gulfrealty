@@ -70,57 +70,6 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
 });
 
 
-    //Users
-    Route::prefix('user')->namespace('App\Http\Controllers\user')->group(function () {
-        Route::post('create', 'UserController@create')->name('user.create');
-
-        Route::post('login', 'UserController@login')->name('user.login');
-
-        Route::post('forgotPassword', 'UserController@forgotPassword')->name('user.forgotPassword');
-        Route::get('resetPassword/{id}/{email}', 'UserController@resetPassword')->name('user.resetPassword');
-        Route::post('updatePassword', 'UserController@updatePassword')->name('user.updatePassword');
-
-        Route::get('logout', 'UserController@logout')->name('user.logout');
-
-        Route::get('/google', 'GoogleLoginController@redirectToGoogle')->name('auth.google');
-        Route::get('/google/callback', 'GoogleLoginController@handleGoogleCallback');
-
-
-        Route::middleware([userAuth::class])->group(function () {
-
-            Route::get('dashboard', 'UserController@index')->name('user.dashboard');
-
-            //Blogs
-            Route::prefix('articles')->group(function () {
-
-                Route::get('/', 'BlogController@index')->name('user.blog');
-                Route::get('/load', 'BlogController@load')->name('user.blog.load');
-                Route::get('/search/{val}', 'BlogController@search');
-                Route::post('/create', 'BlogController@create')->name('user.blog.create');
-                Route::get('/delete/{id}', 'BlogController@delete');
-                Route::get('/edit/{id}', 'BlogController@edit');
-                Route::post('/update', 'BlogController@update_blog')->name('user.blog.update');
-
-            });
-
-            // Route::get('profile', 'UserController@profile')->name('user.profile');
-            Route::post('verify_email', 'UserController@verify_email')->name('user.verify_email');
-
-            Route::prefix('claim-cashback')->group(function () {
-                Route::get('/', 'UserController@claimCashback')->name('user.claimCashback');
-                Route::post('/request', 'UserController@claimCashbackRequest')->name('user.claimCashback.request');
-            });
-
-
-            Route::prefix('settings')->group(function () {
-                Route::get('/', 'UserController@settings')->name('user.settings');
-                Route::post('/update', 'UserController@settings_update')->name('user.settings.update');
-                Route::post('/bank_details', 'UserController@bank_details')->name('user.settings.bank_details');
-            });
-        });
-    });
-
-
 //Administration
 
 Route::prefix('admin/panel')->namespace('App\Http\Controllers\admin')->group(function () {
@@ -161,6 +110,33 @@ Route::prefix('admin/panel')->namespace('App\Http\Controllers\admin')->group(fun
         });
 
 
+        //Gallery
+        Route::prefix('team')->group(function(){
+
+            Route::prefix('agents')->group(function () {
+
+                Route::get('/', 'AgentController@index')->name('admin.team.agents');
+                Route::get('/load', 'AgentController@load')->name('admin.team.agents.load');
+                Route::get('/search/{val}', 'AgentController@search');
+                Route::post('/create', 'AgentController@create')->name('admin.team.agents.create');
+                Route::get('/delete/{id}', 'AgentController@delete');
+                Route::get('/edit/{id}', 'AgentController@edit');
+                Route::post('/update', 'AgentController@update_blog')->name('admin.team.agents.update');
+
+            });
+
+            Route::prefix('staff')->group(function () {
+
+                Route::get('/', 'StaffController@index')->name('admin.team.staff');
+                Route::get('/load', 'StaffController@load')->name('admin.team.staff.load');
+                Route::get('/search/{val}', 'StaffController@search');
+                Route::post('/create', 'StaffController@create')->name('admin.team.staff.create');
+                Route::get('/delete/{id}', 'StaffController@delete');
+                Route::get('/edit/{id}', 'StaffController@edit');
+                Route::post('/update', 'StaffController@update_blog')->name('admin.team.staff.update');
+
+            });
+        });
 
         
         //Gallery

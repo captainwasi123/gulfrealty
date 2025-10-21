@@ -8,6 +8,8 @@ use App\Models\GalleryVideos;
 use App\Models\GalleryReels;
 use App\Models\GalleryImages;
 use App\Models\GalleryImagesDetails;
+use App\Models\TeamAgents;
+use App\Models\TeamStaff;
 
 class AboutController extends Controller
 {
@@ -20,7 +22,8 @@ class AboutController extends Controller
 
     public function ourTeam(){
         $data['nav'] = 'about';
-
+        $data['agents'] = TeamAgents::where('status', '1')->orderBy('property_sold', 'desc')->get();
+        $data['staff'] = TeamStaff::where('status', '1')->get();
         
         return view('web.about-us.team')->with($data);
     }

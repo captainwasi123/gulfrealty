@@ -1,3 +1,6 @@
+.ratio>*{
+    object-fit: cover;
+}
 .navbar{
     background-color: #03334f !important;
 }

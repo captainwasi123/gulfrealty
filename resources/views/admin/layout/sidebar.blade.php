@@ -62,6 +62,43 @@
             </ul>
           </li>
 
+          <li class="nav-item {{$menu == 'properties' || $menu == 'locations' || $menu == 'propertytype' || $menu == 'amenities'  ? 'menu-open' : ''}}">
+            <a href="javascript:void(0)" class="nav-link">
+              <i class="nav-icon fas fa-building"></i>
+              <p>
+                Real Estate
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+             
+                <li class="nav-item">
+                  <a href="{{route('admin.team.agents')}}" class="nav-link {{$menu == 'agents' ? 'active' : ''}}">
+                    <i class="fas fa-angle-right nav-icon"></i>
+                    <p>Properties</p>
+                  </a>
+                </li>
+                <!-- 
+                <li><hr class="nav-break"></li>
+
+                <li class="nav-item">
+                  <a href="{{route('admin.team.staff')}}" class="nav-link {{$menu == 'staff' ? 'active' : ''}}">
+                    <i class="fas fa-angle-right nav-icon"></i>
+                    <p>Locations</p>
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="{{route('admin.team.staff')}}" class="nav-link {{$menu == 'staff' ? 'active' : ''}}">
+                    <i class="fas fa-angle-right nav-icon"></i>
+                    <p>Property Type</p>
+                  </a>
+                </li> -->
+       
+
+            </ul>
+          </li>
+
           <li class="nav-item {{$menu == 'agents' || $menu == 'staff'  ? 'menu-open' : ''}}">
             <a href="javascript:void(0)" class="nav-link">
               <i class="nav-icon fas fa-users"></i>

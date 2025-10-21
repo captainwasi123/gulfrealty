@@ -1,3 +1,7 @@
+.nav-break {
+    margin: 12px 0 0 0;
+    border-color: #c2c7d0;
+}
 .preloader{
         z-index: 9999999 !important;
 }

@@ -20,7 +20,7 @@ Route::get('/update-sitemap', function () {
 Route::namespace('App\Http\Controllers\web')->group(function(){
     Route::get('/', 'WebController@index')->name('home');
     Route::get('/collaborate', 'WebController@collaborate')->name('collaborate');
-    Route::get('/reach-out', 'WebController@contact')->name('reach-out');
+    Route::get('/contact', 'WebController@contact')->name('contact');
     Route::get('/write-for-us', 'WebController@writeForUs')->name('write-for-us');
 
 

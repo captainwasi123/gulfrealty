@@ -215,7 +215,10 @@
                   </a>
                 </h3>
                 <div class="proper-block-footer">
-                  <span class="badge text-bg-success">&nbsp;&nbsp;{{$val->purpose}}&nbsp;&nbsp;</span>
+                  <div>
+                    <span class="badge text-bg-info">&nbsp;&nbsp;{{@$val->type->name}}&nbsp;&nbsp;</span>
+                    <span class="badge text-bg-warning">&nbsp;&nbsp;{{$val->purpose}}&nbsp;&nbsp;</span>
+                  </div>
                   <div class="h6 fs-sm mb-0">AED {{number_format($val->price)}}</div>
                 </div>
               </div>
@@ -223,6 +226,15 @@
           </div>
           @endforeach
         </div>
+        @if(count($data) == 0)
+
+          <div class="row">
+            <div class="col-lg-12 text-center">
+              <br><br><br><br>
+                <img src="{{URL::to('/public/no-results.jpg')}}" width="280px" alt="No Results Found.">
+            </div>
+          </div>
+        @endif
 
         <!-- Pagination -->
         <nav class="pt-3 mt-3" aria-label="Listings pagination">
@@ -282,7 +294,7 @@
       locations.forEach(loc => {
         // Custom marker element
         const markerElement = document.createElement("div");
-        markerElement.style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/684/684908.png')";
+        markerElement.style.backgroundImage = "url('{{URL::to('/public/marker.png')}}')";
         markerElement.style.backgroundSize = "cover";
         markerElement.style.width = "40px";
         markerElement.style.height = "40px";

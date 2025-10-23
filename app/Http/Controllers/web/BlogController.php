@@ -12,6 +12,7 @@ use App\Models\Episodes;
 use App\Models\Playlists;
 use App\Models\FeaturedBlogs;
 use App\Models\TopStories;
+use App\Models\realestate\Properties;
 use URL;
 
 class BlogController extends Controller
@@ -20,10 +21,12 @@ class BlogController extends Controller
     public function index(){
         $data['nav'] = 'blogs';
         $data['title'] = 'Blogs';
+        $data['categoryAll'] = '1';
         if(!empty($_GET['page'])){
             $data['nofollow'] = '1';
         }
-        $data['data'] = Blogs::where('status', '1')->orderBy('created_at', 'desc')->paginate(10);
+        $data['data'] = Blogs::where('status', '1')->orderBy('created_at', 'desc')->paginate(9);
+        $data['latest_updates'] = Blogs::where('status', '1')->where('category_id', '5')->orderBy('created_at', 'desc')->limit(6)->get();
 
         $data['featured'] = FeaturedBlogs::all();
         $data['categories'] = Categories::all();
@@ -43,16 +46,17 @@ class BlogController extends Controller
 
     public function blogCategory($slug){
         $data['nav'] = 'blogs';
+        $data['categoryPage'] = '1';
         if(!empty($_GET['page'])){
             $data['nofollow'] = '1';
         }
         $data['categories'] = Categories::all();
-        $category = Categories::where('slug', $slug)->first();
-        if(!empty($category->id)){
-            $data['title'] = $category->name;
+        $data['category'] = Categories::where('slug', $slug)->first();
+        if(!empty($data['category']->id)){
+            $data['title'] = $data['category']->name;
             $data['type'] = 'category';
             $data['data'] = Blogs::where('status', '1')
-                                    ->where('category_id', $category->id)
+                                    ->where('category_id', $data['category']->id)
                                     ->orderBy('created_at', 'desc')
                                     ->paginate(10);
 
@@ -66,12 +70,13 @@ class BlogController extends Controller
         $data['nav'] = 'blogs';
         
         $data['data'] = Blogs::where('slug', $blog_slug)->where('status', '1')->first();
+        $data['related_blogs'] = Blogs::where('status', '1')->where('id', '!=', $data['data']->id)->orderBy('created_at', 'desc')->limit(6)->get();
+        $data['categories'] = Categories::all();
+        $data['properties'] = Properties::where('status', '1')->orderBy('created_at', 'desc')->limit(6)->get();
         if(empty($data['data']->id)){
             return redirect(route('blogs'));
         }
         $data['og_img'] = URL::to('public/storage/blogs/'.$data['data']->banner);
-        $data['popular_series'] = Playlists::where('popular', '1')->first();
-        $data['top_stories'] = TopStories::all();
 
         return view('web.blogs.details')->with($data);
     }

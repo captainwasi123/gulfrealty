@@ -50,7 +50,7 @@
           </li>
 
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
-            <a class="nav-link" href="">Latest Updates</a>
+            <a class="nav-link" href="{{route('blogs.category', 'latest-updates')}}">Latest Updates</a>
           </li>
 
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">

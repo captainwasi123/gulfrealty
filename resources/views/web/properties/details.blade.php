@@ -234,7 +234,7 @@
 
     // 📍 Create custom marker
     const markerElement = document.createElement("div");
-    markerElement.style.backgroundImage = "url('https://cdn-icons-png.flaticon.com/512/684/684908.png')";
+    markerElement.style.backgroundImage = "url('{{URL::to('/public/marker.png')}}')";
     markerElement.style.backgroundSize = "cover";
     markerElement.style.width = "40px";
     markerElement.style.height = "40px";

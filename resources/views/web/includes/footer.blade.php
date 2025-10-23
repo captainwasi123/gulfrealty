@@ -39,7 +39,7 @@
             <div class="accordion-collapse collapse d-sm-block" id="quickLinks" aria-labelledby="quickLinksHeading" data-bs-parent="#footerLinks">
               <ul class="nav flex-column gap-2 pt-sm-1 pt-lg-2 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Blogs</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('blogs')}}">Blogs</a>
                 </li>
                 <li class="pt-1">
                   <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Latest Updates</a>

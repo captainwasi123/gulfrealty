@@ -77,9 +77,11 @@
                 <a class="nav-link {{!empty($categoryAll) ? 'active' : ''}}" aria-current="page" href="{{route('blogs')}}">All</a>
               </li>
               @foreach($categories as $val)
-                <li class="nav-item me-1">
-                  <a class="nav-link {{ !empty($category->slug) && $category->slug == $val->slug ? 'active' : ''}}" href="{{route('blogs.category', $val->slug)}}">{{$val->name}}</a>
-                </li>
+                @if(count($val->blogs) > 0)
+                  <li class="nav-item me-1">
+                    <a class="nav-link {{ !empty($category->slug) && $category->slug == $val->slug ? 'active' : ''}}" href="{{route('blogs.category', $val->slug)}}">{{$val->name}}</a>
+                  </li>
+                @endif
               @endforeach
             </ul>          
           </div>

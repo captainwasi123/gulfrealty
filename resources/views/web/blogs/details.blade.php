@@ -74,9 +74,11 @@
               <h3 class="h5 mb-2">Categories</h3>
               <ul class="nav flex-column gap-0">
                 @foreach($categories as $val)
-                  <li class="nav-item">
-                    <a class="nav-link hover-effect-underline fw-semibold border-bottom px-0 py-3" href="{{route('blogs.category', $val->slug)}}">{{$val->name}} &nbsp;<small><small>({{count($val->blogs)}})</small></small></a>
-                  </li>
+                  @if(count($val->blogs) > 0)
+                    <li class="nav-item">
+                      <a class="nav-link hover-effect-underline fw-semibold border-bottom px-0 py-3" href="{{route('blogs.category', $val->slug)}}">{{$val->name}} &nbsp;<small><small>({{count($val->blogs)}})</small></small></a>
+                    </li>
+                  @endif
                 @endforeach
               </ul>
 

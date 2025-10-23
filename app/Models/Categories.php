@@ -37,7 +37,7 @@ class Categories extends Model
     }
 
     public function blogs(){
-        return $this->hasMany(Blogs::class, 'category_id', 'id');
+        return $this->hasMany(Blogs::class, 'category_id', 'id')->where('status', '1');
     }
 
 }

@@ -81,6 +81,9 @@
           @endforeach
           
         </div>
+        <nav class="pt-3 mt-3" aria-label="Listings pagination">
+          {{$data->links('vendor.pagination.default')}}
+        </nav>
 
       </section>
 
@@ -116,7 +119,7 @@
             gallery   : true,
             thumb: false,
             thumb_attr: 'data-lcl-thumb',
-            skin      : 'dark',
+            skin      : 'light',
             radius    : 4,
             padding   : 0,
             border_w  : 0

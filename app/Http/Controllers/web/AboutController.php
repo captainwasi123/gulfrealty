@@ -58,7 +58,7 @@ class AboutController extends Controller
     }
     public function galleryImages(){
         $data['nav'] = 'about';
-        $data['data'] = galleryImages::orderBy('created_at', 'desc')->paginate(48);
+        $data['data'] = galleryImages::orderBy('created_at', 'desc')->paginate(24);
         
         return view('web.about-us.gallery.images')->with($data);
     }

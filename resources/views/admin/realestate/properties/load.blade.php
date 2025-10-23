@@ -1,10 +1,11 @@
 @foreach($data as $key => $val)
 <tr>
   <td>{{++$key}}</td>
-  <td><img src="{{URL::to('/public/storage/team/agents/'.$val->image)}}" height="45px"></td>
-  <td>{{$val->name}}</td>
-  <td><strong>{{$val->experience}}</strong> <small>years</small></td>
-  <td><strong>{{$val->property_sold}}</strong> <small>Property Sold</small></td>
+  <td>{{$val->title}}</td>
+  <td>{{@$val->type->name}}</td>
+  <td>{{$val->purpose}}</td>
+  <td>AED {{number_format($val->price)}}</td>
+  <td>{{@$val->area->name}}</td>
   <td>{{$val->user ? $val->user->username : ""}}</td>
   <td class="text-right"><small>{{date('d-M-Y | h:i A', strtotime($val->created_at))}}</small></td>
 

@@ -73,7 +73,7 @@
             <ul class="nav nav-treeview">
              
                 <li class="nav-item">
-                  <a href="{{route('admin.team.agents')}}" class="nav-link {{$menu == 'agents' ? 'active' : ''}}">
+                  <a href="{{route('admin.realestate.properties')}}" class="nav-link {{$menu == 'properties' ? 'active' : ''}}">
                     <i class="fas fa-angle-right nav-icon"></i>
                     <p>Properties</p>
                   </a>

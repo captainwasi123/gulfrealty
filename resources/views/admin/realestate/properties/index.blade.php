@@ -1,5 +1,5 @@
 @extends('admin.layout.main')
-@section('title', 'Agents')
+@section('title', 'Properties')
 @section('content')
 
 <div class="content-wrapper">
@@ -8,12 +8,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Agents</h1>
+          <h1 class="m-0">Properties</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-            <li class="breadcrumb-item active">Agents</li>
+            <li class="breadcrumb-item active">Properties</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -32,11 +32,11 @@
             <div class="card-header">
               <div class="row">
                 <div class="col-md-9 searchbar">
-                  <input type="text" name="retailer" placeholder="Search for Agents..." class="form-control searchBlog">
+                  <input type="text" name="retailer" placeholder="Search for Properties..." class="form-control searchBlog">
                   <i class="fas fa-search"></i>
                 </div>
                 <div class="col-md-3">
-                  <a href="javascript:void(0)" class="btn btn-primary pull-right addblogButton" title="Add Blog"><i class="fas fa-plus"></i> Add Agent</a>
+                  <a href="javascript:void(0)" class="btn btn-primary pull-right addblogButton" title="Add Blog"><i class="fas fa-plus"></i> Add Property</a>
                 </div>
               </div>
             </div>
@@ -48,10 +48,11 @@
                 <thead>
                   <tr>
                     <th width="5%">#</th>
-                    <th width="10%">Image</th>
-                    <th width="25%">Name</th>
-                    <th width="15%">Experience</th>
-                    <th width="15%">Sold</th>
+                    <th width="25%">Title</th>
+                    <th width="10%">Type</th>
+                    <th width="10%">Purpose</th>
+                    <th width="10%">Price</th>
+                    <th width="10%">Location</th>
                     <th width="10%">Created by</th>
                     <th width="10%" class="text-right">Created at</th>
                     <th class="text-right">Action</th>
@@ -62,10 +63,11 @@
                 <tfoot>
                   <tr>
                     <th>#</th>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Experience</th>
-                    <th>Sold</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Purpose</th>
+                    <th>Price</th>
+                    <th>Location</th>
                     <th>Created by</th>
                     <th class="text-right">Created at</th>
                     <th class="text-right">Action</th>
@@ -92,49 +94,145 @@
 
 
 <div class="modal fade" id="addBlogFormModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
-      <form method="post" action="{{route('admin.team.agents.create')}}" enctype="multipart/form-data">
+      <form method="post" action="{{route('admin.realestate.properties.create')}}" enctype="multipart/form-data">
         @csrf
         <div class="modal-header">
-          <h4 class="modal-title">Add Agent</h4>
+          <h4 class="modal-title">Add Property</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Image</label>
-                <input type="file" class="form-control" name="image" accept="image/png, image/jpg, image/jpeg" required>
+          
+          <!-- Section: Basic Info -->
+          <div class="mb-4">
+              <h5 class="section-title">Basic Info</h5>
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <label for="title" class="form-label">Property Title</label>
+                      <input type="text" class="form-control blogHeading" id="title" name="title" required>
+                  </div>
+                  <div class="col-md-6">
+                      <label for="slug" class="form-label">Slug (URL)</label>
+                      <input type="text" class="form-control blogSlug" id="slug" name="slug" required>
+                  </div>
               </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Name</label>
-                <input type="text" class="form-control" name="name" required>
+
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="type" class="form-label">Property Type</label>
+                      <select class="form-control" id="type" name="type" required>
+                          <option value="" selected disabled>Select Type</option>
+                          <optgroup label="Residential">
+                            @foreach($propertyTypes as $val)
+                              @if($val->category == 'Residential')
+                                <option value="{{$val->id}}">{{$val->name}}</option>
+                              @endif
+                            @endforeach
+                          </optgroup>
+
+                          <optgroup label="Commercial">
+                            @foreach($propertyTypes as $val)
+                              @if($val->category == 'Commercial')
+                                <option value="{{$val->id}}">{{$val->name}}</option>
+                              @endif
+                            @endforeach
+                          </optgroup>
+
+                          <optgroup label="Plots">
+                            @foreach($propertyTypes as $val)
+                              @if($val->category == 'Plots')
+                                <option value="{{$val->id}}">{{$val->name}}</option>
+                              @endif
+                            @endforeach
+                          </optgroup>
+                      </select>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="purpose" class="form-label">Purpose</label>
+                      <select class="form-control" id="purpose" name="purpose" required>
+                          <option value="">Select Purpose</option>
+                          <option value="Sale">Sale</option>
+                          <option value="Rent">Rent</option>
+                      </select>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="price" class="form-label">Price</label>
+                      <input type="number" class="form-control" id="price" name="price" required>
+                  </div>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Experience</label>
-                <input type="text" class="form-control" name="experience" required>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Property Sold</label>
-                <input type="text" class="form-control" name="property_sold" required>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Description</label>
-                <textarea class="form-control" name="description" rows="5" required></textarea>
-              </div>
-            </div>
           </div>
+
+          <!-- Section: Address -->
+          <div class="mb-4">
+              <h5 class="section-title">Address & Location</h5>
+              <div class="row mb-3">
+                  <div class="col-md-4">
+                      <label for="country" class="form-label">Country</label>
+                      <input type="text" class="form-control" id="country" name="country" value="UAE" readonly>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="city" class="form-label">City</label>
+                      <input type="text" class="form-control" id="city" name="city" value="Dubai" readonly>
+                  </div>
+                  <div class="col-md-4">
+                      <label for="area_name" class="form-label">Area / Locality</label>
+                      <select class="form-control" id="area_name" name="area" required>
+                        <option value="" selected disabled>Select</option>
+                        @foreach($locations as $val)
+                          <option value="{{$val->id}}">{{$val->name}}</option>
+                        @endforeach
+                      </select>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-md-6">
+                      <label for="address" class="form-label">Full Address</label>
+                      <input type="text" class="form-control" id="address" name="address" required>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="latitude" class="form-label">Latitude</label>
+                      <input type="text" class="form-control" id="latitude" name="latitude" required>
+                  </div>
+                  <div class="col-md-3">
+                      <label for="longitude" class="form-label">Longitude</label>
+                      <input type="text" class="form-control" id="longitude" name="longitude" required>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Section: Features & Amenities -->
+          <div class="mb-4">
+              <h5 class="section-title">Amenities</h5>
+
+              <!-- Amenities checkboxes (can load dynamically from DB) -->
+              <div class="row mb-3">
+                  @foreach($amenities as $val)
+                    <div class="col-md-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="amenities{{$val->id}}" value="{{$val->id}}" name="amenities[]">
+                            <label class="form-check-label" for="amenities{{$val->id}}">{{$val->name}}</label>
+                        </div>
+                    </div>
+                  @endforeach
+              </div>
+          </div>
+
+          <!-- Section: Images -->
+          <div class="mb-4">
+              <h5 class="section-title">Property Images</h5>
+              <input type="file" class="form-control" id="images" name="images[]" multiple accept="image/*" required>
+              <div class="image-preview" id="imagePreview"></div>
+          </div>
+
+          <!-- Section: Description -->
+          <div class="mb-4">
+              <h5 class="section-title">Property Description</h5>
+              <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
+          </div>
+
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -150,7 +248,7 @@
 
 
 <div class="modal fade" id="editBlogFormModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
 
     </div>
@@ -161,7 +259,28 @@
 @endsection
 
 @section('addStyle')
-
+    <style>
+        .image-preview {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .image-preview img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .section-title {
+          border-bottom: 1px solid #dee2e6;
+          margin-bottom: 15px;
+          color: #fff;
+          background-color: #03334f;
+          padding: 6px 10px;
+        }
+    </style>
 <style type="text/css">
   input[type="file"]{
     opacity: 1;
@@ -171,6 +290,28 @@
 @endsection
 @section('addScript')
 
+<!-- JS for Image Preview -->
+<script>
+    const imagesInput = document.getElementById('images');
+    const imagePreview = document.getElementById('imagePreview');
+
+    imagesInput.addEventListener('change', function() {
+        imagePreview.innerHTML = '';
+        const files = imagesInput.files;
+        if(files) {
+            [...files].forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    imagePreview.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+    });
+
+</script>
 <script>
 
 
@@ -188,7 +329,7 @@
       if (val == '') {
         val = '--empty--';
       }
-      var url = "{{URL::to('/admin/panel/team/agents/search')}}/" + val;
+      var url = "{{URL::to('/admin/panel/realestate/properties/search')}}/" + val;
 
       $('#blogsTableBody').html('<tr class="text-center"><td colspan="4"><img src="{{URL::to('/public/loader.gif')}}" height="30px"></td></tr>');
       $.get(url, function(data) {
@@ -219,8 +360,6 @@
 
     $(document).on('keyup', '.blogHeading', function() {
       var a = $(this).val();
-
-      $('.blogMetaTitle').val(a);
 
       var b = a.toLowerCase().replace(/ /g, '-')
         .replace(/[^\w-]+/g, '');
@@ -324,7 +463,7 @@
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-          $.get("{{URL::to('/admin/panel/team/agents/delete')}}/" + id, function(data) {
+          $.get("{{URL::to('/admin/panel/realestate/properties/delete')}}/" + id, function(data) {
             Toast.fire({
               icon: 'success',
               title: 'Success! Video Successfully Deleted.'
@@ -348,15 +487,27 @@
       $('#editBlogFormModal').modal({
         focus: false
       });
-      $.get("{{URL::to('/admin/panel/team/agents/edit')}}/" + id, function(data) {
+      $.get("{{URL::to('/admin/panel/realestate/properties/edit')}}/" + id, function(data) {
         $('#editBlogFormModal .modal-content').html(data);
-        make_editor("content2");
         
-        $('#edit-tagsinput').tagsinput();
-        $("#edit_blog_form .bootstrap-tagsinput>input").autocomplete({
-            source: availableTags
-        });
+
       });
+    });
+
+    $(document).on('change', '#images2', function() {
+      const files = this.files;
+      const preview = $('#imagePreview2');
+      preview.empty(); // clear old previews
+
+      if (files && files.length > 0) {
+          $.each(files, function (i, file) {
+              const reader = new FileReader();
+              reader.onload = function (e) {
+                  $('<img>').attr('src', e.target.result).appendTo(preview);
+              };
+              reader.readAsDataURL(file);
+          });
+      }
     });
 
 
@@ -369,7 +520,7 @@
     @php $pu = !empty($_GET['page']) ? $_GET['page'] : 0;
     $pu = ($pu == 0 ? '' : '?page='.$pu);
     @endphp
-    var url = "{{route('admin.team.agents.load').$pu}}";
+    var url = "{{route('admin.realestate.properties.load').$pu}}";
 
     $('#blogsTableBody').html('<tr class="text-center"><td colspan="8"><img src="{{URL::to('/public/loader.gif')}}" height="30px"></td></tr>');
     $.get(url, function(data) {

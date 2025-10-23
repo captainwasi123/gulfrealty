@@ -24,6 +24,16 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
     Route::get('/write-for-us', 'WebController@writeForUs')->name('write-for-us');
 
 
+    Route::prefix('properties')->group(function(){
+        Route::get('/', 'PropertyController@index')->name('properties');
+        Route::get('/buy', 'PropertyController@buyProperties')->name('properties.buy');
+        Route::get('/rent', 'PropertyController@rentProperties')->name('properties.rent');
+
+        Route::get('/search', 'PropertyController@search')->name('properties.search');
+
+        Route::get('/{slug}', 'PropertyController@details');
+    });
+
     Route::prefix('about')->group(function(){
 
         Route::get('/', 'AboutController@index')->name('about');
@@ -107,6 +117,25 @@ Route::prefix('admin/panel')->namespace('App\Http\Controllers\admin')->group(fun
             Route::get('/load', 'AuthorController@load')->name('admin.author.load');
             Route::get('/edit/{id}', 'AuthorController@edit');
             Route::get('/delete/{id}', 'AuthorController@delete');
+        });
+
+
+
+        //Real Estate
+        Route::prefix('realestate')->group(function(){
+
+            Route::prefix('properties')->group(function () {
+
+                Route::get('/', 'PropertyController@index')->name('admin.realestate.properties');
+                Route::get('/load', 'PropertyController@load')->name('admin.realestate.properties.load');
+                Route::get('/search/{val}', 'PropertyController@search');
+                Route::post('/create', 'PropertyController@create')->name('admin.realestate.properties.create');
+                Route::get('/delete/{id}', 'PropertyController@delete');
+                Route::get('/edit/{id}', 'PropertyController@edit');
+                Route::post('/update', 'PropertyController@update_blog')->name('admin.realestate.properties.update');
+
+            });
+
         });
 
 

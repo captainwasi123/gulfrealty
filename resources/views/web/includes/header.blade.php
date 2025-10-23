@@ -22,13 +22,13 @@
         <ul class="navbar-nav position-relative">
           
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
-            <a class="nav-link" href="">Buy</a>
+            <a class="nav-link" href="{{route('properties.buy')}}">Buy</a>
           </li>
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
             <a class="nav-link" href="">Sell</a>
           </li>
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
-            <a class="nav-link" href="">Rent</a>
+            <a class="nav-link" href="{{route('properties.rent')}}">Rent</a>
           </li>
 
           <li class="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">

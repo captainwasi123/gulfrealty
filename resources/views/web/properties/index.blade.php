@@ -259,7 +259,6 @@
       {
         name: "{{$val->title}}",
         slug: "{{$val->slug}}",
-        description: "{{$val->description}}",
         price: "AED {{number_format($val->price)}}",
         lat: {{$val->latitude}},
         lng: {{$val->longitude}},
@@ -307,7 +306,7 @@
             <img src="${loc.image}" alt="${loc.name}" style="width:100px;height:70px;object-fit:cover;border-radius:8px;margin-bottom:5px;"/>
             <div class="map-popup-data">
               <h4 style="margin:0;font-size:14px;">${loc.name}</h4>
-              <p class="two-line-break" style="margin:0;font-size:12px;">${loc.description}</p>
+              <p class="two-line-break" style="margin:0;font-size:12px;">${loc.price}</p>
               <p class="text-center"><a href="{{route('properties')}}/${loc.slug}" target="_blank" style="margin:0;font-size:12px;">View Details <i class="fi-arrow-right"></i></a></p>
             </div>
           </div>

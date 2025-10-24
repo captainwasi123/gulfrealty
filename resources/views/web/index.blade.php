@@ -28,27 +28,27 @@
           <!-- Search form -->
           <div class="row pb-5 pb-md-0">
             <div class="col-xl-10 col-xxl-9">
-              <form class="bg-body border rounded-4 p-2">
+              <form class="bg-body border rounded-4 p-2" method="get" action="{{route('properties.search')}}">
                 <div class="row g-0 p-1">
                   <div class="col-lg-7">
                     <div class="row g-0">
                       <div class="col-6 col-md-4 d-flex">
                         <div class="w-100">
-                          <select class="form-select form-select-lg border-0 ps-3" data-select='{
+                          <select class="form-select form-select-lg border-0 ps-3" name="type" data-select='{
                             "classNames": {
                               "containerInner": ["form-select", "form-select-lg", "border-0", "ps-3"]
                             },
                             "removeItemButton": false
                           }' aria-label="Rent or sale select" required>
-                            <option value="For rent">For rent</option>
-                            <option value="For sale">For sale</option>
+                            <option value="Rent">For rent</option>
+                            <option value="Sale">For sale</option>
                           </select>
                         </div>
                         <hr class="vr m-0">
                       </div>
                       <div class="col-6 col-md-4 d-flex">
                         <div class="w-100">
-                          <select class="form-select form-select-lg border-0" data-select='{
+                          <select class="form-select form-select-lg border-0" name="location" data-select='{
                             "classNames": {
                               "containerInner": ["form-select", "form-select-lg", "border-0"]
                             },

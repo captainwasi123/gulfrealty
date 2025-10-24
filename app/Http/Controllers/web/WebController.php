@@ -8,6 +8,8 @@ use App\Models\Categories;
 use App\Models\Services;
 use App\Models\Blogs;
 use App\Models\Episodes;
+use App\Models\Locations;
+use App\Models\PropertyTypes;
 
 class WebController extends Controller
 {
@@ -15,7 +17,9 @@ class WebController extends Controller
         $data['nav'] = 'home';
         $data['sub_footer'] = 'visible';
         $data['blogs'] = Blogs::where('status', '1')->orderBy('created_at', 'desc')->limit(4)->get();
-        $data['episodes'] = Episodes::orderBy('id', 'desc')->limit(8)->get();
+
+        $data['locations'] = Locations::orderBy('name')->get();
+        $data['propertyTypes'] = PropertyTypes::orderBy('name')->get();
         
         return view('web.index')->with($data);
     }

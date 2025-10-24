@@ -32,10 +32,10 @@
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-5">
-            <a class="hover-effect-scale hover-effect-opacity position-relative d-flex rounded overflow-hidden" href="assets/img/listings/contractors/single/02.jpg" data-glightbox data-gallery="image-gallery">
+            <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
               <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
               <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(204 / 196 * 100%)">
-                <img src="{{URL::to('/public')}}/assets/img/listings/contractors/single/th02.jpg" alt="Image">
+                <img src="{{URL::to('/public')}}/CEO.jpg" alt="Image">
               </div>
             </a>
           </div>

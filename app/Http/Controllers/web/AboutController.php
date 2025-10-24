@@ -10,12 +10,13 @@ use App\Models\GalleryImages;
 use App\Models\GalleryImagesDetails;
 use App\Models\TeamAgents;
 use App\Models\TeamStaff;
+use App\Models\Blogs;
 
 class AboutController extends Controller
 {
     public function index(){
         $data['nav'] = 'about';
-
+        $data['latest_blogs'] = Blogs::where('status', '1')->orderBy('created_at', 'desc')->limit(6)->get();
         
         return view('web.about-us.index')->with($data);
     }

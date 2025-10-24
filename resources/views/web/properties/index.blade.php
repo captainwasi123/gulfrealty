@@ -289,7 +289,7 @@
 <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
 
   <script>
-  const apiKey = "qNCXMMT8cJrrg7gfJ3xrqDLu9n3riwjd";
+  const apiKey = "{{env('TOMTOM_API')}}";
 
   // 📍 Multiple locations
   const locations = [

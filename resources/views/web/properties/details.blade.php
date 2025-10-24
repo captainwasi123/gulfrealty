@@ -235,7 +235,7 @@
   });
 </script>
 <script>
-  const apiKey = "qNCXMMT8cJrrg7gfJ3xrqDLu9n3riwjd";
+  const apiKey = "{{env('TOMTOM_API')}}";
 
   // 📍 Single location (example shown for one record)
   const propertyLocation = {

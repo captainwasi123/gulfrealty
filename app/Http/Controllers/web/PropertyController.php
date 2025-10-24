@@ -55,7 +55,6 @@ class PropertyController extends Controller
                                     ->when(!empty($data['request']['type']), function ($q) use ($data){
                                         return $q->where('property_type', base64_decode($data['request']['type']));
                                     })
-                                    ->where('purpose', 'Rent')
                                     ->paginate(10);
         
         return view('web.properties.index')->with($data);

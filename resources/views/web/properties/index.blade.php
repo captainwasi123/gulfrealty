@@ -185,7 +185,7 @@
                           </div>
                         </div>
                       @endif
-                      @php $i++; @endif
+                      @php $i++; @endphp
                     @endforeach
                   </a>
                   <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">

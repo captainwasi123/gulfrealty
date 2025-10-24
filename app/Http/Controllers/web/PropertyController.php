@@ -42,20 +42,44 @@ class PropertyController extends Controller
         $data['request'] = $request->all();
 
         $data['nav'] = 'rent';
-        $data['purpose'] = $data['request']['purpose'];
+        $data['purpose'] = '';
         $data['locations'] = Locations::orderBy('name')->get();
         $data['propertyTypes'] = PropertyTypes::orderBy('name')->get();
         $data['data'] = Properties::where('status', '1')
-                                    ->when(!empty($data['request']['purpose']), function ($q) use ($data){
-                                        return $q->where('purpose', $data['request']['purpose']);
-                                    })
-                                    ->when(!empty($data['request']['location']), function ($q) use ($data){
-                                        return $q->where('location', base64_decode($data['request']['location']));
-                                    })
-                                    ->when(!empty($data['request']['type']), function ($q) use ($data){
-                                        return $q->where('property_type', base64_decode($data['request']['type']));
-                                    })
-                                    ->paginate(10);
+                        ->when(!empty($data['request']['purpose']), function ($q) use ($data) {
+                            return $q->where('purpose', $data['request']['purpose']);
+                        })
+                        ->when(!empty($data['request']['location']), function ($q) use ($data) {
+                            return $q->where('location', base64_decode($data['request']['location']));
+                        })
+                        ->when(!empty($data['request']['type']), function ($q) use ($data) {
+                            return $q->where('property_type', base64_decode($data['request']['type']));
+                        })
+                        ->when(!empty($data['request']['price_range']), function ($q) use ($data) {
+
+                            switch ($data['request']['price_range']) {
+                                case 'under_500k':
+                                    $q->where('price', '<', 500000);
+                                    break;
+
+                                case '500k_1m':
+                                    $q->whereBetween('price', [500000, 1000000]);
+                                    break;
+
+                                case '1m_5m':
+                                    $q->whereBetween('price', [1000000, 5000000]);
+                                    break;
+
+                                case '5m_10m':
+                                    $q->whereBetween('price', [5000000, 10000000]);
+                                    break;
+
+                                case 'above_10m':
+                                    $q->where('price', '>', 10000000);
+                                    break;
+                            }
+                        })
+                        ->paginate(10);
         
         return view('web.properties.index')->with($data);
     }

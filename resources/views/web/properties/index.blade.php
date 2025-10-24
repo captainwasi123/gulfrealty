@@ -78,7 +78,7 @@
         <div class="sticky-top bg-body mb-2 mb-sm-1">
           <form method="get" action="{{route('properties.search')}}">
 
-            <input type="hidden" name="purpose" value="{{$purpose}}">
+            <input type="hidden" name="purpose" value="{{empty($purpose) ? '' : $purpose}}">
             <div class="d-md-none" style="height: 64px;  margin-top: -64px"></div>
             <div class="d-none d-md-block d-lg-none" style="height: 72px;  margin-top: -72px"></div>
             <div class="d-none d-lg-block" style="height: 76px; margin-top: -76px"></div>
@@ -130,7 +130,21 @@
                     </optgroup>
                   </select>
               </div>
-
+              <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width:20%">
+                <select class="form-select form-select-lg border-0 ps-3" data-select='{
+                  "classNames": {
+                    "containerInner": ["form-select"]
+                  },
+                  "removeItemButton": false
+                }' aria-label="Property type select" name="price_range">
+                  <option value="" selected disabled><i class="fi-money-check"></i> Price</option>
+                  <option value="under_500k" {{!empty($request['price_range']) && $request['price_range'] == 'under_500k' ? 'selected' : ''}}>Less than 500k</option>
+                  <option value="500k_1m" {{!empty($request['price_range']) && $request['price_range'] == '500k_1m' ? 'selected' : ''}}>500k to 1M</option>
+                  <option value="1m_5m" {{!empty($request['price_range']) && $request['price_range'] == '1m_5m' ? 'selected' : ''}}>1M to 5M</option>
+                  <option value="5m_10m" {{!empty($request['price_range']) && $request['price_range'] == '5m_10m' ? 'selected' : ''}}>5M to 10M</option>
+                  <option value="above_10m" {{!empty($request['price_range']) && $request['price_range'] == 'above_10m' ? 'selected' : ''}}>More than 10M</option>
+                </select>
+              </div>
               
 
               <!-- Filters offcanvas toggle button -->

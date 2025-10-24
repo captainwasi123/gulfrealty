@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\realestate\Properties;
 
 class PropertyTypes extends Model
 {
@@ -10,4 +11,7 @@ class PropertyTypes extends Model
 
 
     
+    public function prop(){
+        return $this->hasMany(Properties::class, 'property_type', 'id');
+    }
 }

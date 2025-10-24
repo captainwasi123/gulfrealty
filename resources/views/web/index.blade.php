@@ -30,41 +30,20 @@
             <div class="col-xl-10 col-xxl-9">
               <form class="bg-body border rounded-4 p-2" method="get" action="{{route('properties.search')}}">
                 <div class="row g-0 p-1">
-                  <div class="col-lg-7">
+                  <div class="col-lg-10">
                     <div class="row g-0">
-                      <div class="col-6 col-md-4 d-flex">
-                        <div class="w-100">
-                          <select class="form-select form-select-lg border-0 ps-3" name="type" data-select='{
-                            "classNames": {
-                              "containerInner": ["form-select", "form-select-lg", "border-0", "ps-3"]
-                            },
-                            "removeItemButton": false
-                          }' aria-label="Rent or sale select" required>
-                            <option value="Rent">For rent</option>
-                            <option value="Sale">For sale</option>
-                          </select>
-                        </div>
-                        <hr class="vr m-0">
-                      </div>
-                      <div class="col-6 col-md-4 d-flex">
+                      <div class="col-12 col-md-5 d-flex">
                         <div class="w-100">
                           <select class="form-select form-select-lg border-0" name="location" data-select='{
                             "classNames": {
                               "containerInner": ["form-select", "form-select-lg", "border-0"]
                             },
                             "searchEnabled": true
-                          }' aria-label="Location select" required>
-                            <option value="">Location</option>
-                            <option value="New York">New York</option>
-                            <option value="Los Angeles">Los Angeles</option>
-                            <option value="Chicago">Chicago</option>
-                            <option value="Houston">Houston</option>
-                            <option value="Phoenix">Phoenix</option>
-                            <option value="Philadelphia">Philadelphia</option>
-                            <option value="San Antonio">San Antonio</option>
-                            <option value="San Diego">San Diego</option>
-                            <option value="Dallas">Dallas</option>
-                            <option value="San Jose">San Jose</option>
+                          }' aria-label="Location select">
+                            <option value="" selected disabled><i class="fi-map-pin"></i> Location</option>
+                            @foreach($locations as $val)
+                              <option value="{{base64_encode($val->id)}}" {{!empty($request['location']) && $val->id == base64_decode($request['location']) ? 'selected' : ''}}><i class="fi-map-pin"></i> &nbsp;{{$val->name}}</option>
+                            @endforeach
                           </select>
                         </div>
                         <hr class="vr d-none d-md-block m-0">
@@ -77,29 +56,54 @@
                               "containerInner": ["form-select", "form-select-lg", "border-0", "ps-3"]
                             },
                             "removeItemButton": false
-                          }' aria-label="Property type select" required>
-                            <option value="">Property type</option>
-                            <option value="Houses">Houses</option>
-                            <option value="Apartments">Apartments</option>
-                            <option value="Commercial">Commercial</option>
-                            <option value="Daily rental">Daily rental</option>
-                            <option value="Offices">Offices</option>
-                            <option value="Townhouses">Townhouses</option>
+                          }' aria-label="Property type select" name="type">
+                            <option value="" selected disabled><i class="fi-home"></i> Property Types</option>
+                            <optgroup label="Residential">
+                              @foreach($propertyTypes as $val)
+                                @if($val->category == 'Residential')
+                                  <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                                @endif
+                              @endforeach
+                            </optgroup>
+
+                            <optgroup label="Commercial">
+                              @foreach($propertyTypes as $val)
+                                @if($val->category == 'Commercial')
+                                  <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                                @endif
+                              @endforeach
+                            </optgroup>
+
+                            <optgroup label="Plots">
+                              @foreach($propertyTypes as $val)
+                                @if($val->category == 'Plots')
+                                  <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                                @endif
+                              @endforeach
+                            </optgroup>
                           </select>
                         </div>
                         <hr class="vr d-none d-lg-block m-0">
                       </div>
+                      <div class="col-md-3">
+                        <select class="form-select form-select-lg border-0 ps-3" data-select='{
+                        "classNames": {
+                          "containerInner": ["form-select", "form-select-lg", "border-0", "ps-3"]
+                        },
+                        "removeItemButton": false
+                      }' aria-label="Property type select" name="price_range" style="width:200px">
+                        <option value="" selected disabled><i class="fi-money-check"></i> Price</option>
+                        <option value="under_500k">Less than 500k</option>
+                        <option value="500k_1m">500k to 1M</option>
+                        <option value="1m_5m">1M to 5M</option>
+                        <option value="5m_10m">5M to 10M</option>
+                        <option value="above_10m">More than 10M</option>
+                      </select>
+                      </div>
                     </div>
                   </div>
                   <hr class="d-lg-none mt-2 mb-0">
-                  <div class="col-lg-5 d-flex flex-column flex-sm-row align-items-sm-center gap-2 gap-sm-3 pt-3 pt-lg-0 ps-lg-3">
-                    <div class="d-flex align-items-center w-100 gap-2 ps-2 ps-lg-0">
-                      Price
-                      <div class="range-slider w-100" data-range-slider='{"startMin": 2000, "min": 500, "max": 4000, "step": 100, "tooltipPrefix": "$"}'>
-                        <div class="range-slider-ui my-4"></div>
-                        <input type="hidden" class="form-control" data-range-slider-min>
-                      </div>
-                    </div>
+                  <div class="col-lg-2 d-flex flex-column flex-sm-row align-items-sm-center gap-2 gap-sm-3 pt-3 pt-lg-0 ps-lg-3">
                     <button type="submit" class="btn btn-lg btn-primary">
                       Search
                       <i class="fi-search fs-lg ms-2 me-n1"></i>
@@ -156,83 +160,24 @@
         <div class="py-5">
           <div class="border rounded py-3 py-xl-4">
             <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-0 py-2">
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack align-items-center text-center py-2 px-3">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Houses</a>
-                  </h3>
-                  <div class="d-flex align-items-center gap-1 fs-sm">
-                    <i class="fi-bookmark fs-base"></i>
-                    6.4K offers
+              <?php $pti = 0; ?>
+              @foreach($propertyTypes as $val)
+                @if($pti < 6)
+                  <div class="col d-flex position-relative py-2">
+                    <div class="vstack align-items-center text-center py-2 px-3">
+                      <h3 class="h5 mb-2">
+                        <a class="hover-effect-underline stretched-link" href="{{URL::to('/properties/search?type='.base64_encode($val->id))}}">{{$val->name}}</a>
+                      </h3>
+                      <div class="d-flex align-items-center gap-1 fs-sm">
+                        <i class="fi-bookmark fs-base"></i>
+                        {{count($val->prop)}} Offers
+                      </div>
+                    </div>
+                    <hr class="vr m-0">
                   </div>
-                </div>
-                <hr class="vr m-0">
-              </div>
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack align-items-center text-center py-2 px-3">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Apartments</a>
-                  </h3>
-                  <div class="d-flex align-items-center gap-1 fs-sm">
-                    <i class="fi-bookmark fs-base"></i>
-                    12.8K offers
-                  </div>
-                </div>
-                <hr class="vr d-none d-md-block m-0">
-              </div>
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack align-items-center text-center py-2 px-3">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Commercial</a>
-                  </h3>
-                  <div class="d-flex align-items-center gap-1 fs-sm">
-                    <i class="fi-bookmark fs-base"></i>
-                    9.3K offers
-                  </div>
-                </div>
-                <hr class="vr d-md-none d-xl-block m-0">
-              </div>
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack align-items-center text-center py-2 px-3">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Daily rental</a>
-                  </h3>
-                  <div class="d-flex align-items-center gap-1 fs-sm">
-                    <i class="fi-bookmark fs-base"></i>
-                    42.4K offers
-                  </div>
-                </div>
-                <hr class="vr d-none d-md-block m-0">
-              </div>
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack align-items-center text-center py-2 px-3">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">New buildings</a>
-                  </h3>
-                  <div class="d-flex align-items-center gap-1 fs-sm">
-                    <i class="fi-bookmark fs-base"></i>
-                    22.5K offers
-                  </div>
-                </div>
-                <hr class="vr m-0">
-              </div>
-              <div class="col d-flex position-relative py-2">
-                <div class="vstack dropdown align-items-center text-center py-2 px-3" data-bs-toggle="dropdown" data-bs-display="static">
-                  <h3 class="h5 mb-2">
-                    <a class="hover-effect-underline stretched-link" href="#">More</a>
-                  </h3>
-                  <div class="d-flex align-items-center fs-sm text-body-emphasis">
-                    <i class="fi-chevron-down fs-xl"></i>
-                  </div>
-                  <ul class="dropdown-menu top-100 start-50 translate-middle-x" style="--fn-dropdown-min-width: 11rem">
-                    <li><a class="dropdown-item" href="#">Offices</a></li>
-                    <li><a class="dropdown-item" href="#">Warehouses</a></li>
-                    <li><a class="dropdown-item" href="#">Retail spaces</a></li>
-                    <li><a class="dropdown-item" href="#">Townhouses</a></li>
-                    <li><a class="dropdown-item" href="#">Vacation homes</a></li>
-                  </ul>
-                </div>
-              </div>
+                @endif
+                <?php $pti++; ?>
+              @endforeach
             </div>
           </div>
         </div>
@@ -269,7 +214,7 @@
                   <h3 class="h5 mb-0">Buy a property</h3>
                 </div>
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
-                  <a class="btn btn-dark stretched-link mx-4" href="listings-real-estate.html">Find a home</a>
+                  <a class="btn btn-dark stretched-link mx-4" href="{{route('properties.buy')}}">Find a home</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
                     <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/01.png" alt="Image">
                   </div>
@@ -285,7 +230,7 @@
                   <h3 class="h5 text-white mb-0">Sell a property</h3>
                 </div>
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
-                  <a class="btn btn-dark stretched-link mx-4" href="add-property-type.html">Place an ad</a>
+                  <a class="btn btn-dark stretched-link mx-4" href="">Place an ad</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
                     <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/02.png" alt="Image">
                   </div>
@@ -301,7 +246,7 @@
                   <h3 class="h5 mb-0">Rent a property</h3>
                 </div>
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
-                  <a class="btn btn-dark stretched-link mx-4" href="listings-real-estate.html">Find a rental</a>
+                  <a class="btn btn-dark stretched-link mx-4" href="{{route('properties.rent')}}">Find a rental</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
                     <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/03.png" alt="Image">
                   </div>
@@ -319,7 +264,7 @@
       <!-- Top offers -->
       <section class="container pt-2 pb-sm-2 pt-sm-3 py-md-4 py-lg-5 mt-xxl-3 mb-xxl-2">
         <div class="d-flex align-items-center justify-content-between gap-4 pb-3 mb-2 mb-sm-3 mb-lg-4">
-          <h2 class="h1 mb-0">Top offers</h2>
+          <h2 class="h1 mb-0">Recently Added</h2>
 
           <!-- Prev/next buttons -->
           <div class="d-flex gap-2">
@@ -359,523 +304,81 @@
         }'>
           <div class="swiper-wrapper">
 
-            <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
+            @foreach($recently_added as $val)
+              <!-- Listing -->
+              <div class="swiper-slide h-auto">
+                <article class="card hover-effect-opacity h-100" data-map-bind-to-marker="1">
+                  <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
+                    <div class="swiper z-2" data-swiper='{
+                      "pagination": {
+                        "el": ".swiper-pagination"
+                      },
+                      "navigation": {
+                        "prevEl": ".btn-prev",
+                        "nextEl": ".btn-next"
+                      },
+                      "breakpoints": {
+                        "991": {
+                          "allowTouchMove": false
+                        }
                       }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
+                    }'>
+                      <a class="swiper-wrapper" href="{{URL::to('/properties/'.$val->slug)}}">
+                        @php $i = 1; @endphp
+                        @foreach($val->images as $val2)
+                          @if($i <=3)
+                            <div class="swiper-slide">
+                              <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
+                                <img src="{{URL::to('/public/storage/realestate/properties/'.$val2->image)}}" alt="Image">
+                                <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
+                              </div>
+                            </div>
+                          @endif
+                          @php $i++; @endphp
+                        @endforeach
+                      </a>
+                      <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
+                        <span class="badge text-bg-info d-inline-flex align-items-center">
+                          Verified
+                          <i class="fi-shield ms-1"></i>
+                        </span>
+                        @if(strtotime($val->created_at) > strtotime('-7 days'))
+                        <span class="badge text-bg-primary">&nbsp;&nbsp;New&nbsp;&nbsp;</span>
+                        @endif
                       </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
 
-             <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
-                      }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
+                      <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
+                        <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
+                          <i class="fi-chevron-left fs-lg animate-target"></i>
+                        </button>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
+                      <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
+                        <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
+                          <i class="fi-chevron-right fs-lg animate-target"></i>
+                        </button>
                       </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
+                      <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
+                    </div>
+                  </div>
+                  <div class="card-body p-3">
+                    <div class="h5 mb-2 one-line-break">{{$val->title}}</div>
+                    <h3 class="fs-sm fw-normal text-body mb-2">
+                      <a class="stretched-link text-body one-line-break" href="{{URL::to('/properties/'.$val->slug)}}" title="{{$val->full_address}}">
+                        <i class="fi-map-pin"></i> {{$val->full_address}}
+                      </a>
+                    </h3>
+                    <div class="proper-block-footer">
+                      <div>
+                        <span class="badge text-bg-info">&nbsp;&nbsp;{{@$val->type->name}}&nbsp;&nbsp;</span>
+                        <span class="badge text-bg-warning">&nbsp;&nbsp;{{$val->purpose}}&nbsp;&nbsp;</span>
                       </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
+                      <div class="h6 fs-sm mb-0">AED - {{number_format_short($val->price)}}</div>
                     </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
                   </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
-             <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
-                      }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
-             <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
-                      }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
-             <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
-                      }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
-             <!-- Listing -->
-            <div class="swiper-slide h-auto">
-              <article class="card hover-effect-opacity h-100">
-                <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
-                  <div class="swiper z-2" data-swiper='{
-                    "pagination": {
-                      "el": ".swiper-pagination"
-                    },
-                    "navigation": {
-                      "prevEl": ".btn-prev",
-                      "nextEl": ".btn-next"
-                    },
-                    "breakpoints": {
-                      "991": {
-                        "allowTouchMove": false
-                      }
-                    }
-                  }'>
-                    <a class="swiper-wrapper" href="single-entry-real-estate.html">
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                      <div class="swiper-slide">
-                        <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                          <img src="{{URL::to('/public')}}/assets/img/listings/real-estate/01.jpg" alt="Image">
-                          <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
-                      <span class="badge text-bg-info d-inline-flex align-items-center">
-                        Verified
-                        <i class="fi-shield ms-1"></i>
-                      </span>
-                      <span class="badge text-bg-primary">New</span>
-                    </div>
-                    <div class="position-absolute top-0 end-0 z-1 hover-effect-target opacity-0 pt-1 pt-sm-0 pe-1 pe-sm-0 mt-2 mt-sm-3 me-2 me-sm-3">
-                      <button type="button" class="btn btn-sm btn-icon btn-light bg-light border-0 rounded-circle animate-pulse" aria-label="Add to wishlist">
-                        <i class="fi-heart animate-target fs-sm"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
-                      <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
-                        <i class="fi-chevron-left fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
-                      <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
-                        <i class="fi-chevron-right fs-lg animate-target"></i>
-                      </button>
-                    </div>
-                    <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
-                  </div>
-                </div>
-                <div class="card-body p-3">
-                  <div class="pb-1 mb-2">
-                    <span class="badge text-body-emphasis bg-body-secondary">For rent</span>
-                  </div>
-                  <div class="h5 mb-2">$1,620</div>
-                  <h3 class="fs-sm fw-normal text-body mb-2">
-                    <a class="stretched-link text-body" href="single-entry-real-estate.html">40 S 9th St, Brooklyn, NY 11249</a>
-                  </h3>
-                  <div class="h6 fs-sm mb-0">65 sq.m</div>
-                </div>
-                <div class="card-footer d-flex gap-2 border-0 bg-transparent pt-0 pb-3 px-3 mt-n1">
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    2<i class="fi-bed-single fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-shower fs-base text-secondary-emphasis"></i>
-                  </div>
-                  <div class="d-flex align-items-center fs-sm gap-1 me-1">
-                    1<i class="fi-car-garage fs-base text-secondary-emphasis"></i>
-                  </div>
-                </div>
-              </article>
-            </div>
+                </article>
+              </div>
+            @endforeach
+
           </div>
 
           <!-- Pagination (Bullets) -->
@@ -885,7 +388,7 @@
 
 
       <!-- Recently added -->
-      <section class="position-relative pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-5 my-xxl-3">
+      <!-- <section class="position-relative pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-5 my-xxl-3">
         <div class="container position-relative z-1 pt-5 mt-xxl-2">
           <div class="d-md-flex align-items-start justify-content-between gap-4 mb-2 mb-sm-3 mb-lg-4">
             <h2 class="h1">Added today</h2>
@@ -909,7 +412,6 @@
           <div class="row row-cols-1 row-cols-md-2 g-4 g-md-3 g-xl-4">
             <div class="col">
 
-              <!-- Listing -->
               <article class="hover-effect-scale position-relative bg-body-tertiary rounded overflow-hidden h-100">
                 <div class="d-flex gap-2 position-absolute top-0 start-0 z-1 pt-3 ps-3 mt-lg-2 mt-xl-3 ms-lg-2 ms-xl-3">
                   <span class="badge text-bg-info d-inline-flex align-items-center">
@@ -938,7 +440,6 @@
             </div>
             <div class="col vstack gap-4 gap-md-3 gap-xl-4">
 
-              <!-- Listing -->
               <article class="hover-effect-scale position-relative bg-body-tertiary rounded overflow-hidden">
                 <div class="d-flex gap-2 position-absolute top-0 start-0 z-1 pt-3 ps-3 mt-lg-2 mt-xl-3 ms-lg-2 ms-xl-3">
                   <span class="badge text-bg-warning">Featured</span>
@@ -961,7 +462,6 @@
                 <span class="position-absolute top-0 start-0 w-100 h-100 d-none d-sm-block" style="background: linear-gradient(0deg, rgba(64,64,64, .74) 10.5%, rgba(0,0,0, 0) 54.86%)"></span>
               </article>
 
-              <!-- Listing -->
               <article class="hover-effect-scale position-relative bg-body-tertiary rounded overflow-hidden">
                 <div class="d-flex gap-2 position-absolute top-0 start-0 z-1 pt-3 ps-3 mt-lg-2 mt-xl-3 ms-lg-2 ms-xl-3">
                   <span class="badge text-bg-warning">Featured</span>
@@ -987,7 +487,7 @@
           </div>
         </div>
         <span class="position-absolute top-0 start-0 w-100 bg-body-tertiary" style="height: 81%"></span>
-      </section>
+      </section> -->
 
 
       <!-- Property cost calculator -->
@@ -1321,7 +821,7 @@
         <div class="d-flex align-items-start justify-content-between gap-4 pb-3 mb-2 mb-sm-3 mb-lg-4">
           <h2 class="h1 mb-0">Latest blogs</h2>
           <div class="nav">
-            <a class="nav-link position-relative fs-base text-nowrap py-1 px-0" href="blog-layout-v1.html">
+            <a class="nav-link position-relative fs-base text-nowrap py-1 px-0" href="{{route('blogs')}}">
               <span class="hover-effect-underline stretched-link me-1">View all</span>
               <i class="fi-chevron-right fs-lg"></i>
             </a>
@@ -1347,59 +847,23 @@
         }'>
           <div class="swiper-wrapper">
 
-            <!-- Article -->
-            <article class="swiper-slide">
-              <a class="ratio d-flex hover-effect-scale rounded overflow-hidden mb-3 mb-sm-4" href="blog-single-v1.html" style="--fn-aspect-ratio: calc(300 / 416 * 100%)">
-                <img src="{{URL::to('/public')}}/assets/img/blog/v1/01.jpg" class="hover-effect-target" alt="Image">
-              </a>
-              <div class="nav pb-1 mb-2">
-                <a class="nav-link text-body-secondary fs-xs text-uppercase p-0" href="#!">Renting advice</a>
-              </div>
-              <h3 class="h5 mb-2">
-                <a class="hover-effect-underline" href="blog-single-v1.html">What to know when renting an apartment</a>
-              </h3>
-              <p class="fs-sm">It is quite difficult to find a good apartment for long-term rent in large cities. In addition, potential tenants can face prob...</p>
-              <div class="nav fs-sm gap-3">
-                <a class="nav-link fw-semibold p-0" href="#!">by Cody Fisher</a>
-                <span class="text-body-secondary">July 09, 2024</span>
-              </div>
-            </article>
+            @foreach($latest_blogs as $val)
+              <!-- Article -->
+              <article class="swiper-slide">
+                <a class="ratio d-flex hover-effect-scale rounded overflow-hidden mb-3 mb-sm-4" href="{{route('blogs.detail', $val->slug)}}" style="--fn-aspect-ratio: calc(300 / 416 * 100%)">
+                  <img src="{{URL::To('/public/storage/blogs/'.$val->banner)}}" class="hover-effect-target" alt="Image">
+                </a>
+                <h3 class="h5 mb-2">
+                  <a class="hover-effect-underline" href="{{route('blogs.detail', $val->slug)}}">{{$val->heading}}</a>
+                </h3>
+                <p class="fs-sm two-line-break">{{$val->short_description}}</p>
+                <div class="nav fs-sm gap-3">
+                  <a class="nav-link fw-semibold p-0" href="javascript:void(0)">by {{@$val->author->name}}</a>
+                  <span class="text-body-secondary">{{date('M d, Y', strtotime($val->created_at))}}</span>
+                </div>
+              </article>
+            @endforeach
 
-            <!-- Article -->
-            <article class="swiper-slide">
-              <a class="ratio d-flex hover-effect-scale rounded overflow-hidden mb-3 mb-sm-4" href="blog-single-v1.html" style="--fn-aspect-ratio: calc(300 / 416 * 100%)">
-                <img src="{{URL::to('/public')}}/assets/img/blog/v1/02.jpg" class="hover-effect-target" alt="Image">
-              </a>
-              <div class="nav pb-1 mb-2">
-                <a class="nav-link text-body-secondary fs-xs text-uppercase p-0" href="#!">Investment advice</a>
-              </div>
-              <h3 class="h5 mb-2">
-                <a class="hover-effect-underline" href="blog-single-v1.html">Types of luxury housing</a>
-              </h3>
-              <p class="fs-sm">What luxury housing is clear to every person. Housing characterized by increased comfort, interior, quality and ma...</p>
-              <div class="nav fs-sm gap-3">
-                <a class="nav-link fw-semibold p-0" href="#!">by Kristin Watson</a>
-                <span class="text-body-secondary">June 26, 2024</span>
-              </div>
-            </article>
-
-            <!-- Article -->
-            <article class="swiper-slide">
-              <a class="ratio d-flex hover-effect-scale rounded overflow-hidden mb-3 mb-sm-4" href="blog-single-v1.html" style="--fn-aspect-ratio: calc(300 / 416 * 100%)">
-                <img src="{{URL::to('/public')}}/assets/img/blog/v1/03.jpg" class="hover-effect-target" alt="Image">
-              </a>
-              <div class="nav pb-1 mb-2">
-                <a class="nav-link text-body-secondary fs-xs text-uppercase p-0" href="#!">Home improvement</a>
-              </div>
-              <h3 class="h5 mb-2">
-                <a class="hover-effect-underline" href="blog-single-v1.html">How to modernize your home on a budget</a>
-              </h3>
-              <p class="fs-sm">Modernizing your home doesn't have to break the bank. Here are some budget-friendly tips to give your living space a mo...</p>
-              <div class="nav fs-sm gap-3">
-                <a class="nav-link fw-semibold p-0" href="#!">by Darrell Steward</a>
-                <span class="text-body-secondary">May 13, 2024</span>
-              </div>
-            </article>
           </div>
 
           <!-- Pagination (Bullets) -->
@@ -1408,38 +872,54 @@
 
         <div class="row">
 
-        	<div class="col-lg-3">
-        			<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DOqmpscD9of/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+          @foreach($recent_reels as $val)
+            <div class="col-lg-3">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/{{$val->reel_link}}/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
 
-	        	</blockquote>
-						<script async src="{{URL::to('/public/assets/js/insta.js')}}"></script>
-        	</div>
-
-        	<div class="col-lg-3">
-        			<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DPROq85j-Y1/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-
-	        	</blockquote>
-						<script async src="{{URL::to('/public/assets/js/insta.js')}}"></script>
-        	</div>
-
-        	<div class="col-lg-3">
-        			<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DOgThkZkcM4/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-
-	        	</blockquote>
-						<script async src="{{URL::to('/public/assets/js/insta.js')}}"></script>
-        	</div>
-
-        	<div class="col-lg-3">
-        			<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DMKKjmDSE7A/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-
-	        	</blockquote>
-						<script async src="{{URL::to('/public/assets/js/insta.js')}}"></script>
-        	</div>
+              </blockquote>
+              <script async src="{{URL::to('/public/assets/js/insta.js')}}"></script>
+            </div>
+          @endforeach
 
         </div>
       </section>
     </main>
 
+
+<?php
+  function number_format_short( $n, $precision = 1 ) {
+    if ($n < 900) {
+      // 0 - 900
+      $n_format = number_format($n, $precision);
+      $suffix = '';
+    } else if ($n < 900000) {
+      // 0.9k-850k
+      $n_format = number_format($n / 1000, $precision);
+      $suffix = 'K';
+    } else if ($n < 900000000) {
+      // 0.9m-850m
+      $n_format = number_format($n / 1000000, $precision);
+      $suffix = 'M';
+    } else if ($n < 900000000000) {
+      // 0.9b-850b
+      $n_format = number_format($n / 1000000000, $precision);
+      $suffix = 'B';
+    } else {
+      // 0.9t+
+      $n_format = number_format($n / 1000000000000, $precision);
+      $suffix = 'T';
+    }
+
+    // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+    // Intentionally does not affect partials, eg "1.50" -> "1.50"
+    if ( $precision > 0 ) {
+      $dotzero = '.' . str_repeat( '0', $precision );
+      $n_format = str_replace( $dotzero, '', $n_format );
+    }
+
+    return $n_format  .' '. $suffix;
+  }
+?>
 
 @endsection
 

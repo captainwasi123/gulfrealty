@@ -100,7 +100,7 @@
             <!-- Price + Address + Facilities -->
             <div class="d-flex justify-content-between">
               <div class="h3 pb-1 mb-2">{{$data->title}}</div>
-              <div class="h5 pb-1 mb-2">AED {{number_format($data->price)}}</div>
+              <div class="h5 pb-1 mb-2">AED - {{number_format_short($data->price)}}</div>
             </div>
             <p class="fs-sm pb-1 mb-2"><i class="fi-map-pin"></i> {{$data->full_address}}</p>
             
@@ -180,6 +180,40 @@
       </div>
     </main>
 
+<?php
+  function number_format_short( $n, $precision = 1 ) {
+    if ($n < 900) {
+      // 0 - 900
+      $n_format = number_format($n, $precision);
+      $suffix = '';
+    } else if ($n < 900000) {
+      // 0.9k-850k
+      $n_format = number_format($n / 1000, $precision);
+      $suffix = 'K';
+    } else if ($n < 900000000) {
+      // 0.9m-850m
+      $n_format = number_format($n / 1000000, $precision);
+      $suffix = 'M';
+    } else if ($n < 900000000000) {
+      // 0.9b-850b
+      $n_format = number_format($n / 1000000000, $precision);
+      $suffix = 'B';
+    } else {
+      // 0.9t+
+      $n_format = number_format($n / 1000000000000, $precision);
+      $suffix = 'T';
+    }
+
+    // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
+    // Intentionally does not affect partials, eg "1.50" -> "1.50"
+    if ( $precision > 0 ) {
+      $dotzero = '.' . str_repeat( '0', $precision );
+      $n_format = str_replace( $dotzero, '', $n_format );
+    }
+
+    return $n_format .' '. $suffix;
+  }
+?>
 
 @endsection
 

@@ -175,13 +175,17 @@
                   }
                 }'>
                   <a class="swiper-wrapper" href="{{URL::to('/properties/'.$val->slug)}}">
+                    @php $i = 1; @endphp
                     @foreach($val->images as $val2)
-                    <div class="swiper-slide">
-                      <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
-                        <img src="{{URL::to('/public/storage/realestate/properties/'.$val2->image)}}" alt="Image">
-                        <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
-                      </div>
-                    </div>
+                      @if($i <=3)
+                        <div class="swiper-slide">
+                          <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
+                            <img src="{{URL::to('/public/storage/realestate/properties/'.$val2->image)}}" alt="Image">
+                            <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
+                          </div>
+                        </div>
+                      @endif
+                      @php $i++; @endif
                     @endforeach
                   </a>
                   <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">

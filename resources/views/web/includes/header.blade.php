@@ -32,9 +32,9 @@
           </li>
 
           <li class="nav-item dropdown py-lg-2 me-lg-n1 me-xl-0">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">Calculators</a>
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" role="button" data-bs-toggle="dropdown" data-bs-trigger="hover" data-bs-auto-close="outside" aria-expanded="false">Calculators</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Mortgage Calculator</a></li>
+              <li><a class="dropdown-item" href="{{route('calculators.mortgage')}}">Mortgage Calculator</a></li>
               <li><a class="dropdown-item" href="">Property Calculator</a></li>
             </ul>
           </li>

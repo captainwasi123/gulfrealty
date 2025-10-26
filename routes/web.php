@@ -34,6 +34,10 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
         Route::get('/{slug}', 'PropertyController@details');
     });
 
+    Route::prefix('mortgage-calculator')->group(function(){
+        Route::get('/', 'CalculatorController@mortgage')->name('calculators.mortgage');
+    });
+
     Route::prefix('about')->group(function(){
 
         Route::get('/', 'AboutController@index')->name('about');

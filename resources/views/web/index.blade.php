@@ -129,7 +129,7 @@
               <div class="position-relative overflow-hidden">
                 <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -75px 96px 0 0; font-size: 128px; color: var(--fn-body-bg)">Buy</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(328 / 768 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/real-estate/hero/01.jpg" alt="Image">
+                  <img src="{{URL::to('/public')}}/assets/img/home/01.jpg" alt="Image">
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@
               <div class="position-relative overflow-hidden">
                 <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -10px 0 0 -69px; font-size: 128px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
                 <div class="ratio bg-info rounded overflow-hidden" style="--fn-aspect-ratio: calc(443 / 306 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/real-estate/hero/02.png" alt="Image">
+                  <img src="{{URL::to('/public')}}/assets/img/home/02.jpg" alt="Image">
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@
               <div class="position-relative overflow-hidden">
                 <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -73px 0 0 -18px; font-size: 128px; color: var(--fn-body-bg)">Rent</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/real-estate/hero/03.jpg" alt="Image">
+                  <img src="{{URL::to('/public')}}/assets/img/home/03.jpg" alt="Image">
                 </div>
               </div>
             </div>

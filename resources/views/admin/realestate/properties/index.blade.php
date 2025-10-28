@@ -150,7 +150,7 @@
                           </optgroup>
                       </select>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       <label for="purpose" class="form-label">Purpose</label>
                       <select class="form-control" id="purpose" name="purpose" required>
                           <option value="">Select Purpose</option>
@@ -158,9 +158,16 @@
                           <option value="Rent">Rent</option>
                       </select>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       <label for="price" class="form-label">Price</label>
                       <input type="number" class="form-control" id="price" name="price" required>
+                  </div>
+                  <div class="col-md-2 vertical-bottom">
+                    <div class="form-control">
+                      <input type="checkbox"  id="trending" name="trending">
+                      <label for="trending" class="form-label">&nbsp;&nbsp;Trending</label>
+                      
+                    </div>
                   </div>
               </div>
           </div>
@@ -279,6 +286,10 @@
           color: #fff;
           background-color: #03334f;
           padding: 6px 10px;
+        }
+        .vertical-bottom{
+          display: flex;
+          align-items: flex-end;
         }
     </style>
 <style type="text/css">

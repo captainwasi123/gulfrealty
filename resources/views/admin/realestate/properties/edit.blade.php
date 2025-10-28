@@ -53,7 +53,7 @@
                     </optgroup>
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="purpose" class="form-label">Purpose</label>
                 <select class="form-control" id="purpose" name="purpose" required>
                     <option value="">Select Purpose</option>
@@ -61,10 +61,17 @@
                     <option value="Rent" {{$data->purpose == 'Rent' ? 'selected' : ''}}>Rent</option>
                 </select>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{$data->price}}" required>
             </div>
+              <div class="col-md-2 vertical-bottom">
+                <div class="form-control">
+                  <input type="checkbox"  id="etrending" name="trending" {{$data->trending == '1' ? 'checked' : ''}}>
+                  <label for="etrending" class="form-label">&nbsp;&nbsp;Trending</label>
+                  
+                </div>
+              </div>
         </div>
     </div>
 

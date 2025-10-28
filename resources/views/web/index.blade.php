@@ -408,7 +408,7 @@
       <!-- Properties by city -->
       <section class="container pt-2 pb-sm-2 pt-sm-3 py-md-4 py-lg-5 mt-xxl-3 mb-xxl-2">
         <div class="d-flex align-items-center justify-content-between gap-4 pb-3 mb-2 mb-sm-3 mb-lg-4">
-          <h2 class="h1 mb-0">Search by city</h2>
+          <h2 class="h1 mb-0">Most Trending Projects in Dubai</h2>
 
           <!-- Prev/next buttons -->
           <div class="d-flex gap-2">
@@ -453,167 +453,74 @@
         }'>
           <div class="swiper-wrapper">
 
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/01.jpg" alt="Image">
-                  </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">New York</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">1739</span></div>
-                  </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">3845</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
+            @foreach($trending_properties as $val)
+              <!-- Listing -->
+              <div class="swiper-slide h-auto">
+                <article class="card hover-effect-opacity h-100" data-map-bind-to-marker="1">
+                  <div class="card-img-top position-relative bg-body-tertiary overflow-hidden">
+                    <div class="swiper z-2" data-swiper='{
+                      "pagination": {
+                        "el": ".swiper-pagination"
+                      },
+                      "navigation": {
+                        "prevEl": ".btn-prev",
+                        "nextEl": ".btn-next"
+                      },
+                      "breakpoints": {
+                        "991": {
+                          "allowTouchMove": false
+                        }
+                      }
+                    }'>
+                      <a class="swiper-wrapper" href="{{URL::to('/properties/'.$val->slug)}}">
+                        @php $i = 1; @endphp
+                        @foreach($val->images as $val2)
+                          @if($i <=3)
+                            <div class="swiper-slide">
+                              <div class="ratio d-block" style="--fn-aspect-ratio: calc(248 / 362 * 100%)">
+                                <img src="{{URL::to('/public/storage/realestate/properties/'.$val2->image)}}" alt="Image">
+                                <span class="position-absolute top-0 start-0 w-100 h-100 z-1" style="background: linear-gradient(180deg, rgba(0,0,0, 0) 0%, rgba(0,0,0, .11) 100%)"></span>
+                              </div>
+                            </div>
+                          @endif
+                          @php $i++; @endphp
+                        @endforeach
+                      </a>
+                      <div class="d-flex flex-column gap-2 align-items-start position-absolute top-0 start-0 z-1 pt-1 pt-sm-0 ps-1 ps-sm-0 mt-2 mt-sm-3 ms-2 ms-sm-3">
+                        
+                      </div>
 
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/02.jpg" alt="Image">
+                      <div class="position-absolute top-50 start-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 ms-3">
+                        <button type="button" class="btn btn-sm btn-prev btn-icon btn-light bg-light rounded-circle animate-slide-start" aria-label="Prev">
+                          <i class="fi-chevron-left fs-lg animate-target"></i>
+                        </button>
+                      </div>
+                      <div class="position-absolute top-50 end-0 z-1 translate-middle-y d-none d-lg-block hover-effect-target opacity-0 me-3">
+                        <button type="button" class="btn btn-sm btn-next btn-icon btn-light bg-light rounded-circle animate-slide-end" aria-label="Next">
+                          <i class="fi-chevron-right fs-lg animate-target"></i>
+                        </button>
+                      </div>
+                      <div class="swiper-pagination bottom-0 mb-2" data-bs-theme="light"></div>
+                    </div>
                   </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Dallas</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">986</span></div>
+                  <div class="card-body p-3">
+                    <div class="h5 mb-2 one-line-break">{{$val->title}}</div>
+                    <h3 class="fs-sm fw-normal text-body mb-2">
+                      <a class="stretched-link text-body one-line-break" href="{{URL::to('/properties/'.$val->slug)}}" title="{{$val->full_address}}">
+                        <i class="fi-map-pin"></i> {{$val->full_address}}
+                      </a>
+                    </h3>
+                    <div class="proper-block-footer">
+                      <div>
+                        <span class="badge text-bg-info">&nbsp;&nbsp;{{@$val->type->name}}&nbsp;&nbsp;</span>
+                      </div>
+                      <div class="h6 fs-sm mb-0">AED - {{number_format_short($val->price)}}</div>
+                    </div>
                   </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">2903</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
+                </article>
+              </div>
+            @endforeach
 
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/03.jpg" alt="Image">
-                  </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">San Francisco</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">2134</span></div>
-                  </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">4561</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/04.jpg" alt="Image">
-                  </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Los Angeles</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">1875</span></div>
-                  </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">3262</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/05.jpg" alt="Image">
-                  </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Chicago</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">1549</span></div>
-                  </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">2806</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <!-- City card -->
-            <div class="swiper-slide h-auto">
-              <article class="card h-100 hover-effect-scale bg-transparent">
-                <div class="card-img-top bg-body-tertiary overflow-hidden">
-                  <div class="ratio hover-effect-target" style="--fn-aspect-ratio: calc(230 / 306 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/cities/06.jpg" alt="Image">
-                  </div>
-                </div>
-                <div class="card-body text-center p-3">
-                  <h3 class="h5 mb-0">
-                    <a class="hover-effect-underline stretched-link" href="listings-real-estate.html">Philadelphia</a>
-                  </h3>
-                </div>
-                <div class="card-footer d-flex bg-transparent border-0 pt-0 pb-3 px-3 mt-n1">
-                  <div class="w-50 text-center pe-1">
-                    <i class="fi-zap mb-1"></i>
-                    <div class="fs-sm">for sale <span class="fw-semibold">874</span></div>
-                  </div>
-                  <hr class="vr my-0 mx-2">
-                  <div class="w-50 text-center ps-1">
-                    <i class="fi-tag mb-1"></i>
-                    <div class="fs-sm">for rent <span class="fw-semibold">1625</span></div>
-                  </div>
-                </div>
-              </article>
-            </div>
           </div>
 
           <!-- Pagination (Bullets) -->

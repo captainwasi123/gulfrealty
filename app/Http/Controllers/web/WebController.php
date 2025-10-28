@@ -25,6 +25,8 @@ class WebController extends Controller
         $data['recently_added'] = Properties::where('status', '1')->orderBy('created_at', 'desc')->limit(8)->get();
         $data['latest_blogs'] = Blogs::where('status', '1')->orderBy('created_at', 'desc')->limit(6)->get();
         $data['recent_reels'] = GalleryReels::orderBy('created_at', 'desc')->limit(4)->get();
+
+        $data['trending_properties'] = Properties::where('status', '1')->where('trending', '1')->orderBy('created_at', 'desc')->limit(4)->get();
         
         return view('web.index')->with($data);
     }

@@ -140,6 +140,19 @@ Route::prefix('admin/panel')->namespace('App\Http\Controllers\admin')->group(fun
 
             });
 
+
+            Route::prefix('locations')->group(function () {
+
+                Route::get('/', 'LocationController@index')->name('admin.realestate.locations');
+                Route::get('/load', 'LocationController@load')->name('admin.realestate.locations.load');
+                Route::get('/search/{val}', 'LocationController@search');
+                Route::post('/create', 'LocationController@create')->name('admin.realestate.locations.create');
+                Route::get('/delete/{id}', 'LocationController@delete');
+                Route::get('/edit/{id}', 'LocationController@edit');
+                Route::post('/update', 'LocationController@update_blog')->name('admin.realestate.locations.update');
+
+            });
+
         });
 
 
@@ -211,6 +224,7 @@ Route::prefix('admin/panel')->namespace('App\Http\Controllers\admin')->group(fun
 
             });
         });
+
 
 
         //SEO Tools

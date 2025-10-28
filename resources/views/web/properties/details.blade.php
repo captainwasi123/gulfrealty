@@ -142,37 +142,28 @@
             <div class="sticky-lg-top">
               <div class="d-none d-lg-block" style="height: 105px"></div>
               <div class="bg-body-tertiary rounded p-4">
-                <div class="p-sm-2 p-lg-0 p-xl-2">
-                  <div class="d-flex align-items-center position-relative mb-4">
-                    <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 80px">
-                      <img src="{{URL::To('/public')}}/assets/img/listings/real-estate/single/avatar.jpg" alt="Avatar">
-                    </div>
-                    <div class="ps-4">
-                      <h5 class="mb-1">
-                        <a class="hover-effect-underline stretched-link" href="vendor-real-estate.html">Liza Williams</a>
-                      </h5>
-                      <p class="fs-sm mb-0">Listing agent</p>
-                    </div>
+                <form class="needs-validation" novalidate>
+                  <h2 class="h4 mb-0">Are you interested?</h2>
+                  <p class="mb-4">Fill out the form and we will contact you withing 24 hours.</p>
+                  <div class="mb-3">
+                    <input type="text" class="form-control form-control-lg" placeholder="Full name *" required>
+                    <div class="invalid-feedback">Please enter your full name!</div>
                   </div>
-                  <ul class="nav flex-column gap-2 mb-4">
-                    <li class="nav-item d-flex align-items-center position-relative">
-                      <i class="fi-mail me-2"></i>
-                      <a class="nav-link hover-effect-underline stretched-link fw-normal text-body p-0" href="mailto:liza.williams@example.com">liza.williams@example.com</a>
-                    </li>
-                    <li class="nav-item d-flex align-items-center position-relative">
-                      <i class="fi-phone me-2"></i>
-                      <a class="nav-link hover-effect-underline stretched-link fw-normal text-body p-0" href="tel:745-854-4264">745&#8209;854&#8209;4264</a>
-                    </li>
-                  </ul>
-                  <button type="button" class="btn btn-lg btn-primary w-100" data-bs-toggle="modal" data-bs-target="#tourBooking">Schedule a tour</button>
-                  <div class="fs-xs text-center pt-1 pb-2 my-2">It's free, cancel anytime</div>
-                  <div class="d-flex align-items-center mb-3">
-                    <hr class="w-100 m-0">
-                    <div class="mt-n1 px-3">or</div>
-                    <hr class="w-100 m-0">
+                  <div class="mb-3">
+                    <input type="email" class="form-control form-control-lg text-start" placeholder="Email *" required>
+                    <div class="invalid-feedback">Please provide a valid email address!</div>
                   </div>
-                  <button type="button" class="btn btn-lg btn-outline-dark w-100" data-bs-toggle="modal" data-bs-target="#contactForm">Send message</button>
-                </div>
+                  <div class="mb-3">
+                    <input type="tel" class="form-control form-control-lg text-start" name="mainphone" id="phone-field" required="">
+                    <input type="hidden" name="phone" id="fullphone-field" required="">
+                    <div class="invalid-feedback">Please provide a valid email address!</div>
+                  </div>
+                  <div class="mb-4">
+                    <textarea class="form-control form-control-lg" rows="5" placeholder="Your message *" required></textarea>
+                    <div class="invalid-feedback">Please write your message!</div>
+                  </div>
+                  <button type="submit" class="btn btn-lg btn-dark w-100">Schedule a tour</button>
+                </form>
               </div>
             </div>
           </aside>

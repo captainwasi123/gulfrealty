@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="{{URL::to('/public')}}/assets/vendor/choices.js/public/assets/styles/choices.min.css">
 <link rel="stylesheet" href="{{URL::to('/public')}}/assets/vendor/nouislider/dist/nouislider.min.css">
 
+<link rel="stylesheet" href="{{URL::to('/public')}}/assets/input-master/css/intlTelInput.css" />
+
 <!-- Bootstrap + Theme styles -->
 <link rel="preload" href="{{URL::to('/public')}}/assets/css/theme.min.css" as="style">
 <link rel="preload" href="{{URL::to('/public')}}/assets/css/theme.rtl.min.css" as="style">

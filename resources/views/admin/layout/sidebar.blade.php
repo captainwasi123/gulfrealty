@@ -78,6 +78,12 @@
                     <p>Properties</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="{{route('admin.realestate.locations')}}" class="nav-link {{$menu == 'locations' ? 'active' : ''}}">
+                    <i class="fas fa-angle-right nav-icon"></i>
+                    <p>Locations</p>
+                  </a>
+                </li>
                 <!-- 
                 <li><hr class="nav-break"></li>
 

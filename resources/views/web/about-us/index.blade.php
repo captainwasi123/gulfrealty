@@ -202,7 +202,7 @@
         <div class="row">
           <div class="col-md-8">
             <div class="position-relative w-100 h-100 bg-body-tertiary rounded overflow-hidden">
-              <img src="{{URL::To('/public')}}/assets/img/about/v1/account-cta.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
+              <img src="{{URL::To('/public')}}/assets/img/account-cta.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
             </div>
           </div>
 

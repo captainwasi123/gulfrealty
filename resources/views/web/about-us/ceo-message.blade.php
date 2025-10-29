@@ -23,27 +23,32 @@
         <div class="row g-3 g-sm-4 g-md-3 g-xl-4 pb-sm-2 mb-2">
 
           <div class="col-md-5">
-            <h2 class="h4 mb-lg-4">About <strong>Abdul Qadir Suria</strong></h2>
+            <h2 class="h4 mb-lg-4">Message from the <strong>CEO</strong></h2>
               <p class="fs-sm mb-0">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                At <strong>Gulf Realty</strong>, our vision has always been simple yet powerful — to redefine the real estate experience through trust, transparency, and innovation. What began as a small initiative has today grown into a brand recognized for its commitment to excellence and customer satisfaction.
+                <br><br>
+                In a constantly evolving market like the UAE, we believe success comes not just from selling properties, but from building relationships that last a lifetime. Every project we take on reflects our dedication to quality, detail, and value — ensuring that our clients find more than just a home, they find a lifestyle.
+                <br><br>
+                Our team’s passion and professionalism are the foundation of everything we do. Together, we aim to empower investors, inspire homeowners, and contribute to shaping Dubai’s ever-growing skyline.
+                <br><br>
+                As we continue to move forward, our promise remains the same — to deliver trust, integrity, and results in every transaction. The future of real estate is bright, and we’re proud to be leading the way.
+
               </p>
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-5">
             <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
               <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
-              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(204 / 196 * 100%)">
-                <img src="{{URL::to('/public')}}/CEO.jpg" alt="Image">
+              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(160 / 196 * 100%)">
+                <img src="{{URL::to('/public')}}/CEO1.jpg" alt="Image">
               </div>
             </a>
           </div>
           <div class="col-md-12 text-center">
             <p class="py-3">
-              "Easy way to find a perfect property with us Easy way to find a perfect property with us"
+              "We don’t just build properties — we build trust, value, and lasting relationships"
               <br>
-              <strong>-Abdul Qadir Suria</strong>
+              <strong><i>-Abdul Qadir Suria</i></strong>
             </p>
           </div>
 
@@ -130,35 +135,19 @@
                   <figure class="swiper-slide">
                     <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
                     <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
-                      <p>I had <span class="fw-semibold">an amazing experience using Finder</span> to search for my new home. The platform is incredibly user-friendly, with comprehensive listings and detailed descriptions that made it easy to find exactly what I was looking for.</p>
+                      <p>It was really great working with Gulf estate, because in last week I was looking for an apartment to move in with my partner, but i was very much confused with which property should I choose, but thanks to Gulf Estate to providing and selecting the best property of my choice and requirement.</p>
                     </blockquote>
                     <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
                       <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
-                        <img src="{{URL::to('/public')}}/assets/img/about/v1/avatar/02.jpg" alt="Avatar">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
                       </div>
                       <div class="ps-3">
-                        <div class="h6 mb-1">Michael Howard</div>
-                        <div class="fs-sm text-body-secondary">Landlord</div>
+                        <div class="h6 mb-1">Satish Pednekar</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
                       </div>
                     </figcaption>
                   </figure>
 
-                  <!-- Testimonial -->
-                  <figure class="swiper-slide">
-                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
-                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
-                      <p>I was thoroughly <span class="fw-semibold">impressed with Finder</span> when searching for my first rental property. The platform is intuitive and offers a wide range of listings, complete with high-quality images and all the details I needed to make an informed decision.</p>
-                    </blockquote>
-                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
-                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
-                        <img src="{{URL::to('/public')}}/assets/img/about/v1/avatar/03.jpg" alt="Avatar">
-                      </div>
-                      <div class="ps-3">
-                        <div class="h6 mb-1">Kristin Watson</div>
-                        <div class="fs-sm text-body-secondary">Tenant</div>
-                      </div>
-                    </figcaption>
-                  </figure>
                 </div>
               </div>
             </div>

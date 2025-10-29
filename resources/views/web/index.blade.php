@@ -17,8 +17,8 @@
         <div class="container position-relative z-1 pt-5 pt-md-4 pt-xl-5">
           <div class="row pt-lg-3 pt-xl-0 pt-xxl-4 pb-4 pb-md-5 pb-xl-0">
             <div class="col-md-6 col-xxl-5 text-center text-md-start">
-              <h1 class="display-4 pb-sm-1 pb-lg-3">Easy way to find a perfect property</h1>
-              <p class="fs-lg mb-md-0">We provide a complete service for the sale, purchase or rental of real estate.</p>
+              <h1 class="display-4 pb-sm-1 pb-lg-3">Find your dream property with ease</h1>
+              <p class="fs-lg mb-md-0">Experience seamless buying, selling, and renting all in one place.</p>
             </div>
           </div>
           <div class="d-none d-md-block d-lg-none" style="height: 70px"></div>
@@ -396,8 +396,8 @@
               </div>
             </div>
             <div class="col-lg-5 text-center text-lg-start py-lg-4">
-              <h2 class="text-white">Calculate your property's cost</h2>
-              <p class="fs-lg text-white opacity-75 pb-2 pb-sm-3">Real estate appraisal is a procedure that allows you to determine the average market value of real estate (apartment, house, land, etc.).</p>
+              <h2 class="text-white">Calculate your property’s real market value.</h2>
+              <p class="fs-lg text-white opacity-75 pb-2 pb-sm-3">Our smart valuation tool estimates your property’s market value using the latest data and insights — helping you make confident real estate decisions.</p>
               <a class="btn btn-lg btn-primary" href="#!">Start now</a>
             </div>
           </div>

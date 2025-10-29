@@ -13,7 +13,7 @@
         <div class="container position-relative z-2 py-sm-2 py-md-4 py-lg-5 my-lg-3 my-xl-4">
           <h1 class="display-4 text-white mb-0 my-xxl-3">Gallery</h1>
         </div>
-        <img src="{{URL::to('/public')}}/assets/img/contact/v2/hero.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Background image">
+        <img src="{{URL::to('/public')}}/assets/img/hero1.jpg" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover rtl-flip" alt="Background image">
         <span class="position-absolute top-0 start-0 w-100 h-100 z-1 rtl-flip" style="background: linear-gradient(-270deg, rgba(0,0,0, .60) 0%, rgba(0,0,0, 0) 100%)"></span>
       </div>
 

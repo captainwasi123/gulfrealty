@@ -60,9 +60,10 @@ function calculateMortgage() {
   bpf = bpf + ((bpf / 100) * 5);
 
   var mrf = ((propertyPrice/100)*0.25) + 290;
-  console.log(bpf);
 
-  const upfrontFees = (((propertyPrice / 100 ) * 4 ) + 580) + 4410 + mrf + bpf + 3150;
+  var ldf = (((propertyPrice / 100 ) * 4 ) + 580);
+
+  const upfrontFees = ldf + 4410 + mrf + bpf + 3150;
   const upfront = parseFloat(downPayment) + parseFloat(upfrontFees);
 
   $('.mortgage-resut-monthly').html(
@@ -70,5 +71,18 @@ function calculateMortgage() {
   );
   $('.mortgage-resut-upfront').html(
     'AED '+ Number(upfront).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  );
+
+
+  $('.land-department-fees').html(
+    'AED '+ Number(ldf).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+  );
+
+  $('.mortgage-registration-fees').html(
+    'AED '+ Number(mrf).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+  );
+
+  $('.bank-processing-fees').html(
+    'AED '+ Number(bpf).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
   );
 }

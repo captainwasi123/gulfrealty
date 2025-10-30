@@ -111,11 +111,58 @@
                   </div>
                 </div>
                 <hr class="mb-1 mt-1 border-2">
-                <div class="row">
-                  <div class="col-md-6">
-                    <h6 class="mb-0">Upfront Cost ?</h6>  
+                <div class="row relative">
+                  <div class="col-md-7 ">
+                    <h6 class="mb-0">
+                      Upfront Cost 
+                      <span class="upfront-wrapper">
+                        &nbsp;&nbsp;<font>?</font>
+                        <div class="box-shadow upfront-tooltip bg-white " bis_skin_checked="1">
+                          <div class="d-flex w-full flex-1" bis_skin_checked="1">
+                            <dl class="d-flex w-full flex-col items-start whitespace-nowrap text-black mb-0">
+                              <span class="text-xl font-bold xl:text-2xl">Upfront cost breakdown</span>
+                              
+                              <dt class="text-body-small-bold md:text-body-medium mt-3 d-flex w-full justify-between md:text-lg lg:text-base xl:text-base"> 
+                                Land department fee <span data-testid="landDepartmentFee" data-cy="landDepartmentFee" class="text-body-medium land-department-fees"> AED 40,580 </span>
+                              </dt>
+                              <span class="text-body-small whitespace-normal"> One-time tax paid to the government. </span>
+                              <span class="text-body-small whitespace-normal"> 4% of the property value + AED 580 admin fee </span>
+        
+                              <dt class="text-body-small-bold md:text-medium mt-3 d-flex w-full justify-between font-bold md:text-lg lg:text-base xl:text-base"> 
+                                Trustee fee <span data-testid="trusteeFee" data-cy="trusteeFee" class="text-body-medium"> AED 4,410 </span>
+                              </dt>
+                              <span class="text-body-small whitespace-normal"> Paid to the bank for a range of services. </span>
+                              <span class="text-body-small whitespace-normal"> AED 2,000 + VAT for properties below AED 500,000 </span>
+                              <span class="text-body-small whitespace-normal"> AED 4,200 + VAT for properties equal or above AED 500,000 </span>
+
+                              <dt class="text-body-small-bold md:text-body-medium mt-3 d-flex w-full justify-between md:text-lg lg:text-base xl:text-base"> 
+                                Mortgage registration fee <span data-testid="mortgageRegistrationFee" data-cy="mortgageRegistrationFee" class="text-body-medium mortgage-registration-fees"> AED 2,790 </span>
+                              </dt>
+                              <span class="text-body-small whitespace-normal"> Paid to the government to register your property as security for the home loan. </span>
+                              <dd class="text-body-medium flex w-full justify-between">
+                                <span class="text-body-small whitespace-normal italic"> 0.25% of the loan amount + AED 290 admin fee </span>
+                              </dd>
+
+                              <dt class="text-body-small-bold md:text-body-medium mt-3 d-flex w-full justify-between md:text-lg lg:text-base xl:text-base"> 
+                                Bank processing fee <span data-testid="bankProcessingFee" data-cy="bankProcessingFee" class="text-body-medium bank-processing-fees"> AED 2,100 </span>
+                              </dt>
+                              <span class="text-body-small whitespace-normal"> Paid to the bank to process your mortgage. </span>
+                              <span class="text-body-small whitespace-normal"> Up to 1% of the loan amount + 5% VAT </span>
+                              
+                              <dt class="text-body-small-bold md:text-body-medium mt-3 d-flex w-full justify-between md:text-lg lg:text-base xl:text-base"> 
+                                Valuation fee <span data-testid="valuationFee" data-cy="valuationFee" class="text-body-medium"> AED 3,150 </span>
+                              </dt>
+                              <span class="text-body-small whitespace-normal"> Paid to the bank for a basic inspection of your property. </span>
+                              <span class="text-body-small whitespace-normal"> Between AED 2,500 and AED 3,500 + 5 VAT </span>
+                            </dl>
+                          </div>
+                        </div> 
+                      </span>
+                    </h6>    
+
+                                     
                   </div>  
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                     <h5 class="mb-0 text-right mortgage-resut-upfront">AED 10,000.56</h5>
                   </div>
                   <div class="col-md-12">

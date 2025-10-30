@@ -30,6 +30,11 @@ $(document).ready(function(){
     
     calculateMortgage();
   });
+
+  $('.mortgage-length').on('keyup',function(){
+    
+    calculateMortgage();
+  });
 });
 
 function calculateMortgage() {

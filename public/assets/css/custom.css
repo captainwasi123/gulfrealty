@@ -310,3 +310,11 @@ display: block;
     padding: 1px 6px;
     font-size: 11px;
 }
+.loading {
+    display: none;
+    text-align: center;
+    padding: 8px 0;
+}
+.loading img {
+    width: 95px;
+}

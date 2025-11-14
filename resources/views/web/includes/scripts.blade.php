@@ -8,3 +8,4 @@
 
 <!-- Bootstrap + Theme scripts -->
 <script src="{{URL::to('/public')}}/assets/js/theme.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>

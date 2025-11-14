@@ -14,7 +14,7 @@ class Mailer
         Mail::send($template, $data, function($message) use ($receiver_email, $receiver_name, $subject) {
              $message->to($receiver_email, $receiver_name)->subject
                 ($subject);
-             $message->from('mail.sender@rahaal-theexplorer.com','Rahaal - The Explorer');
+             $message->from(env('MAIL_FROM_ADDRESS'),'GulfRealty.ae');
           });
 
         return true;

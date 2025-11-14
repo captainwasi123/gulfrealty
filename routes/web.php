@@ -63,8 +63,8 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
     Route::post('/subscribe', 'NewsletterController@subscribe')->name('newsletter.subscribe');
 
     //Enquiry
-    Route::post('/enquiry', 'EnquiryController@enquiry')->name('enquiry.submit');
-    Route::post('/enquiry-collab', 'EnquiryController@enquiryCollab')->name('enquiry.collab.submit');
+    Route::post('/enquiry-property', 'EnquiryController@enquiryProperty')->name('property.enquiry.submit');
+    Route::post('/enquiry-contact', 'EnquiryController@enquiryContact')->name('contact.enquiry.submit');
 
     //Aside
     Route::get('/get-aside', 'WebController@getAside');

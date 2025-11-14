@@ -22,6 +22,7 @@
         }
         .header {
             text-align: center;
+            background-color: #03334f !important;
         }
         .header img {
             max-width: 150px;
@@ -29,7 +30,7 @@
         .header-title {
             font-size: 24px;
             font-weight: bold;
-            color: #0f7dc2;
+            color: #ffffff;
             margin-top: 30px;
         }
         .content {
@@ -42,7 +43,7 @@
             font-size: 14px;
             margin-top: 20px;
             color: #ffffff;
-            background-color: #83c341;
+            background-color: #03334f;
             padding: 12px 0px;
         }
         a {
@@ -55,9 +56,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://rahaal-theexplorer.com/public/logo-black.png" alt="Rahaal Logo" height="60px">
+            <img src="https://gulfrealty.ae/wp-content/uploads/new-logo-destop-view-e1693218580296.png" alt="GulfRealty Logo" height="60px">
             <hr>
             <div class="header-title">New Enquiry Received!</div>
+            <br>
         </div>
         <div class="content">
             <p>Dear <strong>Team</strong>,</p>
@@ -66,11 +68,17 @@
             </p>
             <p style="margin-top:0;">
                 <strong>Name: </strong>{{$name}}<br>
+                
                 @if(!empty($phone))
                     <strong>Phone:</strong>{{$phone}}<br>
                 @endif
+                
                 <strong>Email: </strong>{{$email}}<br>
-                <strong>Subject: </strong>{{$subject}}<br>
+                
+                @if(!empty($property_name))
+                    <strong>Intrested in Property: </strong>{{$property_name}}<br>
+                @endif
+                
                 @if(!empty($description))
                     <strong>Message:</strong><br>
                     {{$description}}
@@ -78,7 +86,7 @@
             </p>
         </div>
         <div class="footer">
-            &copy; {{date('Y')}} Rahaal - The Explorer. All Rights Reserved.
+            &copy; {{date('Y')}} GulfRealty. All Rights Reserved.
         </div>
     </div>
 </body>

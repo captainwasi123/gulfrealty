@@ -11,7 +11,7 @@ use App\Http\Requests\HelpRequest;
 
 class EnquiryController extends Controller
 {
-    public function enquiry(EnquiryRequest $request){
+    public function enquiryProperty(EnquiryRequest $request){
         $data = $request->all();
         $response = [];
         $status = 200;
@@ -20,15 +20,17 @@ class EnquiryController extends Controller
         $n = new Enquiry;
         $n->name = $data['name'];
         $n->email = $data['email'];
-        $n->subject = $data['subject'];
+        $n->type = '2';
+        $n->property_name = $data['property_name'];
+        $n->property_link = $data['property_slug'];
         $n->description = $data['description'];
         $n->save();
 
+        //dd($data);
 
 
-        $mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | Rahaal - The Explorer', ['osamausmani.cell@gmail.com ', 'rahaal.seo@gmail.com'], 'Rahaal - The Explorer', 'web.emails.enquiry', $data);
-
+        //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';
@@ -38,26 +40,24 @@ class EnquiryController extends Controller
         return response()->json($response, 200);
     }
 
-    public function enquiryCollab(HelpRequest $request){
+    public function enquiryContact(EnquiryRequest $request){
         $data = $request->all();
         $response = [];
         $status = 200;
 
-        $data['subject'] = 'Display Ads & Collaboration';
 
         $n = new Enquiry;
         $n->name = $data['name'];
         $n->email = $data['email'];
-        $n->phone = $data['phone'];
-        $n->subject = $data['subject'];
+        $n->type = '1';
         $n->description = $data['description'];
         $n->save();
 
+        //dd($data);
 
 
-        $mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! (Collab) | Rahaal - The Explorer', ['osamausmani.cell@gmail.com ', 'rahaal.seo@gmail.com'], 'Rahaal - The Explorer', 'web.emails.enquiry', $data);
-
+        //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';

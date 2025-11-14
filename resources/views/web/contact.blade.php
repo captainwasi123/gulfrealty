@@ -61,27 +61,27 @@
 
             <!-- Form -->
             <div class="col-md-6">
-              <form class="needs-validation pt-4 pt-sm-5 pb-5 px-4 px-sm-5 mt-3 mt-sm-0 my-lg-3 my-xl-4 mx-lg-3 mx-xl-5" novalidate>
+              <form id="contact-enquiry-form" class="pt-4 pt-sm-5 pb-5 px-4 px-sm-5 mt-3 mt-sm-0 my-lg-3 my-xl-4 mx-lg-3 mx-xl-5" action="{{route('contact.enquiry.submit')}}">
+                @csrf
                 <h2 class="h4 mb-0">Get in touch!</h2>
                 <p class="mb-4">Fill out the form and we will contact you withing 24 hours.</p>
                 <div class="mb-3">
-                  <input type="text" class="form-control form-control-lg" placeholder="Full name *" required>
-                  <div class="invalid-feedback">Please enter your full name!</div>
+                  <input type="text" class="form-control form-control-lg" name="name" placeholder="Full name *" required>
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control form-control-lg text-start" placeholder="Email *" required>
-                  <div class="invalid-feedback">Please provide a valid email address!</div>
+                  <input type="email" class="form-control form-control-lg contact-email text-start" name="email" placeholder="Email *" required>
                 </div>
                 <div class="mb-3">
                   <input type="tel" class="form-control form-control-lg text-start" name="mainphone" id="phone-field" required="">
                   <input type="hidden" name="phone" id="fullphone-field" required="">
-                  <div class="invalid-feedback">Please provide a valid email address!</div>
                 </div>
                 <div class="mb-4">
-                  <textarea class="form-control form-control-lg" rows="5" placeholder="Your message *" required></textarea>
-                  <div class="invalid-feedback">Please write your message!</div>
+                  <textarea class="form-control form-control-lg" rows="5" name="description" placeholder="Your message *" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-lg btn-dark w-100">Submit form</button>
+                <div class="loading">
+                  <img src="{{URL::to('/public/loader-gif.gif')}}">
+                </div>
               </form>
             </div>
           </div>
@@ -152,4 +152,9 @@
       </section>
     </main>
 	
+@endsection
+
+@section('addScript')
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 @endsection

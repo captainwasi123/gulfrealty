@@ -142,27 +142,29 @@
             <div class="sticky-lg-top">
               <div class="d-none d-lg-block" style="height: 105px"></div>
               <div class="bg-body-tertiary rounded p-4">
-                <form class="needs-validation" novalidate>
+                <form id="property-enquiry-form" action="{{route('property.enquiry.submit')}}">
+                  @csrf
+                  <input type="hidden" name="property_name" value="{{$data->title}}">
+                  <input type="hidden" name="property_slug" value="{{$data->slug}}">
                   <h2 class="h4 mb-0">Are you interested?</h2>
                   <p class="mb-4">Fill out the form and we will contact you withing 24 hours.</p>
                   <div class="mb-3">
-                    <input type="text" class="form-control form-control-lg" placeholder="Full name *" required>
-                    <div class="invalid-feedback">Please enter your full name!</div>
+                    <input type="text" class="form-control form-control-lg" name="name" placeholder="Full name *" required>
                   </div>
                   <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg text-start" placeholder="Email *" required>
-                    <div class="invalid-feedback">Please provide a valid email address!</div>
+                    <input type="email" class="form-control form-control-lg text-start property-email" name="email" placeholder="Email *" required>
                   </div>
                   <div class="mb-3">
                     <input type="tel" class="form-control form-control-lg text-start" name="mainphone" id="phone-field" required="">
                     <input type="hidden" name="phone" id="fullphone-field" required="">
-                    <div class="invalid-feedback">Please provide a valid email address!</div>
                   </div>
                   <div class="mb-4">
-                    <textarea class="form-control form-control-lg" rows="5" placeholder="Your message *" required></textarea>
-                    <div class="invalid-feedback">Please write your message!</div>
+                    <textarea class="form-control form-control-lg" rows="5" name="description" placeholder="Your message *" required></textarea>
                   </div>
                   <button type="submit" class="btn btn-lg btn-dark w-100">Schedule a tour</button>
+                  <div class="loading">
+                    <img src="{{URL::to('/public/loader-gif.gif')}}">
+                  </div>
                 </form>
               </div>
             </div>
@@ -213,6 +215,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lc-lightbox-lite@1.5.0/js/lc_lightbox.lite.min.js"></script>
 <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+<script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 <script>
   lc_lightbox('.lightbox', {
     wrap_class: 'lcl_fade_oc',

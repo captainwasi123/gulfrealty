@@ -16,16 +16,6 @@ class EnquiryRequest extends FormRequest
 
                 $keywords = [
 
-                                 'Loan',
-                                 'Mortgage',
-                                 'Credit',
-                                 'Salary advance',
-                                 'Debt consolidation',
-                                 'Personal loan',
-                                 'Home loan',
-                                 'Car loan',
-                                 'Finance reques',
-
                                  'Escort',
                                  'Massage service',
                                  'Companion',

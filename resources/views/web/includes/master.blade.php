@@ -33,6 +33,8 @@
 
     <link rel="canonical" href="{{@URL::current()}}" />
     
+    <meta name="home_url" content="{{@URL::to('/')}}">
+    
     <!-- Favicons -->
     <link href="{{URL::to('/public')}}/efavicon.png" rel="icon">
     <link href="{{URL::to('/public')}}/efavicon.png" rel="apple-touch-icon">

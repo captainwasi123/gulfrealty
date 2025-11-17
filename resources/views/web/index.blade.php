@@ -127,7 +127,7 @@
               <div class="d-none d-xl-block d-xxl-none" style="height: 326px"></div>
               <div class="d-none d-xxl-block" style="height: 366px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -75px 96px 0 0; font-size: 128px; color: var(--fn-body-bg)">Buy</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -42px 96px 0 0; font-size: 128px; color: var(--fn-body-bg)">Buy</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(328 / 768 * 100%)">
                   <img src="{{URL::to('/public')}}/assets/img/home/01.jpg" alt="Image">
                 </div>
@@ -135,7 +135,7 @@
             </div>
             <div style="width: 306px">
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -10px 0 0 -69px; font-size: 128px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: 1px 0 0 -40px; font-size: 128px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
                 <div class="ratio bg-info rounded overflow-hidden" style="--fn-aspect-ratio: calc(443 / 306 * 100%)">
                   <img src="{{URL::to('/public')}}/assets/img/home/02.jpg" alt="Image">
                 </div>
@@ -144,9 +144,11 @@
             <div style="width: 438px">
               <div style="height: 117px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -73px 0 0 -18px; font-size: 128px; color: var(--fn-body-bg)">Rent</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -42px 0 0 0px; font-size: 128px; color: #03334f">Rent</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/03.jpg" alt="Image">
+                  <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/assets/img/about/v1/video-poster.jpg">
+                    <source src="{{URL::to('/public')}}/assets/img/about/v1/video.mp4" type="video/mp4">
+                  </video>
                 </div>
               </div>
             </div>

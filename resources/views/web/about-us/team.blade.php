@@ -44,10 +44,10 @@
                   <div class="w-100 ps-sm-4">
                     <div class="d-flex flex-wrap align-items-center justify-content-between ms-3 ms-sm-0">
                       <h3 class="h5 me-2 mb-0">
-                        <a class="hover-effect-underline stretched-link" href="javascript:void(0)">{{$val->name}}</a>
+                        <a class="hover-effect-underline" href="javascript:void(0)">{{$val->name}}</a>
                       </h3>
                       <div class="d-flex align-items-center gap-1">
-                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#bookAppointment" aria-controls="bookAppointment">
+                        <button type="button" class="btn btn-outline-primary callback-request-btn" data-name="{{$val->name}}">
                           Request a call back
                         </button>
                       </div>
@@ -131,8 +131,46 @@
     </main>
 
 
+ <div class="modal fade" id="requestCallBackModal" tabindex="-1" aria-labelledby="tourBookingLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 400px">
+        <form class="modal-content" id="agent-enquiry-form" action="{{route('agent.enquiry.submit')}}">
+          @csrf
+          <input type="hidden" name="agent_name" id="agent-name-modal">
+          <div class="modal-header border-0">
+            <div>
+              <p class="mb-0">Fill out the form and we will contact you withing 24 hours.</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-4 pt-0">
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" name="name" placeholder="Full name *" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control form-control-lg text-start agent-email" name="email" placeholder="Email *" required>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control form-control-lg text-start" name="mainphone" id="phone-field" required="">
+              <input type="hidden" name="phone" id="fullphone-field" required="">
+            </div>
+            <div class="mb-0">
+              <textarea class="form-control form-control-lg" rows="5" name="description" placeholder="Your message *" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4 px-4">
+            <button type="submit" class="btn btn-lg btn-primary w-100 m-0 mb-3">Request Call Back</button>
+            <div class="loading">
+              <img src="{{URL::to('/public/loader-gif.gif')}}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
 @endsection
 
 @section('addScript')
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 
 @endsection

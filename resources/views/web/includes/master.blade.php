@@ -77,7 +77,6 @@
       </a>
     </div>
 
-
     @include('web.includes.scripts')
     @yield('addScript')
     

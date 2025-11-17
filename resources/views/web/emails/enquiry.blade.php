@@ -78,6 +78,10 @@
                 @if(!empty($property_name))
                     <strong>Intrested in Property: </strong>{{$property_name}}<br>
                 @endif
+
+                @if(!empty($agent_name))
+                    <strong>Intrested in Agent: </strong>{{$agent_name}}<br>
+                @endif
                 
                 @if(!empty($description))
                     <strong>Message:</strong><br>

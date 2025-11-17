@@ -66,4 +66,32 @@ class EnquiryController extends Controller
 
         return response()->json($response, 200);
     }
+
+    public function enquiryAgent(EnquiryRequest $request){
+        $data = $request->all();
+        $response = [];
+        $status = 200;
+
+
+        $n = new Enquiry;
+        $n->name = $data['name'];
+        $n->email = $data['email'];
+        $n->agent_name = $data['agent_name'];
+        $n->type = '1';
+        $n->description = $data['description'];
+        $n->save();
+
+        //dd($data);
+
+
+        //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+
+        $response['success'] = 'success';
+        $response['message'] = 'Success! You successfully Submitted.';
+
+
+
+        return response()->json($response, 200);
+    }
 }

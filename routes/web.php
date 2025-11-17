@@ -65,6 +65,7 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
     //Enquiry
     Route::post('/enquiry-property', 'EnquiryController@enquiryProperty')->name('property.enquiry.submit');
     Route::post('/enquiry-contact', 'EnquiryController@enquiryContact')->name('contact.enquiry.submit');
+    Route::post('/agent-contact', 'EnquiryController@enquiryAgent')->name('agent.enquiry.submit');
 
     //Aside
     Route::get('/get-aside', 'WebController@getAside');

@@ -90,14 +90,20 @@
               <h6 class="h5 mb-sm-0 mb-lg-3 me-sm-3 me-md-4 me-lg-0">Get exclusive advice</h6>
               <button type="button" class="btn btn-lg btn-outline-secondary w-100" style="max-width: 205px">Sign up</button>
               <div class="d-flex justify-content-center pt-2 pt-sm-0 pt-lg-3 ps-sm-3 ps-lg-0 mt-3 mt-sm-0 mt-lg-3">
-                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Instagram" aria-label="Follow us on Instagram">
+                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="https://www.instagram.com/gulfrealty_ae/" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Instagram" aria-label="Follow us on Instagram">
                   <i class="fi-instagram"></i>
                 </a>
-                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Facebook" aria-label="Follow us on Facebook">
+                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="https://m.facebook.com/gulfrealty.ae" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Facebook" aria-label="Follow us on Facebook">
                   <i class="fi-facebook"></i>
                 </a>
-                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="X (Twitter)" aria-label="Follow us on X (Twitter)">
-                  <i class="fi-x"></i>
+                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="https://ae.linkedin.com/company/gulfrealty" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="LinkedIn" aria-label="Follow us on LinkedIn">
+                  <i class="fi-linkedin"></i>
+                </a>
+                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="https://www.youtube.com/channel/UCD5tR-8KZwPb-DCz2xkB01A/featuredy" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Youtube" aria-label="Follow us on Youtube">
+                  <i class="fi-youtube"></i>
+                </a>
+                <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Tiktok" aria-label="Follow us on Tiktok">
+                  <i class="fi-tiktok"></i>
                 </a>
               </div>
             </div>

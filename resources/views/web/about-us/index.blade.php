@@ -131,7 +131,7 @@
               }
             }'>
               <div class="swiper-wrapper">
-                @for($i=1; $i<=7; $i++)
+                @for($i=1; $i<=14; $i++)
                   <!-- Logo -->
                   <div class="swiper-slide">
                     <div class="nav justify-content-center">

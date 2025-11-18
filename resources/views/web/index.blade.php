@@ -127,24 +127,24 @@
               <div class="d-none d-xl-block d-xxl-none" style="height: 326px"></div>
               <div class="d-none d-xxl-block" style="height: 366px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -42px 96px 0 0; font-size: 128px; color: var(--fn-body-bg)">Buy</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -38px 96px 0 0; font-size: 118px; color: var(--fn-body-bg)">Buy</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(328 / 768 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/01.jpg" alt="Image">
+                  <img src="{{URL::to('/public')}}/assets/img/home/01-A.jpg" alt="Image">
                 </div>
               </div>
             </div>
             <div style="width: 306px">
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: 1px 0 0 -40px; font-size: 128px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: 1px 0 0 -38px; font-size: 118px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
                 <div class="ratio bg-info rounded overflow-hidden" style="--fn-aspect-ratio: calc(443 / 306 * 100%)">
-                  <img src="{{URL::to('/public')}}/assets/img/home/02.jpg" alt="Image">
+                  <img src="{{URL::to('/public')}}/assets/img/home/03-A.jpg" alt="Image">
                 </div>
               </div>
             </div>
             <div style="width: 438px">
               <div style="height: 117px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -42px 0 0 0px; font-size: 128px; color: #03334f">Rent</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -30px 0 0 3px; font-size: 118px; color: #03334f">Rent</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
                   <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/assets/img/about/v1/video-poster.jpg">
                     <source src="{{URL::to('/public')}}/assets/img/about/v1/video.mp4" type="video/mp4">
@@ -571,7 +571,7 @@
             }
           }'>
             <div class="swiper-wrapper">
-              @for($i=1; $i<=7; $i++)
+              @for($i=1; $i<=14; $i++)
                 <!-- Logo -->
                 <div class="swiper-slide">
                   <div class="nav justify-content-center">

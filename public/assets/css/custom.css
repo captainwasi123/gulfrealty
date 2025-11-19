@@ -318,3 +318,50 @@ display: block;
 .loading img {
     width: 95px;
 }
+
+.slidecontainer {
+  width: 100%;
+}
+
+.calculator-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 14px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.calculator-slider:hover {
+  opacity: 1;
+}
+
+.calculator-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 18px;
+  background: #03334f;
+  cursor: pointer;
+}
+
+.calculator-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.calculator-field {
+    padding-bottom: 18px;
+    margin-bottom: -18px;
+}
+
+.form-control:read-only {
+    background-color: #e6e6e6a6;
+    cursor: no-drop;
+}

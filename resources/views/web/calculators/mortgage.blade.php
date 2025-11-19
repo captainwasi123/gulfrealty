@@ -31,34 +31,23 @@
                     </div>  
                     <div class="col-md-12">
                       <label>Property Price</label>
-                      <input type="text" class="form-control form-control-lg mortgage-total" value="1000000" placeholder="10000000" >
+                      <input type="text" class="form-control form-control-lg mortgage-total calculator-field" value="1,000,000" placeholder="1,000,000" >
+                      <input type="range" min="500000" max="10000000" value="1000000" step="50000"  class="calculator-slider" id="mortgage-total">
                     </div>
                     <div class="col-md-8 mt-3">
                       <label>Down Payment</label>
-                      <input type="text" class="form-control form-control-lg mortgage-down-payment" value="200000" placeholder="50000000" readonly>
+                      <input type="text" class="form-control form-control-lg mortgage-down-payment calculator-field" value="200,000" placeholder="50000000" readonly>
+                      <input type="range" min="50000" max="10000000" value="1000000" class="calculator-slider" id="mortgage-down-payment" disabled>
                     </div>
                     <div class="col-md-4 mt-3">
-                      <label>Percentage</label>
-                      <select class="form-control form-control-lg mortgage-down-payment-per" >
-                        <option value="5">5%</option>
-                        <option value="10">10%</option>
-                        <option value="15">15%</option>
-                        <option value="20" selected>20%</option>
-                        <option value="25">25%</option>
-                        <option value="30">30%</option>
-                        <option value="35">35%</option>
-                        <option value="40">40%</option>
-                        <option value="45">45%</option>
-                        <option value="50">50%</option>
-                        <option value="55">55%</option>
-                        <option value="60">60%</option>
-                        <option value="65">65%</option>
-                        <option value="70">70%</option>
-                      </select>
+                      <label>Percentage <small>(%)</small></label>
+                      <input type="text" class="form-control form-control-lg mortgage-down-payment-per calculator-field" min="1" max="100" value="20" placeholder="20" >
+                      <input type="range" min="1" max="100" value="20" class="calculator-slider" id="mortgage-down-payment-per">
                     </div> 
                     <div class="col-md-12 mt-3">
                       <label>Mortgage length <small><small>(years)</small></small></label>
-                      <input type="text" class="form-control form-control-lg mortgage-length" value="12" placeholder="12">
+                      <input type="text" class="form-control form-control-lg mortgage-length calculator-field" value="12" placeholder="12">
+                      <input type="range" min="1" max="25" value="12" class="calculator-slider" id="mortgage-length">
                       <label class="mt-1"><small><small>Maximum of 25 years.</small></small></label>
                     </div>
                   </div>

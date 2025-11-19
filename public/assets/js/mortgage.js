@@ -3,24 +3,78 @@ $(document).ready(function(){
 
   calculateMortgage();
 
-  $('.mortgage-total').on('keyup',function(){
-    var per = $('.mortgage-down-payment-per').find(":selected").val();
-    var propertyPrice = $('.mortgage-total').val();
+  $('.mortgage-total').on('change paste keyup',function(){
+    if (this.value !== null && this.value !== undefined && this.value !== '') {
+      this.value = this.value.replace(/\D/g,'');
+      var x = removeCommas(this.value);
+      var per = $('.mortgage-down-payment-per').val();
+      var propertyPrice = x;
+      var result = ( propertyPrice / 100 ) * per;
+      
+      $('#mortgage-total').val(x);
 
+      $('.mortgage-down-payment').val(addCommas(result));
+      $('#mortgage-down-payment').attr('max', x);
+      $('#mortgage-down-payment').val(result);
+
+      calculateMortgage();
+      this.value = addCommas(x);
+    }else{
+
+      $('.mortgage-down-payment').val('0');
+    }
+  });
+
+  $('#mortgage-total').on('input',function(){
+    $('.mortgage-total').val(addCommas(this.value));
+
+    var x = removeCommas(this.value);
+    var per = $('.mortgage-down-payment-per').val();
+    var propertyPrice = x;
     var result = ( propertyPrice / 100 ) * per;
+    
+    $('#mortgage-total').val(x);
 
-    $('.mortgage-down-payment').val(result);
+    $('.mortgage-down-payment').val(addCommas(result));
+    $('#mortgage-down-payment').attr('max', x);
+    $('#mortgage-down-payment').val(result);
 
     calculateMortgage();
   });
 
-  $('.mortgage-down-payment-per').on('change',function(){
+  $('.mortgage-down-payment-per').on('change paste keyup',function(){
+    if (this.value !== null && this.value !== undefined && this.value !== '') {
+      this.value = this.value.replace(/\D/g,'');
+      var per = $(this).val();
+
+      var x = removeCommas($('.mortgage-total').val());
+      var propertyPrice = x;
+
+      var result = ( propertyPrice / 100 ) * per;
+
+      $('.mortgage-down-payment').val(addCommas(result));
+      
+
+      $('#mortgage-down-payment-per').val(per);
+
+      calculateMortgage();
+    }else{
+
+      $('.mortgage-down-payment').val('0');
+    }
+  });
+
+  $('#mortgage-down-payment-per').on('input',function(){
+
+    $('.mortgage-down-payment-per').val(this.value);
     var per = $(this).val();
-    var propertyPrice = $('.mortgage-total').val();
+
+    var x = removeCommas($('.mortgage-total').val());
+    var propertyPrice = x;
 
     var result = ( propertyPrice / 100 ) * per;
 
-    $('.mortgage-down-payment').val(result);
+    $('.mortgage-down-payment').val(addCommas(result));
     
     calculateMortgage();
   });
@@ -31,15 +85,30 @@ $(document).ready(function(){
     calculateMortgage();
   });
 
-  $('.mortgage-length').on('keyup',function(){
+  $('.mortgage-length').on('change paste keyup',function(){
+    
+    if (this.value !== null && this.value !== undefined && this.value !== '') {
+
+      this.value = this.value.replace(/\D/g,'');
+      calculateMortgage();
+    }else{
+
+      this.value = '1';
+    }
+  });
+
+
+  $('#mortgage-length').on('input',function(){
+
+    $('.mortgage-length').val(this.value);
     
     calculateMortgage();
   });
 });
 
 function calculateMortgage() {
-  var propertyPrice = $('.mortgage-total').val();
-  var downPayment = $('.mortgage-down-payment').val();
+  var propertyPrice = removeCommas($('.mortgage-total').val());
+  var downPayment = removeCommas($('.mortgage-down-payment').val());
   var mortgageYears = $('.mortgage-length').val();
   var annualInterestRate = $('input[name="rate"]:checked').val();
 
@@ -85,4 +154,43 @@ function calculateMortgage() {
   $('.bank-processing-fees').html(
     'AED '+ Number(bpf).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
   );
+}
+
+
+
+function validate(evt) {
+  var theEvent = evt || window.event;
+
+  // Handle paste
+  if (theEvent.type === 'paste') {
+      key = event.clipboardData.getData('text/plain');
+  } else {
+  // Handle key press
+      var key = theEvent.keyCode || theEvent.which;
+      key = String.fromCharCode(key);
+  }
+  var regex = /[0-9]|\./;
+  if( !regex.test(key) ) {
+    theEvent.returnValue = false;
+    if(theEvent.preventDefault) theEvent.preventDefault();
+  }
+}
+
+function addCommas(nStr)
+{
+  nStr += '';
+  x = nStr.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  var rgx = /(\d+)(\d{3})/;
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1' + ',' + '$2');
+  }
+  return x1 + x2;
+}
+
+function removeCommas(value){
+  value=value.replace(/\,/g,'');
+  value=parseInt(value,10);
+  return value;
 }

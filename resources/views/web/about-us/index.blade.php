@@ -161,18 +161,142 @@
           </div>
           <div class="col-md-7 col-xl-6 offset-xl-1">
             <div class="ps-md-4 ps-xl-0">
-              <div class="position-relative rtl-flip" style="max-width: 148px">
-                <div class="ratio ratio-1x1 bg-body-tertiary rounded-circle overflow-hidden">
-                  <img src="{{URL::To('/public')}}/assets/img/about/v1/avatar/01.jpg" alt="Avatar">
+              
+              <div class="swiper" data-swiper='{
+              "slidesPerView": 1,
+              "spaceBetween": 0,
+              "pagination": {
+                "el": ".swiper-pagination",
+                "clickable": true
+              },
+              "autoplay": {
+                "delay": 2000,
+                "disableOnInteraction": false
+              }
+            }'>
+              <div class="swiper-wrapper">
+
+                  <!-- Testimonial -->
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>It was really great working with Gulf estate, because in last week I was looking for an apartment to move in with my partner, but i was very much confused with which property should I choose, but thanks to Gulf Estate to providing and selecting the best property of my choice and requirement.</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Satish Pednekar</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>we were looking for an apartment near dubai marina and with the help of manojj I got a good deal.. .</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Cornelis dewi Ratnawati</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>Gave me such an amazing unit, earned 117% in just 11 months on my investment , in a community called lagoons</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Abhay Ruhal</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+
+                  
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>It was one of the best decisions to get consultation from Gulf Realty. Best company to start your investment with.</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Dolledup Diva</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+                  
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>The best company to take your dream home from. They guided me in a very good way shown me so many options and they are very transparent in terms of property detailing.</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Arman mirza model</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+                  
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>Wonderful experience and I am happy to join gulf realty family.
+                        You guys are really supportive, Thank you Rashid bhai for giving me a beautiful property.</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Kshitij Ahuja</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+                  
+                  <figure class="swiper-slide">
+                    <svg class="text-primary mt-n3" xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor"><path d="M14.1 53.1c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5-2.1 2.1-4.5 3-7.5 3-3.3 0-6.3-1.5-8.1-3.3zm30 0c-3-3.3-4.8-6.9-4.8-12.9 0-10.5 7.5-19.8 18-24.6l2.7 3.9c-9.9 5.4-12 12.3-12.6 16.8 1.5-.9 3.6-1.2 5.7-.9 5.4.6 9.6 4.8 9.6 10.5 0 2.7-1.2 5.4-3 7.5s-4.5 3-7.5 3c-3.3 0-6.3-1.5-8.1-3.3z"/></svg>
+                    <blockquote class="fs-lg text-dark-emphasis pt-3 mt-lg-2 mt-xl-3">
+                      <p>I had been living in dubai for years and finally when I decided to buy a property i was scared and a little confused and i got connected with gulf realty which was referred by a friend and they explaIned me the potential and advised me guided me for investing, Made my first purchase as off plan property and its just been six month and i am getting offer with premium!</p>
+                    </blockquote>
+                    <figcaption class="d-flex align-items-center pt-2 pt-lg-3">
+                      <div class="ratio ratio-1x1 flex-shrink-0 bg-body-secondary rounded-circle overflow-hidden" style="width: 64px">
+                        <img src="{{URL::to('/public')}}/user-placeholder.jpg" alt="Avatar">
+                      </div>
+                      <div class="ps-3">
+                        <div class="h6 mb-1">Suhaib Vindhani</div>
+                        <div class="fs-sm text-body-secondary">Local Guide</div>
+                      </div>
+                    </figcaption>
+                  </figure>
+
                 </div>
-                <svg class="position-absolute" style="right: 0; bottom: 0; margin: 0 -5px 5px 0" xmlns="http://www.w3.org/2000/svg" width="44" height="44"><path class="text-primary" d="M21.031 41.497l.059.003h.059.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002.002H22h10.625c4.887 0 8.875-3.988 8.875-8.875V21.894C41.5 11.143 32.71 2.5 22 2.5 11.269 2.5 2.5 11.269 2.5 22c0 10.479 8.28 19.009 18.531 19.497z" fill="currentColor" stroke-width="5" style="stroke: var(--fn-body-bg)"/><path d="M22 18.258c-3.101 0-5.655 2.554-5.655 5.655S18.9 29.567 22 29.567s5.655-2.554 5.655-5.655-2.554-5.655-5.655-5.655zm-9.433 5.655c0-5.187 4.246-9.433 9.433-9.433s9.433 4.246 9.433 9.433a9.36 9.36 0 0 1-1.569 5.192l2.397 2.397a1.89 1.89 0 0 1 0 2.671 1.89 1.89 0 0 1-2.671 0l-2.397-2.397A9.36 9.36 0 0 1 22 33.345c-5.187 0-9.433-4.246-9.433-9.433z" fill="#000" fill-opacity=".05"/><g fill="#fff"><path d="M21.894 15.153c-3.723 0-6.741 3.018-6.741 6.741s3.018 6.741 6.741 6.741 6.741-3.018 6.741-6.741-3.018-6.741-6.741-6.741zm-10.046 6.741a10.05 10.05 0 0 1 10.046-10.046A10.05 10.05 0 0 1 31.94 21.894 10.05 10.05 0 0 1 21.894 31.94a10.05 10.05 0 0 1-10.046-10.047z"/><path d="M27.525 27.525c.645-.645 1.692-.645 2.337 0l3.187 3.188c.645.645.645 1.692 0 2.337s-1.692.645-2.337 0l-3.187-3.187c-.645-.646-.645-1.692 0-2.337z"/></g><path d="M28.162 19.663c2.112 0 3.825-1.713 3.825-3.825s-1.713-3.825-3.825-3.825-3.825 1.713-3.825 3.825 1.713 3.825 3.825 3.825z" fill="#fff"/><path class="text-primary" d="M28.163 13.429a2.41 2.41 0 0 0-2.408 2.408 2.41 2.41 0 0 0 2.408 2.408 2.41 2.41 0 0 0 2.408-2.408 2.41 2.41 0 0 0-2.408-2.408zm-5.242 2.408c0-2.895 2.347-5.242 5.242-5.242s5.242 2.347 5.242 5.242-2.347 5.242-5.242 5.242-5.242-2.347-5.242-5.242z" fill="currentColor"/></svg>
-              </div>
-              <figure class="pt-2 pt-md-3 pb-4 pb-xl-5 my-3">
-                <blockquote class="fs-lg">
-                  <p>At Finder, we pride ourselves on our extensive knowledge of the local market and our ability to connect clients with their dream homes, investment properties, and rental opportunities.</p>
-                </blockquote>
-                <figcaption class="h6 mb-0">Liza Rogers, CEO of Finder</figcaption>
-              </figure>
+
+              <!-- Pagination (Bullets) -->
+              <div class="swiper-pagination position-static mt-sm-2"></div>
+            </div>
+
 
               <!-- Stats -->
               <div class="row row-cols-3">

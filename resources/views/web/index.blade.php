@@ -218,7 +218,7 @@
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
                   <a class="btn btn-dark stretched-link mx-4" href="{{route('properties.buy')}}">Find a home</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/01.png" alt="Image">
+                    <img src="{{URL::to('/public')}}/assets/img/BUY.png" alt="Image">
                   </div>
                 </div>
               </article>
@@ -234,7 +234,7 @@
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
                   <a class="btn btn-dark stretched-link mx-4" href="">Place an ad</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/02.png" alt="Image">
+                    <img src="{{URL::to('/public')}}/assets/img/SELL.png" alt="Image">
                   </div>
                 </div>
               </article>
@@ -250,7 +250,7 @@
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
                   <a class="btn btn-dark stretched-link mx-4" href="{{route('properties.rent')}}">Find a rental</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
-                    <img src="{{URL::to('/public')}}/assets/img/home/real-estate/categories/03.png" alt="Image">
+                    <img src="{{URL::to('/public')}}/assets/img/RENT.png" alt="Image">
                   </div>
                 </div>
               </article>

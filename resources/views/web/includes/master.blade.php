@@ -77,6 +77,11 @@
       </a>
     </div>
 
+    <a href="https://api.whatsapp.com/send/?phone=97145914786" aria-label="Whatsapp Chat" id="whatsapp-chat" class="whatsapp-chat" target="_blank">
+      <div class="whatsapp-icon-position">
+        <img src="https://datamysite.com/public/whatsapp-icon.png" alt="Whatsapp Chat">
+      </div>
+    </a>
     @include('web.includes.scripts')
     @yield('addScript')
     

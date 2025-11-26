@@ -141,6 +141,17 @@
             <div class="d-none d-lg-block" style="margin-top: -105px"></div>
             <div class="sticky-lg-top">
               <div class="d-none d-lg-block" style="height: 105px"></div>
+              
+              @if(!empty($data->brochure))
+                <div class="bg-body-tertiary rounded p-4">
+                  <h2 class="h4 mb-0">Download Project Brochure</h2>
+                  <p>Explore layouts, pricing, features, and more at a glance.</p>
+                  <p class="text-center m-0">
+                    <a href="javascript:void(0)" class="btn btn-default btn-brochure">Brochure &nbsp;&nbsp;<i class="fi fi-download"></i></a>
+                  </p>
+                </div>
+                <br>
+              @endif
               <div class="bg-body-tertiary rounded p-4">
                 <form id="property-enquiry-form" action="{{route('property.enquiry.submit')}}">
                   @csrf
@@ -173,6 +184,36 @@
       </div>
     </main>
 
+
+    <div class="modal fade" id="DownloadBrochureModal" tabindex="-1" aria-labelledby="tourBookingLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 400px">
+        <form class="modal-content" id="brochure-download-form" action="{{route('brochure.download.submit')}}">
+          @csrf
+          <input type="hidden" name="property_name" value="{{$data->title}}">
+          <div class="modal-header border-0">
+            <div>
+              <h2 class="h4 mb-0">Get Instant Access</h2>
+              <p class="mb-0">Fill in your basic details to download the complete project brochure.</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-4 pt-0">
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" name="name" placeholder="Full name *" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control form-control-lg text-start brochure-email" name="email" placeholder="Email *" required>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4 px-4">
+            <button type="submit" class="btn btn-lg btn-primary w-100 m-0 mb-3">Download</button>
+            <div class="loading brochure-loading">
+              <img src="{{URL::to('/public/loader-gif.gif')}}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 <?php
   function number_format_short( $n, $precision = 1 ) {
     if ($n < 900) {
@@ -227,6 +268,78 @@
     padding   : 0,
     border_w  : 0
   });
+
+
+  $(document).on('click', '.btn-brochure', function(){
+
+      $('#DownloadBrochureModal').modal('show');
+  });
+
+  $(document).on("submit", "#brochure-download-form", function (event) {
+
+        $(".brochure-loading").css({display:"block"});
+        var form = $(this);
+        var formData = new FormData($("#brochure-download-form")[0]);
+
+        let isValid = true;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Email validation
+        let email = $(".brochure-email").val().trim();
+        if (email === "" || !emailPattern.test(email)) {
+            Toast.fire({
+                icon: "warning",
+                title: "Please Enter valid Email address",
+            });
+            isValid = false;
+        } else {
+            isValid = true;
+        }
+
+        if (isValid) {
+            $.ajax({
+                type: "POST",
+                url: form.attr("action"),
+                data: formData,
+                dataType: "json",
+                encode: true,
+                processData: false,
+                contentType: false,
+            })
+            .done(function (data) {
+                if (data.success == "success") {
+                  $(".brochure-loading").css({display:"none"});
+
+
+                  $('#DownloadBrochureModal').modal('hide');
+
+                  $("#brochure-download-form")[0].reset();
+
+                  var link=document.createElement('a');
+                   document.body.appendChild(link);
+                   link.download = "GulfRealty - {{$data->title}}";
+                   link.target = '_blank';
+                   link.href= "{{URL::to('/public/storage/realestate/properties/brochure/'. $data->brochure)}}";
+                   link.click();
+
+                   
+                } else {
+                    Toast.fire({
+                        icon: "warning",
+                        title: data.message,
+                    });
+                }
+            })
+            .fail(function (e) {
+                $(".brochure-loading").css({display:"none"});
+                Toast.fire({
+                    icon: "warning",
+                    title: 'Something went wrong! Try again later.',
+                });
+            });
+        }
+        event.preventDefault();
+    });
 </script>
 <script>
   const apiKey = "{{env('TOMTOM_API')}}";

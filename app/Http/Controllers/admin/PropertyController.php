@@ -102,6 +102,18 @@ class PropertyController extends Controller
                 }
             }
 
+            if ($request->hasFile('brochure')) {
+                $file = $request->file('brochure');
+                $ext = $file->getClientOriginalExtension();
+                $newname = $id . date('dmyhis') . '.' . $ext;
+
+                $file->move(public_path() . '/storage/realestate/properties/brochure', $newname);
+
+                $b = Properties::find($id);
+                $b->brochure = $newname;
+                $b->save();
+            }
+
             return redirect()->back()->with('success', 'New Property Added.');
         } else {
 
@@ -161,6 +173,19 @@ class PropertyController extends Controller
 
                     $i++;
                 }
+            }
+
+            
+            if ($request->hasFile('brochure')) {
+                $file = $request->file('brochure');
+                $ext = $file->getClientOriginalExtension();
+                $newname = $id . date('dmyhis') . '.' . $ext;
+
+                $file->move(public_path() . '/storage/realestate/properties/brochure', $newname);
+
+                $b = Properties::find($id);
+                $b->brochure = $newname;
+                $b->save();
             }
 
             return redirect()->back()->with('success', 'Property Successfully Updated.');

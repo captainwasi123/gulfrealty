@@ -42,16 +42,13 @@
                   <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('blogs')}}">Blogs</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Latest Updates</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{URL::to('/blogs/latest-updates')}}">Latest Updates</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Buy property</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.buy')}}">Buy property</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Sell property</a>
-                </li>
-                <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">About Us</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.rent')}}">Sell property</a>
                 </li>
               </ul>
             </div>
@@ -65,19 +62,16 @@
             <div class="accordion-collapse collapse d-sm-block" id="profileLinks" aria-labelledby="profileLinksHeading" data-bs-parent="#footerLinks">
               <ul class="nav flex-column gap-2 pt-sm-1 pt-lg-2 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">FAQs</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('about')}}">About Us</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Terms & Conditions</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('about.ceo')}}">CEO Message</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Calculator</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('calculators.mortgage')}}">Calculator</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Help center</a>
-                </li>
-                <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="#!">Privacy policy</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('privacy-policy')}}">Privacy policy</a>
                 </li>
               </ul>
             </div>

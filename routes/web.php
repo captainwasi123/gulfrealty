@@ -19,7 +19,7 @@ Route::get('/update-sitemap', function () {
 
 Route::namespace('App\Http\Controllers\web')->group(function(){
     Route::get('/', 'WebController@index')->name('home');
-    Route::get('/collaborate', 'WebController@collaborate')->name('collaborate');
+    Route::get('/privacy-policy', 'WebController@privacyPolicy')->name('privacy-policy');
     Route::get('/contact', 'WebController@contact')->name('contact');
     Route::get('/write-for-us', 'WebController@writeForUs')->name('write-for-us');
 
@@ -66,6 +66,8 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
     Route::post('/enquiry-property', 'EnquiryController@enquiryProperty')->name('property.enquiry.submit');
     Route::post('/enquiry-contact', 'EnquiryController@enquiryContact')->name('contact.enquiry.submit');
     Route::post('/agent-contact', 'EnquiryController@enquiryAgent')->name('agent.enquiry.submit');
+
+    Route::post('/brochure-download', 'EnquiryController@brochureDownload')->name('brochure.download.submit');
 
     //Aside
     Route::get('/get-aside', 'WebController@getAside');

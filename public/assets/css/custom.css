@@ -416,3 +416,19 @@ display: block;
     width: 100%;
     border-radius: 15px;
 }
+.btn-brochure {
+    border: 1px solid #03334f;
+    padding: 7px 22px;
+    font-weight: 600;
+}
+.btn-brochure:hover {
+    background-color: #03334f;
+    color: #fff;
+}
+.brochure-loading {
+    padding: 0;
+    text-align: center;
+    width: 100%;
+    margin-top: -13px;
+    margin-bottom: -15px;
+}

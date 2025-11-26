@@ -8,6 +8,8 @@ use App\Models\Enquiry;
 use App\Helpers\Mailer;
 use App\Http\Requests\EnquiryRequest;
 use App\Http\Requests\HelpRequest;
+use App\Http\Requests\BrochureRequest;
+use App\Models\BrochureDownload;
 
 class EnquiryController extends Controller
 {
@@ -86,6 +88,32 @@ class EnquiryController extends Controller
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
         $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+
+        $response['success'] = 'success';
+        $response['message'] = 'Success! You successfully Submitted.';
+
+
+
+        return response()->json($response, 200);
+    }
+
+    public function brochureDownload(BrochureRequest $request){
+        $data = $request->all();
+        $response = [];
+        $status = 200;
+
+
+        $n = new BrochureDownload;
+        $n->name = $data['name'];
+        $n->email = $data['email'];
+        $n->property_name = $data['property_name'];
+        $n->save();
+
+        //dd($data);
+
+
+        //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - Brochure Downloaded! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.brochure', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';

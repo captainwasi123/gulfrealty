@@ -24,7 +24,7 @@
         </div>
 
         <div class="row mb-3">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label for="type" class="form-label">Property Type</label>
                 <select class="form-control" id="type" name="type" required>
                     <option value="" selected disabled>Select Type</option>
@@ -53,7 +53,7 @@
                     </optgroup>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="purpose" class="form-label">Purpose</label>
                 <select class="form-control" id="purpose" name="purpose" required>
                     <option value="">Select Purpose</option>
@@ -61,17 +61,21 @@
                     <option value="Rent" {{$data->purpose == 'Rent' ? 'selected' : ''}}>Rent</option>
                 </select>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" id="price" name="price" value="{{$data->price}}" required>
             </div>
-              <div class="col-md-2 vertical-bottom">
+            <div class="col-md-2 vertical-bottom">
                 <div class="form-control">
                   <input type="checkbox"  id="etrending" name="trending" {{$data->trending == '1' ? 'checked' : ''}}>
                   <label for="etrending" class="form-label">&nbsp;&nbsp;Trending</label>
                   
                 </div>
-              </div>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label">Brochure &nbsp;&nbsp;<small class="text-success">{{!empty($data->brochure) ? '(Uploaded)' : ''}}</small></label>
+                <input type="file" class="form-control form-control-sm" name="brochure" accept="application/pdf">
+            </div>
         </div>
     </div>
 
@@ -142,6 +146,7 @@
     <div class="mb-4">
         <h5 class="section-title">Property Images</h5>
         <input type="file" class="form-control" id="images2" name="images[]" multiple accept="image/*">
+        <br>
         <div class="image-preview" id="imagePreview2">
           @foreach($data->images as $val)
             <img src="{{URL::to('/public/storage/realestate/properties/'.$val->image)}}">

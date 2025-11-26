@@ -32,12 +32,12 @@ class WebController extends Controller
     }
 
 
-    public function collaborate(){
-        $data['nav'] = 'collaborate';
+    public function privacyPolicy(){
+        $data['nav'] = 'privacyPolicy';
         $data['titleImg'] = 'services.jpg';
         
 
-        return view('web.collaborate')->with($data);
+        return view('web.privacy')->with($data);
     }
 
 
@@ -77,14 +77,6 @@ class WebController extends Controller
         $data['sub_footer'] = 'visible';
         
         return view('web.contact')->with($data);
-    }
-
-
-    public function privacyPolicy(){
-        $data['titleImg'] = 'faqs.png';
-        $data['title'] = 'Privacy Policy';
-        
-        return view('web.privacy-policy')->with($data);
     }
 
 

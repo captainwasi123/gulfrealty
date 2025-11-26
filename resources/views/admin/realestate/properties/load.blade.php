@@ -2,6 +2,11 @@
 <tr>
   <td>{{++$key}}</td>
   <td>{{$val->title}}</td>
+  <td class="text-right">
+    @if(!empty($val->brochure))
+      <a href="{{URL::to('/public/storage/realestate/properties/brochure/'.$val->brochure)}}"><i class="fas fa-download"></i></a>
+    @endif
+  </td>
   <td>{{@$val->type->name}}</td>
   <td>{{$val->purpose}}</td>
   <td>AED {{number_format($val->price)}}</td>

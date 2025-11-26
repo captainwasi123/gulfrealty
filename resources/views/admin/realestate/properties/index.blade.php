@@ -49,6 +49,7 @@
                   <tr>
                     <th width="5%">#</th>
                     <th width="25%">Title</th>
+                    <th width="5%">Brochure</th>
                     <th width="10%">Type</th>
                     <th width="10%">Purpose</th>
                     <th width="10%">Price</th>
@@ -64,6 +65,7 @@
                   <tr>
                     <th>#</th>
                     <th>Title</th>
+                    <th>Brochure</th>
                     <th>Type</th>
                     <th>Purpose</th>
                     <th>Price</th>
@@ -121,7 +123,7 @@
               </div>
 
               <div class="row mb-3">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                       <label for="type" class="form-label">Property Type</label>
                       <select class="form-control" id="type" name="type" required>
                           <option value="" selected disabled>Select Type</option>
@@ -150,7 +152,7 @@
                           </optgroup>
                       </select>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                       <label for="purpose" class="form-label">Purpose</label>
                       <select class="form-control" id="purpose" name="purpose" required>
                           <option value="">Select Purpose</option>
@@ -158,7 +160,7 @@
                           <option value="Rent">Rent</option>
                       </select>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-2">
                       <label for="price" class="form-label">Price</label>
                       <input type="number" class="form-control" id="price" name="price" required>
                   </div>
@@ -169,6 +171,10 @@
                       
                     </div>
                   </div>
+                <div class="col-md-3">
+                    <label class="form-label">Brochure</label>
+                    <input type="file" class="form-control form-control-sm" name="brochure" accept="application/pdf">
+                </div>
               </div>
           </div>
 
@@ -296,6 +302,7 @@
   input[type="file"]{
     opacity: 1;
     position: relative;
+    height: unset;
   }
 </style>
 @endsection

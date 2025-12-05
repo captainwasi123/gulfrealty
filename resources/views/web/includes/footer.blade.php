@@ -48,7 +48,7 @@
                   <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.buy')}}">Buy property</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.rent')}}">Sell property</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.rent')}}">Rent property</a>
                 </li>
               </ul>
             </div>

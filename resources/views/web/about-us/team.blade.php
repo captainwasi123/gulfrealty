@@ -170,7 +170,6 @@
 @endsection
 
 @section('addScript')
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 
 @endsection

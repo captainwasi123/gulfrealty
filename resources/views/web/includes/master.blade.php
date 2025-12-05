@@ -65,6 +65,44 @@
     @include('web.includes.footer')
 
 
+
+    <div class="modal fade" id="sellPropertyModal" tabindex="-1" aria-labelledby="tourBookingLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" style="max-width: 400px">
+        <form class="modal-content" id="sell-enquiry-form" action="{{route('sell.enquiry.submit')}}">
+          @csrf
+          <input type="hidden" name="type" value="3">
+          <div class="modal-header border-0">
+            <div>
+              <h2 class="h4 mb-0">Want to sell your Property?</h2>
+              <p class="mb-0">Fill out the form and we will contact you withing 24 hours.</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body pb-4 pt-0">
+            <div class="mb-3">
+              <input type="text" class="form-control form-control-lg" name="name" placeholder="Full name *" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control form-control-lg text-start sell-email" name="email" placeholder="Email *" required>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control form-control-lg text-start" name="mainphone" id="phone-field" required="">
+              <input type="hidden" name="phone" id="fullphone-field" required="">
+            </div>
+            <div class="mb-0">
+              <textarea class="form-control form-control-lg" rows="5" name="description" placeholder="Your message *" required></textarea>
+            </div>
+          </div>
+          <div class="modal-footer border-0 pt-0 pb-4 px-4">
+            <button type="submit" class="btn btn-lg btn-primary w-100 m-0 mb-3">Submit</button>
+            <div class="loading">
+              <img src="{{URL::to('/public/loader-gif.gif')}}">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <!-- Back to top button -->
     <div class="floating-buttons position-fixed top-50 end-0 z-sticky me-3 me-xl-4 pb-4">
       <a class="btn-scroll-top btn btn-sm bg-body border-0 rounded-pill shadow animate-slide-end" href="#top">

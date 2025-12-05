@@ -58,7 +58,7 @@
         <div class="header">
             <img src="https://gulfrealty.ae/wp-content/uploads/new-logo-destop-view-e1693218580296.png" alt="GulfRealty Logo" height="60px">
             <hr>
-            <div class="header-title">New Enquiry Received!</div>
+            <div class="header-title">{{!empty($type) && $type == '3' ? 'New Sell Request Received!' : 'New Enquiry Received!'}}</div>
             <br>
         </div>
         <div class="content">

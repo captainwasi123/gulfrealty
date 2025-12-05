@@ -201,4 +201,15 @@ $(document).ready(function(){
         event.preventDefault();
     });
 
+
+
+    $(document).on('click', '.sellPropertyBtn', function(){
+
+        var agentname = $(this).data('name');
+
+        $('#agent-name-modal').val(agentname);
+
+        $('#requestCallBackModal').modal('show');
+    });
+
 });

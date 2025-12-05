@@ -25,7 +25,7 @@
             <a class="nav-link" href="{{route('properties.buy')}}">Buy</a>
           </li>
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
-            <a class="nav-link" href="">Sell</a>
+            <a class="nav-link sellPropertyBtn" href="javascript:void(0)">Sell</a>
           </li>
           <li class="nav-item py-lg-2 me-lg-n2 me-xl-0">
             <a class="nav-link" href="{{route('properties.rent')}}">Rent</a>

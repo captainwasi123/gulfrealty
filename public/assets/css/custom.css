@@ -432,3 +432,31 @@ display: block;
     margin-top: -13px;
     margin-bottom: -15px;
 }
+
+.navbar-toggler-icon, .navbar-toggler-icon:after, .navbar-toggler-icon:before{
+    background-color: #ffffff !important;
+}
+.header-search-tray {
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    top: 46px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.header-search-tray ul {
+    list-style-type: none;
+    padding: 0;
+        gap: 3px;
+}
+.header-search-tray ul li {
+    padding: 4px 12px;
+    border-bottom: 2px solid #e6e6e6;
+}
+.header-search-tray ul li a{
+    text-decoration: none;
+}
+.header-search-tray ul li a p{
+    margin: 0;
+    font-size: 15px;
+}

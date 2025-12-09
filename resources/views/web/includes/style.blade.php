@@ -18,3 +18,4 @@
 <link rel="preload" href="{{URL::to('/public')}}/assets/css/theme.rtl.min.css" as="style">
 <link rel="stylesheet" href="{{URL::to('/public')}}/assets/css/theme.min.css" id="theme-styles">
 <link rel="stylesheet" href="{{URL::to('/public')}}/assets/css/custom.css" >
+<link rel="stylesheet" href="{{URL::to('/public')}}/assets/css/responsive.css" >

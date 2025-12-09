@@ -12,3 +12,4 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="{{URL::to('/public')}}/assets/js/rent.js" defer></script>
+<script src="{{URL::to('/public')}}/assets/js/main.js" defer></script>

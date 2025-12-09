@@ -76,4 +76,20 @@ $(document).ready(function(){
         $('#sellPropertyModal').modal('show');
     });
 
+
+    $('#searchfield').keyup(function(){
+        var val = $(this).val();
+        if (val.length !== 0) {
+          
+          $.get(host+"/blog/search/"+val, function(data, status){
+            if(data == 'not-found'){
+              $('.header-search-tray').html('');
+            }else{
+              $('.header-search-tray').html(data);
+            }
+          });
+        }else{
+            $('.header-search-tray').html('');
+        }
+    });
 });

@@ -298,9 +298,11 @@
 ?>
 
 @endsection
-
+@section('addStyle')
+  <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.16.0/maps/maps.css"/>
+@endsection
 @section('addScript')
-<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.16.0/maps/maps-web.min.js"></script>
 
   <script>
   const apiKey = "{{env('TOMTOM_API')}}";
@@ -320,13 +322,14 @@
   ];
 
   // 🗺️ Initialize map
-  const map = tt.map({
-    key: apiKey,
-    container: "map",
-    center: [55.2744, 25.1972],
-    zoom: 10,
-    language: "en-GB"
-  });
+ const map = tt.map({
+  key: apiKey,
+  container: "map",
+  center: [55.2744, 25.1972],
+  zoom: 10,
+  language: "en-GB",
+  style: "https://api.tomtom.com/style/1/style/*?map=2/basic_street-satellite&poi=2/poi_dynamic-satellite&key="+apiKey 
+});
 
   map.on('load', () => {
     // Hide road numbers and shields

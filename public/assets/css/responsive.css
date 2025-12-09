@@ -1,0 +1,12 @@
+@media (max-width: 767px) {
+
+	.mob-hide{
+		display: none !important;
+	}
+
+	.navbar .nav-link {
+        color: #03334f !important;
+        border-bottom: 1px solid #777;
+        padding: 12px 0px !important;
+    }
+}

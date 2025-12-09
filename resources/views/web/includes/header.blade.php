@@ -61,12 +61,15 @@
     </nav>
 
     <!-- Button group -->
-    <div class="d-flex gap-sm-1">
+    <div class="d-flex relative gap-sm-1 mob-hide">
 
       <!-- Search Bar  -->
       <div class="header-search">
-        <input type="text" name="search" class="form-control" placeholder="Search...">
+        <input type="text" name="search" id="searchfield" class="form-control" placeholder="Search...">
         <i class="fi-search fs-lg "></i>
+      </div>
+      <div class="header-search-tray">
+        
       </div>
     </div>
   </div>

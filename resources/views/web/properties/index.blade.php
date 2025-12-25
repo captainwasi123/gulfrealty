@@ -327,12 +327,10 @@
   container: "map",
   center: [55.2744, 25.1972],
   zoom: 10,
-  language: "en-GB",
-  style: "https://api.tomtom.com/style/1/style/*?map=2/basic_street-satellite&poi=2/poi_dynamic-satellite&key="+apiKey 
+  style: "https://api.tomtom.com/style/1/style/*?map=2/basic_street-satellite&poi=2/poi_dynamic-satellite&language=en-US&key="+apiKey,
 });
 
   map.on('load', () => {
-    // Hide road numbers and shields
     map.getStyle().layers.forEach(layer => {
       const id = layer.id.toLowerCase();
       if (id.includes('road-number') || id.includes('shield')) {
@@ -341,7 +339,7 @@
     });
 
     map.addControl(new tt.NavigationControl());
-
+    map.setLanguage("en-US");
     @if(count($data) > 0)
 
       const bounds = new tt.LngLatBounds();

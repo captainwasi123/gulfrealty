@@ -45,10 +45,13 @@
                   <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{URL::to('/blogs/latest-updates')}}">Latest Updates</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.buy')}}">Buy property</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.buy')}}">Buy Property</a>
                 </li>
                 <li class="pt-1">
-                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.rent')}}">Rent property</a>
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.rent')}}">Rent Property</a>
+                </li>
+                <li class="pt-1">
+                  <a class="nav-link hover-effect-underline d-inline text-body fw-normal p-0" href="{{route('properties.sell')}}">Sell Property</a>
                 </li>
               </ul>
             </div>

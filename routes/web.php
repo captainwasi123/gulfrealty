@@ -28,6 +28,8 @@ Route::namespace('App\Http\Controllers\web')->group(function(){
         Route::get('/', 'PropertyController@index')->name('properties');
         Route::get('/buy', 'PropertyController@buyProperties')->name('properties.buy');
         Route::get('/rent', 'PropertyController@rentProperties')->name('properties.rent');
+        Route::get('/sell', 'PropertyController@sellProperties')->name('properties.sell');
+        Route::post('/sell', 'PropertyController@sellPropertiesSubmit')->name('properties.sell.submit');
 
         Route::get('/search', 'PropertyController@search')->name('properties.search');
 

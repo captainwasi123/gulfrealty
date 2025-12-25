@@ -460,3 +460,12 @@ display: block;
     margin: 0;
     font-size: 15px;
 }
+
+
+.sell-property-section .nav-pills .nav-link{
+    border-radius: 5px !important;
+}
+.sell-property-section .nav-pills .btn-check:checked+.nav-link {
+    background-color: #03334f !important;
+    color: #ffffff !important;
+}

@@ -32,7 +32,7 @@ class EnquiryController extends Controller
 
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';
@@ -59,7 +59,7 @@ class EnquiryController extends Controller
 
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';
@@ -87,7 +87,7 @@ class EnquiryController extends Controller
 
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';
@@ -113,7 +113,7 @@ class EnquiryController extends Controller
 
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - Brochure Downloaded! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.brochure', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - Brochure Downloaded! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.brochure', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';
@@ -140,7 +140,7 @@ class EnquiryController extends Controller
 
 
         //$mail = Mailer::sendMail('Thank You for Contacting Me | Rahaal - The Explorer', array($data['email']), 'Rahaal', 'web.emails.response', $data);
-        $mail = Mailer::sendMail('#'.$n->id.' - New Sell Request Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
+        $mail = Mailer::sendMail('#'.$n->id.' - New Sell Request Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.enquiry', $data);
 
         $response['success'] = 'success';
         $response['message'] = 'Success! You successfully Submitted.';

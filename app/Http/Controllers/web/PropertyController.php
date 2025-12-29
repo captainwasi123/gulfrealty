@@ -152,7 +152,7 @@ class PropertyController extends Controller
 
         //dd($attachments);
 
-        $mail = Mailer::sendMail('#'.$id.' - New Sale Property Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com'], 'GulfRealty.ae', 'web.emails.propertyInquiry', $data, $attachments);
+        $mail = Mailer::sendMail('#'.$id.' - New Sale Property Inquiry Received! | GulfRealty.ae', ['furqan@gulfrealty.ae ', 'captain.wasi@gmail.com', 'enquiry@gulfrealty.ae'], 'GulfRealty.ae', 'web.emails.propertyInquiry', $data, $attachments);
 
         //dd('test');
         

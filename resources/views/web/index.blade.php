@@ -146,8 +146,8 @@
               <div class="position-relative overflow-hidden">
                 <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -30px 0 0 3px; font-size: 118px; color: #03334f">Rent</div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
-                  <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/assets/img/about/v1/video-poster.jpg">
-                    <source src="{{URL::to('/public')}}/assets/img/about/v1/video.mp4" type="video/mp4">
+                  <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/gulf-poster.png">
+                    <source src="{{URL::to('/public')}}/gulf-video.mp4" type="video/mp4">
                   </video>
                 </div>
               </div>

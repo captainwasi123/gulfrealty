@@ -14,8 +14,8 @@
 
           <!-- Video -->
           <div class="ratio ratio-16x9 border rounded-5 overflow-hidden">
-            <video muted loop playsinline autoplay poster="assets/img/about/v1/video-poster.jpg">
-              <source src="{{URL::To('/public')}}/assets/img/about/v1/video.mp4" type="video/mp4">
+            <video muted loop playsinline autoplay poster="{{URL::to('/')}}/gulf-poster.png">
+              <source src="{{URL::To('/public')}}/gulf-video.mp4" type="video/mp4">
             </video>
           </div>
         </div>

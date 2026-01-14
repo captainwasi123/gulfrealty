@@ -59,8 +59,8 @@
         <div class="container pt-sm-2 pt-md-3 pt-lg-4">
           <!-- Video -->
           <div class="ratio ratio-16x9 border rounded-5 overflow-hidden">
-            <video muted loop playsinline autoplay poster="assets/img/about/v1/video-poster.jpg">
-              <source src="{{URL::to('/public')}}/assets/img/about/v1/video.mp4" type="video/mp4">
+            <video muted loop playsinline autoplay poster="{{URL::to('/')}}/gulf-poster.png">
+              <source src="{{URL::to('/public')}}/gulf-video.mp4" type="video/mp4">
             </video>
           </div>
         </div>

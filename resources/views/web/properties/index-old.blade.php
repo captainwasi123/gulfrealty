@@ -299,171 +299,83 @@
 
 @endsection
 @section('addStyle')
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.16.0/maps/maps.css"/>
 @endsection
 @section('addScript')
-<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
-<script>
-  mapboxgl.accessToken = "{{ env('MAPBOX_API') }}";
+<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.16.0/maps/maps-web.min.js"></script>
 
-  // 📍 Property Locations
+  <script>
+  const apiKey = "{{env('TOMTOM_API')}}";
+
+  // 📍 Multiple locations
   const locations = [
     @foreach($data as $val)
       {
         name: "{{$val->title}}",
         slug: "{{$val->slug}}",
-        price: "AED - {{ number_format_short($val->price) }}",
+        price: "AED - {{number_format_short($val->price)}}",
         lat: {{$val->latitude}},
         lng: {{$val->longitude}},
-        image: "{{ URL::to('/public/storage/realestate/properties/'.$val->images[0]->image) }}"
+        image: "{{URL::to('/public/storage/realestate/properties/'.$val->images[0]->image)}}"
       },
     @endforeach
   ];
 
-  // 🗺️ Initialize Map
-  const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/navigation-night-v1',
-    center: [55.2744, 25.1972],
-    zoom: 13,
-    pitch: 65,
-    bearing: -30,
-    antialias: true
-  });
-
-  map.addControl(new mapboxgl.NavigationControl());
+  // 🗺️ Initialize map
+ const map = tt.map({
+  key: apiKey,
+  container: "map",
+  center: [55.2744, 25.1972],
+  zoom: 10,
+  style: "https://api.tomtom.com/style/1/style/*?map=2/basic_street-satellite&poi=2/poi_dynamic-satellite&language=en-US&key="+apiKey,
+});
 
   map.on('load', () => {
-
-    /* =================================================
-       REMOVE ALL LABELS (INCLUDING HIGHWAY NUMBERS)
-       KEEP ONLY AREA / PLACE NAMES
-    ================================================= */
-
     map.getStyle().layers.forEach(layer => {
-      if (!layer.id) return;
-
       const id = layer.id.toLowerCase();
-
-      if (
-        // Roads & highways
-        id.includes('motorway') ||
-        id.includes('highway') ||
-
-        // Highway numbers & shields (E311, D61, etc.)
-        id.includes('shield') ||
-        id.includes('route') ||
-        id.includes('road-number') ||
-        id.includes('ref') ||
-
-        // POIs & transport
-        id.includes('poi') ||
-        id.includes('transit') ||
-        id.includes('rail') ||
-        id.includes('airport') ||
-
-        // Other clutter
-        id.includes('building-label') ||
-        id.includes('waterway') ||
-        id.includes('housenumber') ||
-        id.includes('bridge') ||
-        id.includes('tunnel')
-      ) {
-        try {
-          map.setLayoutProperty(layer.id, 'visibility', 'none');
-        } catch (e) {}
+      if (id.includes('road-number') || id.includes('shield')) {
+        map.setLayoutProperty(layer.id, 'visibility', 'none');
       }
     });
 
-    // ✅ Explicitly KEEP only area names
-    const areaLayers = [
-      'place-label',
-      'settlement-label',
-      'locality-label',
-      'district-label',
-      'neighborhood-label'
-    ];
-
-    areaLayers.forEach(layerId => {
-      if (map.getLayer(layerId)) {
-        map.setLayoutProperty(layerId, 'visibility', 'visible');
-      }
-    });
-
-    /* =================================================
-       3D BUILDINGS
-    ================================================= */
-    map.addLayer({
-      id: '3d-buildings',
-      source: 'composite',
-      'source-layer': 'building',
-      filter: ['==', 'extrude', 'true'],
-      type: 'fill-extrusion',
-      minzoom: 13,
-      paint: {
-        'fill-extrusion-color': '#6b6b6b',
-        'fill-extrusion-height': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          13, 0,
-          15, ['get', 'height']
-        ],
-        'fill-extrusion-base': [
-          'interpolate',
-          ['linear'],
-          ['zoom'],
-          13, 0,
-          15, ['get', 'min_height']
-        ],
-        'fill-extrusion-opacity': 0.85
-      }
-    });
-
-    /* =================================================
-       ATMOSPHERIC FOG (PREMIUM LOOK)
-    ================================================= */
-    map.setFog({
-      color: 'rgb(15,15,25)',
-      'high-color': 'rgb(36,92,223)',
-      'space-color': 'rgb(11,11,25)',
-      'horizon-blend': 0.2
-    });
-
-    /* =================================================
-       MARKERS & POPUPS
-    ================================================= */
+    map.addControl(new tt.NavigationControl());
+    map.setLanguage("en-US");
     @if(count($data) > 0)
-      const bounds = new mapboxgl.LngLatBounds();
 
+      const bounds = new tt.LngLatBounds();
       locations.forEach(loc => {
+        // Custom marker element
+        const markerElement = document.createElement("div");
+        markerElement.style.backgroundImage = "url('{{URL::to('/public/marker.png')}}')";
+        markerElement.style.backgroundSize = "cover";
+        markerElement.style.width = "40px";
+        markerElement.style.height = "40px";
+        markerElement.style.borderRadius = "50%";
+        markerElement.style.cursor = "pointer";
 
-        const el = document.createElement('div');
-        el.style.backgroundImage = "url('{{ URL::to('/public/marker.png') }}')";
-        el.style.width = '36px';
-        el.style.height = '36px';
-        el.style.backgroundSize = 'cover';
-        el.style.borderRadius = '50%';
-        el.style.cursor = 'pointer';
-
-        const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(`
+        // Create popup
+        const popup = new tt.Popup({ offset: 35 }).setHTML(`
           <div>
-            <img src="${loc.image}" style="width:100px;height:70px;border-radius:8px;object-fit:cover;margin-bottom:6px;">
-            <h4 style="margin:0;font-size:14px;">${loc.name}</h4>
-            <p style="margin:0;font-size:12px;">${loc.price}</p>
-            <a href="{{ route('properties') }}/${loc.slug}" target="_blank" style="font-size:12px;">View Details</a>
+            <img src="${loc.image}" alt="${loc.name}" style="width:100px;height:70px;object-fit:cover;border-radius:8px;margin-bottom:5px;"/>
+            <div class="map-popup-data">
+              <h4 style="margin:0;font-size:14px;">${loc.name}</h4>
+              <p class="two-line-break" style="margin:0;font-size:12px;">${loc.price}</p>
+              <p class="text-center"><a href="{{route('properties')}}/${loc.slug}" target="_blank" style="margin:0;font-size:12px;">View Details <i class="fi-arrow-right"></i></a></p>
+            </div>
           </div>
         `);
 
-        new mapboxgl.Marker(el)
+        // Create marker and attach popup
+        new tt.Marker({ element: markerElement })
           .setLngLat([loc.lng, loc.lat])
-          .setPopup(popup)
+          .setPopup(popup) // attach popup directly
           .addTo(map);
 
         bounds.extend([loc.lng, loc.lat]);
       });
 
-      map.fitBounds(bounds, { padding: 120, maxZoom: 15 });
+      // Fit map to show all markers
+      map.fitBounds(bounds, { padding: 150 });
     @endif
   });
 </script>

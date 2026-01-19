@@ -6,11 +6,8 @@
 @section('addStyle')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lc-lightbox-lite@1.5.0/css/lc_lightbox.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/lc-lightbox-lite@1.5.0/skins/light.css">
-<link
-    rel="stylesheet"
-    type="text/css"
-    href="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps.css"
-  />
+
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet">
   <style>
     .detail-map {
         height: 450px;
@@ -252,10 +249,10 @@
 @endsection
 
 @section('addScript')
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lc-lightbox-lite@1.5.0/js/lc_lightbox.lite.min.js"></script>
-<script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.19.0/maps/maps-web.min.js"></script>
 <script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 <script>
   lc_lightbox('.lightbox', {
@@ -341,10 +338,11 @@
         event.preventDefault();
     });
 </script>
-<script>
-  const apiKey = "{{env('TOMTOM_API')}}";
 
-  // 📍 Single location (example shown for one record)
+<script>
+  mapboxgl.accessToken = "{{env('MAPBOX_API')}}"; // Your Mapbox API Key
+
+  // 📍 Single location
   const propertyLocation = {
     name: "{{$data->title}}",
     lat: {{$data->latitude}},
@@ -352,26 +350,88 @@
     image: "{{URL::to('/public/storage/realestate/properties/'.$data->images[0]->image)}}"
   };
 
-  // 🗺️ Initialize map
-  const map = tt.map({
-    key: apiKey,
+  // 🗺️ Initialize Mapbox map
+  const map = new mapboxgl.Map({
     container: "map",
+    style: 'mapbox://styles/mapbox/navigation-night-v1',
     center: [propertyLocation.lng, propertyLocation.lat],
     zoom: 13,
-    language: "en-GB"
+    pitch: 0, // tilt for 3D effect
+    bearing: -17.6, // optional rotation
+    antialias: true
   });
 
   map.on('load', () => {
-    // Hide road numbers and shields
+    /* =================================================
+       REMOVE ALL LABELS (INCLUDING HIGHWAY NUMBERS)
+       KEEP ONLY AREA / PLACE NAMES
+    ================================================= */
+
     map.getStyle().layers.forEach(layer => {
+      if (!layer.id) return;
+
       const id = layer.id.toLowerCase();
-      if (id.includes('road-number') || id.includes('shield')) {
-        map.setLayoutProperty(layer.id, 'visibility', 'none');
+
+      if (
+        // Roads & highways
+        id.includes('motorway') ||
+        id.includes('highway') ||
+
+        // Highway numbers & shields (E311, D61, etc.)
+        id.includes('shield') ||
+        id.includes('route') ||
+        id.includes('road-number') ||
+        id.includes('ref') ||
+
+        // POIs & transport
+        id.includes('poi') ||
+        id.includes('transit') ||
+        id.includes('rail') ||
+        id.includes('airport') ||
+
+        // Other clutter
+        id.includes('building-label') ||
+        id.includes('waterway') ||
+        id.includes('housenumber') ||
+        id.includes('bridge') ||
+        id.includes('tunnel')
+      ) {
+        try {
+          map.setLayoutProperty(layer.id, 'visibility', 'none');
+        } catch (e) {}
       }
     });
 
-    // 🧭 Add zoom controls
-    map.addControl(new tt.NavigationControl());
+    // Add 3D buildings
+    const layers = map.getStyle().layers;
+    let labelLayerId;
+    for (let i = 0; i < layers.length; i++) {
+      if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+        labelLayerId = layers[i].id;
+        break;
+      }
+    }
+
+    map.addLayer(
+      {
+        id: '3d-buildings',
+        source: 'composite',
+        'source-layer': 'building',
+        filter: ['==', 'extrude', 'true'],
+        type: 'fill-extrusion',
+        minzoom: 15,
+        paint: {
+          'fill-extrusion-color': '#555555',
+          'fill-extrusion-height': ['get', 'height'],
+          'fill-extrusion-base': ['get', 'min_height'],
+          'fill-extrusion-opacity': 0.6
+        }
+      },
+      labelLayerId
+    );
+
+    // 🧭 Add navigation controls (zoom + rotation)
+    map.addControl(new mapboxgl.NavigationControl());
 
     // 📍 Create custom marker
     const markerElement = document.createElement("div");
@@ -382,8 +442,8 @@
     markerElement.style.borderRadius = "50%";
     markerElement.style.cursor = "pointer";
 
-    // Add marker to map (no popup)
-    new tt.Marker({ element: markerElement })
+    // Add marker to map
+    new mapboxgl.Marker({ element: markerElement })
       .setLngLat([propertyLocation.lng, propertyLocation.lat])
       .addTo(map);
   });

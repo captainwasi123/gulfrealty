@@ -58,6 +58,116 @@
 @section('content')
 	
 	<!-- Page content -->
+  <main class="content-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="sticky-top bg-body mb-2 mb-sm-1">
+            <form method="get" action="{{route('properties.search')}}">
+
+              <input type="hidden" name="purpose" value="{{empty($purpose) ? '' : $purpose}}">
+              <div class="d-md-none" style="height: 64px;  margin-top: -64px"></div>
+              <div class="d-none d-md-block d-lg-none" style="height: 72px;  margin-top: -72px"></div>
+              <div class="d-none d-lg-block" style="height: 76px; margin-top: -76px"></div>
+              <div class="d-flex gap-2 gap-sm-3 py-2 py-sm-3">
+                <div class="position-relative w-100">
+                  <select class="form-select border-1" name="location" data-select='{
+                    "classNames": {
+                      "containerInner": ["form-select"]
+                    },
+                    "searchEnabled": true,
+                    "removeItemButton": false
+                  }' aria-label="Location select">
+                    <option value="" selected disabled><i class="fi-map-pin"></i> Location</option>
+                    @foreach($locations as $val)
+                      <option value="{{base64_encode($val->id)}}" {{!empty($request['location']) && $val->id == base64_decode($request['location']) ? 'selected' : ''}}><i class="fi-map-pin"></i> &nbsp;{{$val->name}}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width: 22%">
+                  <select class="form-select border-1" name="type" data-select='{
+                      "classNames": {
+                        "containerInner": ["form-select"]
+                      },
+                    "removeItemButton": false
+                    }' aria-label="Location select">
+                      <option value="" selected disabled><i class="fi-home"></i> Property Types</option>
+                      <optgroup label="Residential">
+                        @foreach($propertyTypes as $val)
+                          @if($val->category == 'Residential')
+                            <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                          @endif
+                        @endforeach
+                      </optgroup>
+
+                      <optgroup label="Commercial">
+                        @foreach($propertyTypes as $val)
+                          @if($val->category == 'Commercial')
+                            <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                          @endif
+                        @endforeach
+                      </optgroup>
+
+                      <optgroup label="Plots">
+                        @foreach($propertyTypes as $val)
+                          @if($val->category == 'Plots')
+                            <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
+                          @endif
+                        @endforeach
+                      </optgroup>
+                    </select>
+                </div>
+                <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width:20%">
+                  <select class="form-select form-select-lg border-0 ps-3" data-select='{
+                    "classNames": {
+                      "containerInner": ["form-select"]
+                    },
+                    "removeItemButton": false
+                  }' aria-label="Property type select" name="price_range">
+                    <option value="" selected disabled><i class="fi-money-check"></i> Price</option>
+                    <option value="under_500k" {{!empty($request['price_range']) && $request['price_range'] == 'under_500k' ? 'selected' : ''}}>Less than 500k</option>
+                    <option value="500k_1m" {{!empty($request['price_range']) && $request['price_range'] == '500k_1m' ? 'selected' : ''}}>500k to 1M</option>
+                    <option value="1m_5m" {{!empty($request['price_range']) && $request['price_range'] == '1m_5m' ? 'selected' : ''}}>1M to 5M</option>
+                    <option value="5m_10m" {{!empty($request['price_range']) && $request['price_range'] == '5m_10m' ? 'selected' : ''}}>5M to 10M</option>
+                    <option value="above_10m" {{!empty($request['price_range']) && $request['price_range'] == 'above_10m' ? 'selected' : ''}}>More than 10M</option>
+                  </select>
+                </div>
+                <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width:15%">
+                  <select class="form-select form-select-lg border-0 ps-3" data-select='{
+                    "classNames": {
+                      "containerInner": ["form-select"]
+                    },
+                    "removeItemButton": false
+                  }' aria-label="Property type select" name="bedrooms">
+                    <option value="" selected disabled><i class="fi-bed"></i> Bedrooms</option>
+                    <option value="studio" {{!empty($request['bedrooms']) && $request['bedrooms'] == 'studio' ? 'selected' : ''}}>Studio</option>
+                    <option value="1 Bedroom" {{!empty($request['bedrooms']) && $request['bedrooms'] == '1 Bedroom' ? 'selected' : ''}}>1 Bedroom</option>
+                    <option value="2 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '2 Bedrooms' ? 'selected' : ''}}>2 Bedrooms</option>
+                    <option value="3 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '3 Bedrooms' ? 'selected' : ''}}>3 Bedrooms</option>
+                    <option value="4 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '4 Bedrooms' ? 'selected' : ''}}>4 Bedrooms</option>
+                    <option value="5 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '5 Bedrooms' ? 'selected' : ''}}>5 Bedrooms</option>
+                    <option value="6 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '6 Bedrooms' ? 'selected' : ''}}>6 Bedrooms</option>
+                    <option value="7 Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '7 Bedrooms' ? 'selected' : ''}}>7 Bedrooms</option>
+                    <option value="7+ Bedrooms" {{!empty($request['bedrooms']) && $request['bedrooms'] == '7+ Bedrooms' ? 'selected' : ''}}>7+ Bedrooms</option>
+                  </select>
+                </div>
+                
+
+                <!-- Filters offcanvas toggle button -->
+                <div class="position-relative">
+                  <button type="submit" class="btn btn-icon btn-dark" data-bs-toggle="offcanvas" data-bs-target="#filters" aria-controls="filters" aria-label="Toogle filters">
+                    <i class="fi-search fs-base"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
   <main class="content-wrapper d-lg-flex">
     <div class="d-lg-flex flex-grow-1">
 
@@ -73,90 +183,6 @@
 
       <!-- Listings with filters -->
       <div class="listings-section px-3 px-lg-4 pe-xxl-5">
-
-        <!-- Sticky filters -->
-        <div class="sticky-top bg-body mb-2 mb-sm-1">
-          <form method="get" action="{{route('properties.search')}}">
-
-            <input type="hidden" name="purpose" value="{{empty($purpose) ? '' : $purpose}}">
-            <div class="d-md-none" style="height: 64px;  margin-top: -64px"></div>
-            <div class="d-none d-md-block d-lg-none" style="height: 72px;  margin-top: -72px"></div>
-            <div class="d-none d-lg-block" style="height: 76px; margin-top: -76px"></div>
-            <div class="d-flex gap-2 gap-sm-3 py-2 py-sm-3">
-              <div class="position-relative w-100">
-                <select class="form-select border-1" name="location" data-select='{
-                  "classNames": {
-                    "containerInner": ["form-select"]
-                  },
-                  "searchEnabled": true,
-                  "removeItemButton": false
-                }' aria-label="Location select">
-                  <option value="" selected disabled><i class="fi-map-pin"></i> Location</option>
-                  @foreach($locations as $val)
-                    <option value="{{base64_encode($val->id)}}" {{!empty($request['location']) && $val->id == base64_decode($request['location']) ? 'selected' : ''}}><i class="fi-map-pin"></i> &nbsp;{{$val->name}}</option>
-                  @endforeach
-                </select>
-              </div>
-              <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width: 30%">
-                <select class="form-select border-1" name="type" data-select='{
-                    "classNames": {
-                      "containerInner": ["form-select"]
-                    },
-                  "removeItemButton": false
-                  }' aria-label="Location select">
-                    <option value="" selected disabled><i class="fi-home"></i> Property Types</option>
-                    <optgroup label="Residential">
-                      @foreach($propertyTypes as $val)
-                        @if($val->category == 'Residential')
-                          <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
-                        @endif
-                      @endforeach
-                    </optgroup>
-
-                    <optgroup label="Commercial">
-                      @foreach($propertyTypes as $val)
-                        @if($val->category == 'Commercial')
-                          <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
-                        @endif
-                      @endforeach
-                    </optgroup>
-
-                    <optgroup label="Plots">
-                      @foreach($propertyTypes as $val)
-                        @if($val->category == 'Plots')
-                          <option value="{{base64_encode($val->id)}}" {{!empty($request['type']) && $val->id == base64_decode($request['type']) ? 'selected' : ''}}><i class="fi-home"></i> &nbsp;{{$val->name}}</option>
-                        @endif
-                      @endforeach
-                    </optgroup>
-                  </select>
-              </div>
-              <div class="dropdown flex-shrink-0 d-none d-xxl-block" style="width:20%">
-                <select class="form-select form-select-lg border-0 ps-3" data-select='{
-                  "classNames": {
-                    "containerInner": ["form-select"]
-                  },
-                  "removeItemButton": false
-                }' aria-label="Property type select" name="price_range">
-                  <option value="" selected disabled><i class="fi-money-check"></i> Price</option>
-                  <option value="under_500k" {{!empty($request['price_range']) && $request['price_range'] == 'under_500k' ? 'selected' : ''}}>Less than 500k</option>
-                  <option value="500k_1m" {{!empty($request['price_range']) && $request['price_range'] == '500k_1m' ? 'selected' : ''}}>500k to 1M</option>
-                  <option value="1m_5m" {{!empty($request['price_range']) && $request['price_range'] == '1m_5m' ? 'selected' : ''}}>1M to 5M</option>
-                  <option value="5m_10m" {{!empty($request['price_range']) && $request['price_range'] == '5m_10m' ? 'selected' : ''}}>5M to 10M</option>
-                  <option value="above_10m" {{!empty($request['price_range']) && $request['price_range'] == 'above_10m' ? 'selected' : ''}}>More than 10M</option>
-                </select>
-              </div>
-              
-
-              <!-- Filters offcanvas toggle button -->
-              <div class="position-relative">
-                <button type="submit" class="btn btn-icon btn-dark" data-bs-toggle="offcanvas" data-bs-target="#filters" aria-controls="filters" aria-label="Toogle filters">
-                  <i class="fi-search fs-base"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-
 
         <!-- Sort selector -->
         <div class="d-flex align-items-center gap-2 gap-sm-3 mb-3">

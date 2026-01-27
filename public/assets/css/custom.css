@@ -395,6 +395,12 @@ display: block;
     animation: glow-grow 2s ease-out infinite;
 }
 
+.pointer-events-none{
+    pointer-events: none !important;
+}
+.no-underline{
+    text-decoration: none;
+}
 
 @keyframes glow-grow{
     0% {

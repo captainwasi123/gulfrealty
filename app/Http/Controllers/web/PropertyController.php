@@ -58,6 +58,9 @@ class PropertyController extends Controller
                         ->when(!empty($data['request']['type']), function ($q) use ($data) {
                             return $q->where('property_type', base64_decode($data['request']['type']));
                         })
+                        ->when(!empty($data['request']['bedrooms']), function ($q) use ($data) {
+                            return $q->where('bedrooms', $data['request']['bedrooms']);
+                        })
                         ->when(!empty($data['request']['price_range']), function ($q) use ($data) {
 
                             switch ($data['request']['price_range']) {

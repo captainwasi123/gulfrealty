@@ -40,7 +40,7 @@
             <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
               <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
               <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(160 / 196 * 100%)">
-                <img src="{{URL::to('/public')}}/CEO1.jpg" alt="Image">
+                <img src="{{URL::to('/public')}}/ceo-picture.jpeg" alt="Image">
               </div>
             </a>
           </div>

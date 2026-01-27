@@ -13,13 +13,28 @@
     <div class="mb-4">
         <h5 class="section-title">Basic Info</h5>
         <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <label for="title" class="form-label">Property Title</label>
                 <input type="text" class="form-control eblogHeading" id="title" name="title" value="{{$data->title}}" required>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <label for="slug" class="form-label">Slug (URL)</label>
                 <input type="text" class="form-control eblogSlug" id="slug" name="slug" value="{{$data->slug}}" required>
+            </div>
+            <div class="col-md-2">
+                <label for="bedrooms" class="form-label">Bedrooms</label>
+                <select class="form-control" id="bedrooms" name="bedrooms" required>
+                    <option value="">Select</option>
+                    <option value="Studio" {{$data->bedrooms == 'Studio' ? 'selected' : ''}}>Studio</option>
+                    <option value="1 Bedroom" {{$data->bedrooms == '1 Bedroom' ? 'selected' : ''}}>1 Bedroom</option>
+                    <option value="2 Bedrooms" {{$data->bedrooms == '2 Bedrooms' ? 'selected' : ''}}>2 Bedrooms</option>
+                    <option value="3 Bedrooms" {{$data->bedrooms == '3 Bedrooms' ? 'selected' : ''}}>3 Bedrooms</option>
+                    <option value="4 Bedrooms" {{$data->bedrooms == '4 Bedrooms' ? 'selected' : ''}}>4 Bedrooms</option>
+                    <option value="5 Bedrooms" {{$data->bedrooms == '5 Bedrooms' ? 'selected' : ''}}>5 Bedrooms</option>
+                    <option value="6 Bedrooms" {{$data->bedrooms == '6 Bedrooms' ? 'selected' : ''}}>6 Bedrooms</option>
+                    <option value="7 Bedrooms" {{$data->bedrooms == '7 Bedrooms' ? 'selected' : ''}}>7 Bedrooms</option>
+                    <option value="7+ Bedrooms" {{$data->bedrooms == '7+ Bedrooms' ? 'selected' : ''}}>7+ Bedrooms</option>
+                </select>
             </div>
         </div>
 

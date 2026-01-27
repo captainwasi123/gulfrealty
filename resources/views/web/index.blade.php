@@ -14,16 +14,16 @@
 
       <!-- Hero with search form -->
       <section class="position-relative mt-md-5">
-        <div class="container position-relative z-1 pt-5 pt-md-4 pt-xl-5">
+        <div class="container position-relative z-1 pt-5 pt-md-4 pt-xl-5 pointer-events-none">
           <div class="row pt-lg-3 pt-xl-0 pt-xxl-4 pb-4 pb-md-5 pb-xl-0">
             <div class="col-md-6 col-xxl-5 text-center text-md-start">
               <h1 class="display-4 pb-sm-1 pb-lg-3">Find your dream property with ease</h1>
               <p class="fs-lg mb-md-0">Experience seamless buying, selling, and renting all in one place.</p>
             </div>
           </div>
-          <div class="d-none d-md-block d-lg-none" style="height: 70px"></div>
-          <div class="d-none d-lg-block d-xl-none" style="height: 130px"></div>
-          <div class="d-none d-xl-block" style="height: 220px"></div>
+          <div class="d-none d-md-block d-lg-none pointer-events-none" style="height: 70px"></div>
+          <div class="d-none d-lg-block d-xl-none pointer-events-none" style="height: 130px"></div>
+          <div class="d-none d-xl-block pointer-events-none" style="height: 220px"></div>
 
           <!-- Search form -->
           <div class="row pb-5 pb-md-0">
@@ -113,9 +113,9 @@
               </form>
             </div>
           </div>
-          <div class="d-none d-md-block d-lg-none" style="height: 60px"></div>
-          <div class="d-none d-lg-block d-xxl-none" style="height: 90px"></div>
-          <div class="d-none d-xxl-block" style="height: 130px"></div>
+          <div class="d-none d-md-block d-lg-none pointer-events-none" style="height: 60px"></div>
+          <div class="d-none d-lg-block d-xxl-none pointer-events-none" style="height: 90px"></div>
+          <div class="d-none d-xxl-block pointer-events-none" style="height: 130px"></div>
         </div>
 
         <!-- Background images -->
@@ -127,7 +127,7 @@
               <div class="d-none d-xl-block d-xxl-none" style="height: 326px"></div>
               <div class="d-none d-xxl-block" style="height: 366px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -38px 96px 0 0; font-size: 118px; color: var(--fn-body-bg)">Buy</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="right: 0; margin: -38px 96px 0 0; font-size: 118px; color: var(--fn-body-bg)"><a href="{{route('properties.buy')}}" class="text-white no-underline">Buy</a></div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(328 / 768 * 100%)">
                   <img src="{{URL::to('/public')}}/assets/img/home/01-A.jpg" alt="Image">
                 </div>
@@ -135,7 +135,7 @@
             </div>
             <div style="width: 306px">
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: 1px 0 0 -38px; font-size: 118px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)">Sell</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: 1px 0 0 -38px; font-size: 118px; color: var(--fn-body-bg); writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(-180deg)"><a href="{{route('properties.sell')}}" class="no-underline text-white">Sell</a></div>
                 <div class="ratio bg-info rounded overflow-hidden" style="--fn-aspect-ratio: calc(443 / 306 * 100%)">
                   <img src="{{URL::to('/public')}}/assets/img/home/03-A.jpg" alt="Image">
                 </div>
@@ -144,7 +144,7 @@
             <div style="width: 438px">
               <div style="height: 117px"></div>
               <div class="position-relative overflow-hidden">
-                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -30px 0 0 3px; font-size: 118px; color: #03334f">Rent</div>
+                <div class="position-absolute top-0 z-1 fw-bold" style="left: 0; margin: -30px 0 0 3px; font-size: 118px; color: #03334f"><a href="{{route('properties.rent')}}" class="no-underline">Rent</a></div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
                   <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/gulf-poster.png">
                     <source src="{{URL::to('/public')}}/gulf-video.mp4" type="video/mp4">

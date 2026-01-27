@@ -69,6 +69,7 @@ class PropertyController extends Controller
             $gv->latitude = $data['latitude'];
             $gv->longitude = $data['longitude'];
             $gv->description = $data['description'];
+            $gv->bedrooms = $data['bedrooms'];
             $gv->trending = empty($data['trending']) ? '0' : '1';
             $gv->created_by = Auth::guard('admin')->id();
             $gv->save();
@@ -142,6 +143,7 @@ class PropertyController extends Controller
             $gv->latitude = $data['latitude'];
             $gv->longitude = $data['longitude'];
             $gv->description = $data['description'];
+            $gv->bedrooms = $data['bedrooms'];
             $gv->trending = empty($data['trending']) ? '0' : '1';
             $gv->save();
 

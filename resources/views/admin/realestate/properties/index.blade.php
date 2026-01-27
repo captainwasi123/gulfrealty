@@ -112,13 +112,28 @@
           <div class="mb-4">
               <h5 class="section-title">Basic Info</h5>
               <div class="row mb-3">
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                       <label for="title" class="form-label">Property Title</label>
                       <input type="text" class="form-control blogHeading" id="title" name="title" required>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                       <label for="slug" class="form-label">Slug (URL)</label>
                       <input type="text" class="form-control blogSlug" id="slug" name="slug" required>
+                  </div>
+                  <div class="col-md-2">
+                      <label for="bedrooms" class="form-label">Bedrooms</label>
+                      <select class="form-control" id="bedrooms" name="bedrooms" required>
+                          <option value="">Select</option>
+                          <option value="Studio" >Studio</option>
+                          <option value="1 Bedroom" >1 Bedroom</option>
+                          <option value="2 Bedrooms" >2 Bedrooms</option>
+                          <option value="3 Bedrooms" >3 Bedrooms</option>
+                          <option value="4 Bedrooms" >4 Bedrooms</option>
+                          <option value="5 Bedrooms" >5 Bedrooms</option>
+                          <option value="6 Bedrooms" >6 Bedrooms</option>
+                          <option value="7 Bedrooms" >7 Bedrooms</option>
+                          <option value="7+ Bedrooms" >7+ Bedrooms</option>
+                      </select>
                   </div>
               </div>
 

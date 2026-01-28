@@ -29,7 +29,9 @@
     right: 12px;
     top: 10px;
 }
-
+.home-small {
+    font-size: 22px;
+}
 .footer {
     background-color: #03334f !important;
 }

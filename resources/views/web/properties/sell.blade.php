@@ -4,43 +4,6 @@
 	 <!-- Page content -->
     <main class="content-wrapper">
 
-       <!-- Hero with looped video playback -->
-      <section class="position-relative py-4 mt-n2 mt-sm-0">
-        <div class="container pt-sm-2 pt-md-3 pt-lg-4">
-          <div class="text-center mx-auto" style="max-width: 820px">
-            <h1 class="display-6 pb-sm-3 pb-2 pb-lg-0 mb-4 mb-lg-5">Sell Your Property in Dubai | Residential & Commercial | Free Valuation</h1>
-          </div>
-
-          <div class="row g-4">
-            <div class="col-md-12 col-lg-12">
-              <div class="hover-effect-scale position-relative bg-body-tertiary rounded overflow-hidden">
-                <div class="ratio d-none d-lg-block" style="--fn-aspect-ratio: calc(335 / 856 * 100%)"></div>
-                <div class="ratio d-none d-md-block d-lg-none" style="--fn-aspect-ratio: calc(404 / 521 * 100%)"></div>
-                <div class="ratio d-none d-sm-block d-md-none" style="--fn-aspect-ratio: calc(420 / 697 * 100%)"></div>
-                <div class="ratio d-sm-none" style="--fn-aspect-ratio: calc(400 / 443 * 100%)"></div>
-                <img src="{{URL::to('/public/sell-hero.jpg')}}" class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
-                <div class="position-absolute top-0 start-0 w-100 h-100 z-2 p-3">
-                  <div class="d-flex align-items-end h-100 p-2 p-lg-3">
-                    <div class="d-sm-flex align-items-end justify-content-between w-100 gap-4 gap-lg-5">
-                      <div class="pb-1 pb-sm-0 mb-2 mb-sm-0">
-                        <h3 class="pb-sm-1 mb-2">
-                          <a class="hover-effect-underline stretched-link text-white" href="#!">We provide a complete service for the sale, purchase or rental of real estate.</a>
-                        </h3>
-                        <p class="text-white mb-0">It offers a comfortable living area leading to a formal dining room, gorgeous hardwood floors throughout, spacious renovated Island kitchen with granite countertops and stainless steel appliances. Additionally, revel in the convenience of a master bedroom featuring a built-in dressing room, complemented by a private bath and shower for added comfort. This inviting apartment is conveniently located close to transportation hubs, ensuring easy access to the city's heartbeat. It offers a comfortable living area </p>
-                      </div>
-                      <a class="btn btn-light position-relative rounded-pill z-2" href="#sell-property-section" >
-                        Register Your Interest
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-sm-none"></span>
-                <span class="position-absolute top-0 start-0 w-100 h-100 d-none d-sm-block" style="background: linear-gradient(0deg, rgba(64,64,64, .74) 20%, rgba(0,0,0, 0) 65%)"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
        <section class="container py-3 sell-property-section" id="sell-property-section">
@@ -198,7 +161,44 @@
         </form>
       </section>
 
-    
+      
+       <!-- Hero with looped video playback -->
+      <section class="position-relative py-4 mt-n2 mt-sm-0">
+        <div class="container pt-sm-2 pt-md-3 pt-lg-4">
+          <div class="text-center mx-auto" style="max-width: 820px">
+            <h1 class="display-6 pb-sm-3 pb-2 pb-lg-0 mb-4 mb-lg-5">Sell Your Property in Dubai | Residential & Commercial | Free Valuation</h1>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-12 col-lg-12">
+              <div class="hover-effect-scale position-relative bg-body-tertiary rounded overflow-hidden">
+                <div class="ratio d-none d-lg-block" style="--fn-aspect-ratio: calc(335 / 856 * 100%)"></div>
+                <div class="ratio d-none d-md-block d-lg-none" style="--fn-aspect-ratio: calc(404 / 521 * 100%)"></div>
+                <div class="ratio d-none d-sm-block d-md-none" style="--fn-aspect-ratio: calc(420 / 697 * 100%)"></div>
+                <div class="ratio d-sm-none" style="--fn-aspect-ratio: calc(400 / 443 * 100%)"></div>
+                <img src="{{URL::to('/public/sell-hero.jpg')}}" class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Image">
+                <div class="position-absolute top-0 start-0 w-100 h-100 z-2 p-3">
+                  <div class="d-flex align-items-end h-100 p-2 p-lg-3">
+                    <div class="d-sm-flex align-items-end justify-content-between w-100 gap-4 gap-lg-5">
+                      <div class="pb-1 pb-sm-0 mb-2 mb-sm-0">
+                        <h3 class="pb-sm-1 mb-2">
+                          <a class="hover-effect-underline stretched-link text-white" href="#!">We provide a complete service for the sale, purchase or rental of real estate.</a>
+                        </h3>
+                        <p class="text-white mb-0">It offers a comfortable living area leading to a formal dining room, gorgeous hardwood floors throughout, spacious renovated Island kitchen with granite countertops and stainless steel appliances. Additionally, revel in the convenience of a master bedroom featuring a built-in dressing room, complemented by a private bath and shower for added comfort. This inviting apartment is conveniently located close to transportation hubs, ensuring easy access to the city's heartbeat. It offers a comfortable living area </p>
+                      </div>
+                      <a class="btn btn-light position-relative rounded-pill z-2" href="#sell-property-section" >
+                        Register Your Interest
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <span class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-sm-none"></span>
+                <span class="position-absolute top-0 start-0 w-100 h-100 d-none d-sm-block" style="background: linear-gradient(0deg, rgba(64,64,64, .74) 20%, rgba(0,0,0, 0) 65%)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <!-- Values (Features) -->
       <section class="container pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-5 my-xxl-3">

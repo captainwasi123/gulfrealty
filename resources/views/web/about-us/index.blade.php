@@ -9,7 +9,7 @@
         <div class="container pt-sm-2 pt-md-3 pt-lg-4">
           <div class="text-center mx-auto" style="max-width: 820px">
             <div class="text-dark-emphasis text-uppercase mb-3">About us</div>
-            <h1 class="display-3 pb-sm-3 pb-2 pb-lg-0 mb-4 mb-lg-5">Redefining Real Estate with Integrity and Innovation</h1>
+            <h1 class="display-4 pb-sm-3 pb-2 pb-lg-0 mb-4 mb-lg-5">Redefining Real Estate with Integrity and Innovation</h1>
           </div>
 
           <!-- Video -->

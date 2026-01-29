@@ -357,10 +357,37 @@
     antialias: true
   });
 
+
   map.addControl(new mapboxgl.NavigationControl());
 
   map.on('load', () => {
 
+     // 🔴 DEFAULT SCROLL ZOOM OFF
+      map.scrollZoom.disable();
+
+      // 🟢 CURSOR = CENTER ZOOM
+      map.getCanvas().addEventListener(
+        'wheel',
+        (e) => {
+          e.preventDefault();
+
+          const zoomStep = e.deltaY < 0 ? 0.3 : -0.3;
+          const newZoom = map.getZoom() + zoomStep;
+
+          // 🖱️ Cursor wali location
+          const cursorLngLat = map.unproject([e.offsetX, e.offsetY]);
+
+          // 🔥 Cursor ko center bana do
+          map.easeTo({
+            center: cursorLngLat,
+            zoom: newZoom,
+            duration: 250,
+            easing: (t) => t
+          });
+        },
+        { passive: false }
+      );
+      
     /* =================================================
        REMOVE ALL LABELS (INCLUDING HIGHWAY NUMBERS)
        KEEP ONLY AREA / PLACE NAMES

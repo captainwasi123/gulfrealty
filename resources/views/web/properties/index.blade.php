@@ -174,9 +174,6 @@
       <!-- Interactive map that turns into offcanvas on screens < 992px wide (lg breakpoint) -->
       <div class="map-section">
         <div class="offcanvas-lg offcanvas-start d-flex flex-column w-100 h-100" id="map">
-          <div class="offcanvas-body position-relative h-100 p-0">
-            <div id="map"></div>
-          </div>
         </div>
       </div>
 
@@ -361,33 +358,7 @@
   map.addControl(new mapboxgl.NavigationControl());
 
   map.on('load', () => {
-
-     // 🔴 DEFAULT SCROLL ZOOM OFF
-      map.scrollZoom.disable();
-
-      // 🟢 CURSOR = CENTER ZOOM
-      map.getCanvas().addEventListener(
-        'wheel',
-        (e) => {
-          e.preventDefault();
-
-          const zoomStep = e.deltaY < 0 ? 0.3 : -0.3;
-          const newZoom = map.getZoom() + zoomStep;
-
-          // 🖱️ Cursor wali location
-          const cursorLngLat = map.unproject([e.offsetX, e.offsetY]);
-
-          // 🔥 Cursor ko center bana do
-          map.easeTo({
-            center: cursorLngLat,
-            zoom: newZoom,
-            duration: 250,
-            easing: (t) => t
-          });
-        },
-        { passive: false }
-      );
-      
+    
     /* =================================================
        REMOVE ALL LABELS (INCLUDING HIGHWAY NUMBERS)
        KEEP ONLY AREA / PLACE NAMES

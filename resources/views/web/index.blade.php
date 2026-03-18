@@ -26,7 +26,7 @@
           <div class="d-none d-xl-block pointer-events-none" style="height: 220px"></div>
 
           <!-- Search form -->
-          <div class="row pb-5 pb-md-0">
+          <div class="row pb-5 pb-md-0 pointer-events-auto">
             <div class="col-xl-10 col-xxl-9">
               <form class="bg-body border rounded-4 p-2" method="get" action="{{route('properties.search')}}">
                 <div class="row g-0 p-1">
@@ -86,6 +86,7 @@
                         <hr class="vr d-none d-lg-block m-0">
                       </div>
                       <div class="col-md-3">
+                          <hr class="d-md-none my-2">
                         <select class="form-select form-select-lg border-0 ps-3" data-select='{
                         "classNames": {
                           "containerInner": ["form-select", "form-select-lg", "border-0", "ps-3"]
@@ -232,7 +233,7 @@
                   <h3 class="h5 text-white mb-0">Sell a property</h3>
                 </div>
                 <div class="card-footer d-flex flex-column align-items-center gap-4 gap-sm-5 bg-transparent border-0 p-0">
-                  <a class="btn btn-dark stretched-link mx-4" href="">Place an ad</a>
+                  <a class="btn btn-dark stretched-link mx-4" href="{{route('properties.sell')}}">Place an ad</a>
                   <div class="ratio hover-effect-target mt-3 mt-sm-0" style="--fn-aspect-ratio: calc(216 / 416 * 100%)">
                     <img src="{{URL::to('/public')}}/assets/img/SELL.png" alt="Image">
                   </div>
@@ -400,7 +401,7 @@
             <div class="col-lg-5 text-center text-lg-start py-lg-4">
               <h2 class="text-white">Calculate your property’s real market value.</h2>
               <p class="fs-lg text-white opacity-75 pb-2 pb-sm-3">Our smart valuation tool estimates your property’s market value using the latest data and insights — helping you make confident real estate decisions.</p>
-              <a class="btn btn-lg btn-primary" href="#!">Start now</a>
+              <a class="btn btn-lg btn-primary" href="{{route('calculators.mortgage')}}">Start now</a>
             </div>
           </div>
         </div>

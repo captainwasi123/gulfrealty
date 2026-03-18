@@ -12,7 +12,7 @@
               <li>
                 <div class="position-relative d-flex align-items-center">
                   <i class="fi-map-pin fs-lg text-body me-2"></i>
-                  <a class="text-dark-emphasis text-decoration-none hover-effect-underline stretched-link" href="javascript:void(0)">806, Aspect Tower, Business Bay (Dubai)</a>
+                  <a class="text-dark-emphasis text-decoration-none hover-effect-underline stretched-link" href="https://maps.app.goo.gl/QP2J8UCLcqFNA6DJA" target="_blank">806, Aspect Tower, Business Bay (Dubai)</a>
                 </div>
               </li>
               <li>
@@ -85,8 +85,7 @@
           <div class="col-lg-4 col-xxl-3 pt-4 pt-md-5 pt-lg-0 mt-3 mt-md-0">
             <div class="d-flex flex-column flex-sm-row flex-lg-column align-items-center justify-content-between justify-content-lg-center text-center text-sm-start text-lg-center">
               <h6 class="h5 mb-sm-0 mb-lg-3 me-sm-3 me-md-4 me-lg-0">Get exclusive advice</h6>
-              <button type="button" class="btn btn-lg btn-outline-secondary w-100" style="max-width: 205px">Sign up</button>
-              <div class="d-flex justify-content-center pt-2 pt-sm-0 pt-lg-3 ps-sm-3 ps-lg-0 mt-3 mt-sm-0 mt-lg-3">
+              <div class="d-flex justify-content-center pt-2 pt-sm-0 pt-lg-3 ps-sm-3 ps-lg-0 ">
                 <a class="btn btn-icon fs-base btn-outline-secondary border-0" href="https://www.instagram.com/gulfrealty_ae/" data-bs-toggle="tooltip" data-bs-template='<div class="tooltip fs-xs mb-n2" role="tooltip"><div class="tooltip-inner bg-transparent text-white opacity-75 p-0"></div></div>' title="Instagram" aria-label="Follow us on Instagram" target="_blank">
                   <i class="fi-instagram"></i>
                 </a>

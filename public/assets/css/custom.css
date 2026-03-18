@@ -400,6 +400,9 @@ display: block;
 .pointer-events-none{
     pointer-events: none !important;
 }
+.pointer-events-auto{
+    pointer-events: auto !important;
+}
 .no-underline{
     text-decoration: none;
 }

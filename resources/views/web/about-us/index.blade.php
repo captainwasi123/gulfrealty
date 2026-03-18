@@ -331,20 +331,27 @@
           </div>
 
           <!-- Accordion + CTA button -->
-          <div class="col-md-4">
-            <p class="fs-sm mb-0">Complete this form so we can get in touch</p>
-            <h4 class="modal-title">Learn more about this property</h4>
-            <br>
-            <div class="vstack gap-3">
-              <input type="text" class="form-control" placeholder="Name *" required="">
-              <input type="email" class="form-control" placeholder="Email *" required="">
-              <input type="tel" class="form-control" data-input-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 &quot;, &quot; &quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 3, 2]}" placeholder="Phone number">
-              <textarea class="form-control" rows="5" placeholder="Write your message" required=""></textarea>
+            <div class="col-md-4">
+              <form id="contact-enquiry-form" action="{{route('contact.enquiry.submit')}}">
+                @csrf
+                <p class="fs-sm mb-0">Complete this form so we can get in touch</p>
+                <h4 class="modal-title">Learn more about this property</h4>
+                <br>
+                <div class="vstack gap-3">
+                  <input type="text" class="form-control" placeholder="Name *" name="name" required="">
+                  <input type="email" class="form-control contact-email" placeholder="Email *" name="email" required="">
+                  <input type="tel" class="form-control" name="mainphone" id="phone-field" placeholder="Phone number">
+                  <input type="hidden" name="phone" id="fullphone-field" required="">
+                  <textarea class="form-control" rows="5" placeholder="Write your message" name="description" required=""></textarea>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-lg btn-primary w-100 m-0 mb-3">Send message</button>
+                <div class="loading">
+                  <img src="{{URL::to('/public/loader-gif.gif')}}">
+                </div>
+                <p class="fs-xs m-0">This site is protected by reCAPTCHA and the Google <a class="hover-effect-underline text-decoration-none" href="#!">Privacy Policy</a> and <a class="hover-effect-underline text-decoration-none" href="#!">Terms of Service</a> apply.</p>
+              </form>
             </div>
-            <br>
-            <button type="submit" class="btn btn-lg btn-primary w-100 m-0 mb-3">Send message</button>
-            <p class="fs-xs m-0">This site is protected by reCAPTCHA and the Google <a class="hover-effect-underline text-decoration-none" href="#!">Privacy Policy</a> and <a class="hover-effect-underline text-decoration-none" href="#!">Terms of Service</a> apply.</p>
-          </div>
         </div>
       </section>
 
@@ -469,4 +476,8 @@
         </div>
       </section>
     </main>
+@endsection
+@section('addScript')
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="{{URL::to('/public')}}/assets/js/enquiry.js"></script>
 @endsection

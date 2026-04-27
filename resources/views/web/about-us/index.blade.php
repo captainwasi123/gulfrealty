@@ -58,7 +58,7 @@
                 <div class="w-100 border-top border-info-subtle me-n2"></div>
               </div>
               <h3 class="h5 pt-3 pb-1 mt-3 mb-2">The vision begins</h3>
-              <p class="mb-0">In 2022, a passionate team of real estate professionals came together with a shared goal — to redefine property services in the UAE through trust, innovation, and transparency.</p>
+              <p class="mb-0">In 2020, a passionate team of real estate professionals came together with a shared goal — to redefine property services in the UAE through trust, innovation, and transparency.</p>
             </div>
             <div class="w-100">
               <div class="d-flex align-items-center gap-3">

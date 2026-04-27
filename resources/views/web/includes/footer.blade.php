@@ -108,7 +108,7 @@
 
         <!-- Mobile app CTA -->
         <div class="position-relative d-flex flex-column flex-md-row align-items-center overflow-hidden mb-md-2">
-            <img src="{{URL::to('/public/footer-banner.jpg')}}" class="footer-banner" alt="Footer Banner">
+            <a href="{{route('contact')}}"><img src="{{URL::to('/public/footer-banner2.jpeg')}}" class="footer-banner" alt="Footer Banner"></a>
         </div>
 
         <!-- Copyright -->

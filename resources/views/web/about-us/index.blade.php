@@ -54,7 +54,7 @@
           <div class="d-flex gap-4" style="min-width: 860px">
             <div class="w-100">
               <div class="d-flex align-items-center gap-3">
-                <div class="btn btn-lg btn-outline-info rounded-pill pe-none">2022</div>
+                <div class="btn btn-lg btn-outline-info rounded-pill pe-none">2020</div>
                 <div class="w-100 border-top border-info-subtle me-n2"></div>
               </div>
               <h3 class="h5 pt-3 pb-1 mt-3 mb-2">The vision begins</h3>

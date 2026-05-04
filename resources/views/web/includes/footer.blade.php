@@ -12,7 +12,7 @@
               <li>
                 <div class="position-relative d-flex align-items-center">
                   <i class="fi-map-pin fs-lg text-body me-2"></i>
-                  <a class="text-dark-emphasis text-decoration-none hover-effect-underline stretched-link" href="https://maps.app.goo.gl/QP2J8UCLcqFNA6DJA" target="_blank">806, Aspect Tower, Business Bay (Dubai)</a>
+                  <a class="text-dark-emphasis text-decoration-none hover-effect-underline stretched-link" href="https://maps.app.goo.gl/QP2J8UCLcqFNA6DJA" target="_blank">Office No. 3006, The Prism Tower, Business Bay, Dubai, United Arab Emirates</a>
                 </div>
               </li>
               <li>

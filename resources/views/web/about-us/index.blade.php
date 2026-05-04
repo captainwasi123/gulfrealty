@@ -322,7 +322,7 @@
 
       <!-- Create account CTA -->
       <section class="container pt-2 pt-sm-3 pt-md-4 pt-lg-5 pb-5 my-xxl-3">
-        <h2 class="h1 pt-1 pt-sm-2 pt-lg-0 pb-md-2 pb-lg-3 pb-xl-0 mb-sm-4 mb-xl-5" style="max-width: 525px">Get new customers with Finder easily!</h2>
+        <h2 class="h1 pt-1 pt-sm-2 pt-lg-0 pb-md-2 pb-lg-3 pb-xl-0 mb-sm-4 mb-xl-5" style="max-width: 525px">Get new customers with GulfRealty easily!</h2>
         <div class="row">
           <div class="col-md-8">
             <div class="position-relative w-100 h-100 bg-body-tertiary rounded overflow-hidden">

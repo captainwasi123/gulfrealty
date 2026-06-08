@@ -23,48 +23,55 @@
         <div class="row g-3 g-sm-4 g-md-3 g-xl-4 pb-sm-2 mb-2">
 
           <div class="col-md-5">
-            <h2 class="h4 mb-lg-4">Message from the <strong>CEO</strong></h2>
+            <h2 class="h4 mb-lg-4">Meet the CEO of Gulf Realty</h2>
               <p class="fs-sm mb-0">
-                At <strong>Gulf Realty</strong>, our vision has always been simple yet powerful — to redefine the real estate experience through trust, transparency, and innovation. What began as a small initiative has today grown into a brand recognized for its commitment to excellence and customer satisfaction.
+                An experienced entrepreneur with a proven track record in Real Estate Investment Consulting, Abdul Qadir Suria leads Gulf Realty with vision and expertise.
                 <br><br>
-                In a constantly evolving market like the UAE, we believe success comes not just from selling properties, but from building relationships that last a lifetime. Every project we take on reflects our dedication to quality, detail, and value — ensuring that our clients find more than just a home, they find a lifestyle.
+                With deep knowledge of the Gulf region’s real estate market, he brings valuable insight across multiple areas of property investment and consultancy. His approach is centered around building long-term relationships with clients, stakeholders, and partners — driven by trust, transparency, and integrity.
                 <br><br>
-                Our team’s passion and professionalism are the foundation of everything we do. Together, we aim to empower investors, inspire homeowners, and contribute to shaping Dubai’s ever-growing skyline.
-                <br><br>
-                As we continue to move forward, our promise remains the same — to deliver trust, integrity, and results in every transaction. The future of real estate is bright, and we’re proud to be leading the way.
-
+                At Gulf Realty, ethics are not just a principle — they are the foundation of everything we do.
               </p>
           </div>
           <div class="col-md-2"></div>
           <div class="col-md-5">
             <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
               <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
-              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(160 / 196 * 100%)">
-                <img src="{{URL::to('/public')}}/ceo-picture.jpeg" alt="Image">
+              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(110 / 198 * 100%)">
+                <img src="{{URL::to('/public')}}/new-ceo1.png" alt="Image">
               </div>
             </a>
           </div>
-          <div class="col-md-12 text-center">
-            <p class="py-3">
-              "We don’t just build properties — we build trust, value, and lasting relationships"
-              <br>
-              <strong><i>-Abdul Qadir Suria</i></strong>
-            </p>
+        </div>
+        <br><br>
+        <div class="row g-3 g-sm-4 g-md-3 g-xl-4 pb-sm-2 mb-2">
+
+          <div class="col-md-4">
+            <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
+              <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
+              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(188 / 198 * 100%)">
+                <img src="{{URL::to('/public')}}/new-ceo2.jpg" alt="Image">
+              </div>
+            </a>
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-7">
+            <h2 class="h4 mb-lg-4">CEO’s Message</h2>
+              <p class="fs-sm mb-0">
+                “As we move forward, adapting to the evolving real estate market while staying true to our core values remains our top priority. Gulf Realty has built a strong reputation based on trust, transparency, and results, and we are committed to strengthening this foundation further.
+                <br><br>
+                We believe that success comes from understanding market trends and aligning our approach with the changing needs of our clients. Our focus is not just on offering properties, but on providing smart investment solutions that deliver real value.
+                <br><br>
+                At Gulf Realty, we prioritize long-term relationships by maintaining honesty, clear communication, and a client-first approach. By consistently delivering quality properties and exceptional service, we aim to exceed expectations and create lasting partnerships.”
+              </p>
+              <br><br>
+              <p class="py-3">
+                "We don’t just build properties — we build trust, value, and lasting relationships"
+                <br>
+                <strong><i>-Abdul Qadir Suria</i></strong>
+              </p>
           </div>
 
         </div>
-
-        <!-- Hero with looped video playback -->
-      <section class="position-relative mt-n2 mt-sm-0 mb-xxl-3">
-        <div class="container pt-sm-2 pt-md-3 pt-lg-4">
-          <!-- Video -->
-          <div class="ratio ratio-16x9 border rounded-5 overflow-hidden">
-            <video muted loop playsinline autoplay poster="{{URL::to('/')}}/gulf-poster.png">
-              <source src="{{URL::to('/public')}}/gulf-video.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </section>
 
 
         <!-- Hero with looped video playback -->

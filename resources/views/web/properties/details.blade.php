@@ -103,7 +103,7 @@
             
             <!-- About -->
             <h2 class="h5 pt-4 pt-sm-5 mt-3 mt-sm-0">About</h2>
-            <p class="fs-sm">{{$data->description}}</p>
+            <p class="fs-sm">{!!$data->description!!}</p>
 
             <!-- Amenities -->
             <h2 class="h5 pt-4 pt-sm-5 mt-3 mt-sm-0">Amenities</h2>

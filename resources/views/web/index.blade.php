@@ -148,7 +148,7 @@
                 <div class="position-absolute top-0 z-1 fw-bold" style="left: 0;margin: 44px 0 0 14px;font-size: 90px;color: #03334f;line-height: 18px;"><a href="{{route('properties.buy')}}" class="no-underline">Buy <span class="home-small"><br>Your Dream Home</span></a></div>
                 <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
                   <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/gulf-poster.png">
-                    <source src="{{URL::to('/public')}}/gulf-video.mp4" type="video/mp4">
+                    <source src="{{URL::to('/public')}}/main-2.mp4" type="video/mp4">
                   </video>
                 </div>
               </div>

@@ -46,12 +46,15 @@
         <div class="row g-3 g-sm-4 g-md-3 g-xl-4 pb-sm-2 mb-2">
 
           <div class="col-md-4">
-            <a class="hover-effect-scale position-relative d-flex rounded overflow-hidden" href="javascript:void(0)" data-glightbox data-gallery="image-gallery">
-              <span class="hover-effect-target position-absolute top-0 start-0 w-100 h-100 bg-black bg-opacity-25 opacity-0 z-1"></span>
-              <div class="ratio hover-effect-target bg-body-tertiary rounded" style="--fn-aspect-ratio: calc(188 / 198 * 100%)">
-                <img src="{{URL::to('/public')}}/new-ceo2.jpg" alt="Image">
+            <div style="width: 438px">
+              <div class="position-relative overflow-hidden">
+                <div class="ratio bg-body-tertiary rounded overflow-hidden" style="--fn-aspect-ratio: calc(446 / 438 * 100%)">
+                  <video muted="" loop="" playsinline="" autoplay="" poster="{{URL::to('/public')}}/new-ceo1.png">
+                    <source src="{{URL::to('/public')}}/ceo-video2.mp4" type="video/mp4">
+                  </video>
+                </div>
               </div>
-            </a>
+            </div>
           </div>
           <div class="col-md-1"></div>
           <div class="col-md-7">
